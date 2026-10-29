@@ -218,6 +218,13 @@ Open a notebook below to read the existing questions and answers. The original a
 |---|---|---|
 | 1 | [5-Jun-2022 Function Task](09-function-and-git-practice/5-Jun-2022%20Function%20Task.ipynb) | 1. Try to print a prime number in between 1 to 1000 |
 
+## Python revision and interview questions
+
+- [Python Questions to crack Analytics interviews j8cuio](../11-interview-preparation/DataMonk%2023%20Ebook/DataMonk%2023%20Ebook/Python-Questions-to-crack-Analytics-interviews-j8cuio.pdf)
+- [Gen Iter Dec](../11-interview-preparation/Python/Gen_Iter_Dec.ipynb)
+- [Interview Questions Part1](../11-interview-preparation/Python/Interview_Questions_Part1.ipynb)
+- [Interview Questions Part2](../11-interview-preparation/Python/Interview_Questions_Part2.ipynb)
+
 ## Continue learning
 
 
