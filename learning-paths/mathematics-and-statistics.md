@@ -1,24 +1,37 @@
-# 02 — Mathematics, Statistics and Probability
+# 02 — Mathematics and Statistics
 
-[All paths](README.md) · [Home](../README.md)
+[All learning paths](../README.md)
 
-Learn these foundations after basic Python and before model training. You can practice the statistics examples in Python as you study.
+Read linear algebra and statistics notes, then explore practical notebooks.
 
-1. [ ] [Linear algebra](../foundations/mathematics/linear-algebra/README.md)
-2. [ ] [Descriptive statistics](../foundations/statistics-and-probability/descriptive-statistics/README.md)
-3. [ ] [Probability](../foundations/statistics-and-probability/probability/README.md)
-4. [ ] [Distributions](../foundations/statistics-and-probability/distributions/README.md)
-5. [ ] [Sampling and the central limit theorem](../foundations/statistics-and-probability/sampling-and-central-limit-theorem/README.md)
-6. [ ] [Estimation and confidence intervals](../foundations/statistics-and-probability/estimation-and-confidence-intervals/README.md)
-7. [ ] [Hypothesis testing](../foundations/statistics-and-probability/hypothesis-testing/README.md)
-8. [ ] [Correlation and association](../foundations/statistics-and-probability/correlation-and-association/README.md)
-9. [ ] [Calculus](../foundations/mathematics/calculus/README.md)
-10. [ ] [Optimization](../foundations/mathematics/optimization/README.md)
+## Read in this order
 
-Coverage varies by topic; some pages are planned outlines. Open each topic index to see the available material.
+1. [Linear Algebra](../02-mathematics-and-statistics/01-linear-algebra/README.md)
+2. [Statistics Practicals](../02-mathematics-and-statistics/02-statistics-practicals/README.md)
+3. [Handwritten Statistics Notes](../02-mathematics-and-statistics/03-handwritten-statistics-notes/README.md)
 
-## Your place in the roadmap
+## Open the learning material
 
-[← Stage 01: Python and Programming](python-and-programming.md)
+All links below open files inside this hub.
 
-[Stage 03: SQL and Data Analysis →](data-analysis.md)
+| # | Material | Format |
+|---|---|---|
+| 1 | [Linear Algebra & Matrices](../02-mathematics-and-statistics/01-linear-algebra/Linear%20Algebra%20%26%20Matrices.pdf) | PDF |
+| 2 | [Central Limit Theorem](../02-mathematics-and-statistics/02-statistics-practicals/Central_Limit_Theorem.ipynb) | IPYNB |
+| 3 | [Complete Statistics With Code](../02-mathematics-and-statistics/02-statistics-practicals/Complete_Statistics_With_Code.pdf) | PDF |
+| 4 | [Correlation](../02-mathematics-and-statistics/02-statistics-practicals/Correlation.ipynb) | IPYNB |
+| 5 | [Hypothesis Testing Part1](../02-mathematics-and-statistics/02-statistics-practicals/Hypothesis_Testing_Part1.ipynb) | IPYNB |
+| 6 | [Hypothesis Testing Part2](../02-mathematics-and-statistics/02-statistics-practicals/Hypothesis_Testing_Part2.ipynb) | IPYNB |
+| 7 | [ANOVA Test](../02-mathematics-and-statistics/03-handwritten-statistics-notes/ANOVA_Test.pdf) | PDF |
+| 8 | [Statistics Notes Day 1](../02-mathematics-and-statistics/03-handwritten-statistics-notes/Statistics_Notes_Day_1.pdf) | PDF |
+| 9 | [Statistics Notes Day 2](../02-mathematics-and-statistics/03-handwritten-statistics-notes/Statistics_Notes_Day_2.pdf) | PDF |
+| 10 | [Statistics Notes Day 3](../02-mathematics-and-statistics/03-handwritten-statistics-notes/Statistics_Notes_Day_3.pdf) | PDF |
+| 11 | [Statistics Notes Day 4](../02-mathematics-and-statistics/03-handwritten-statistics-notes/Statistics_Notes_Day_4.pdf) | PDF |
+| 12 | [Statistics Notes Day 5](../02-mathematics-and-statistics/03-handwritten-statistics-notes/Statistics_Notes_Day_5.pdf) | PDF |
+| 13 | [Statistics Notes Day 6](../02-mathematics-and-statistics/03-handwritten-statistics-notes/Statistics_Notes_Day_6.pdf) | PDF |
+
+## Continue learning
+
+[← 01 — Python and Programming](../01-python-and-programming/README.md)
+
+[03 — SQL and Data Analysis →](../03-sql-and-data-analysis/README.md)

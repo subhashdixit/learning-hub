@@ -1,18 +1,30 @@
-# 09 — MLOps and LLMOps
+# 09 — Git, Docker and Deployment
 
-[All paths](README.md) · [Home](../README.md)
+[All learning paths](../README.md)
 
-Follow this order flexibly. Coverage describes library content; use the checkboxes to track your own study, not content completeness.
+Use Git notes, Docker examples, and cloud deployment documents.
 
-1. [ ] [Testing](../software-engineering/testing/README.md) — **Planned**
-2. [ ] [Docker](../software-engineering/docker/README.md) — **Partial**
-3. [ ] [Cicd](../software-engineering/cicd/README.md) — **Planned**
-4. [ ] [Cloud And Deployment](../software-engineering/cloud-and-deployment/README.md) — **Partial**
-5. [ ] [MLOps](../production-operations/mlops/README.md) — **Planned**
-6. [ ] [LLMOps](../production-operations/llmops/README.md) — **Planned**
+## Read in this order
 
-## Your place in the roadmap
+1. [Docker](../09-git-docker-and-deployment/02-docker/README.md)
+2. [Streamlit](../09-git-docker-and-deployment/03-streamlit/README.md)
+3. [Cloud Deployment](../09-git-docker-and-deployment/04-cloud-deployment/README.md)
 
-[← Stage 08: Data Engineering](data-engineering.md)
+## Open the learning material
 
-[Stage 10: Interview Preparation →](interview-preparation.md)
+All links below open files inside this hub.
+
+| # | Material | Format |
+|---|---|---|
+| 1 | [app](../09-git-docker-and-deployment/02-docker/Hello_World/app.py) | PY |
+| 2 | [test](../09-git-docker-and-deployment/02-docker/Hello_World/test.py) | PY |
+| 3 | [app](../09-git-docker-and-deployment/03-streamlit/app.py) | PY |
+| 4 | [AWS](../09-git-docker-and-deployment/04-cloud-deployment/AWS.docx) | DOCX |
+| 5 | [Azure](../09-git-docker-and-deployment/04-cloud-deployment/Azure.docx) | DOCX |
+| 6 | [Heroku](../09-git-docker-and-deployment/04-cloud-deployment/Heroku.docx) | DOCX |
+
+## Continue learning
+
+[← 08 — Data Engineering](../08-data-engineering/README.md)
+
+[10 — Economics and Finance →](../10-economics-and-finance/README.md)

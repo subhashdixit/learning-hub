@@ -1,0 +1,17 @@
+# Nlp Assignment
+
+[Learning paths](../../../README.md)
+
+## Notes, questions and practicals
+
+Open a file directly. Notebooks include the existing questions, code and recorded answers where present.
+
+| # | Material | Format |
+|---|---|---|
+| 1 | [01.Assignment 01](01.Assignment_01.ipynb) | IPYNB |
+| 2 | [02.Assignment 02](02.Assignment_02.ipynb) | IPYNB |
+| 3 | [03.Assignment 03](03.Assignment_03.ipynb) | IPYNB |
+| 4 | [04.Assignment 04](04.Assignment_04.ipynb) | IPYNB |
+| 5 | [05.Assignment 05](05.Assignment_05.ipynb) | IPYNB |
+| 6 | [06.Assignment 06](06.Assignment_06.ipynb) | IPYNB |
+| 7 | [07.Assignment 07](07.Assignment_07.ipynb) | IPYNB |

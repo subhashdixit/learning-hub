@@ -1,0 +1,300 @@
+# Future topic ideas
+
+This is a maintainer reference, not a lesson list. The earlier full outline follows; its old links describe the prior structure and are not navigation.
+
+```text
+## Complete topic directory
+
+All planned topics are documented below and have an index, even where lesson content has not yet been added.
+
+- [Ai Development Tools](ai-development-tools/README.md) — Partial
+  - [Claude Code](ai-development-tools/claude-code/README.md) — Partial
+    - [Agents And Delegation](ai-development-tools/claude-code/agents-and-delegation/README.md) — Planned
+    - [Hooks](ai-development-tools/claude-code/hooks/README.md) — Planned
+    - [Mcp Integrations](ai-development-tools/claude-code/mcp-integrations/README.md) — Planned
+    - [Prompting And Planning](ai-development-tools/claude-code/prompting-and-planning/README.md) — Planned
+    - [Setup And Project Guidance](ai-development-tools/claude-code/setup-and-project-guidance/README.md) — Planned
+    - [Skills And Commands](ai-development-tools/claude-code/skills-and-commands/README.md) — Planned
+    - [Workflows And Examples](ai-development-tools/claude-code/workflows-and-examples/README.md) — Planned
+  - [GitHub Copilot](ai-development-tools/github-copilot/README.md) — Planned
+    - [Coding And Review](ai-development-tools/github-copilot/coding-and-review/README.md) — Planned
+    - [Setup And Project Context](ai-development-tools/github-copilot/setup-and-project-context/README.md) — Planned
+    - [Workflows And Examples](ai-development-tools/github-copilot/workflows-and-examples/README.md) — Planned
+  - [Other Tools](ai-development-tools/other-tools/README.md) — Planned
+- [AI Engineering](ai-engineering/README.md) — Planned
+  - [Agents](ai-engineering/agents/README.md) — Planned
+    - [Agent Loops](ai-engineering/agents/agent-loops/README.md) — Planned
+    - [Evaluation And Debugging](ai-engineering/agents/evaluation-and-debugging/README.md) — Planned
+    - [Human In The Loop](ai-engineering/agents/human-in-the-loop/README.md) — Planned
+    - [Multi Agent Patterns](ai-engineering/agents/multi-agent-patterns/README.md) — Planned
+    - [Planning And Execution](ai-engineering/agents/planning-and-execution/README.md) — Planned
+    - [Retries And Recovery](ai-engineering/agents/retries-and-recovery/README.md) — Planned
+    - [Routing And Orchestration](ai-engineering/agents/routing-and-orchestration/README.md) — Planned
+    - [State And Memory](ai-engineering/agents/state-and-memory/README.md) — Planned
+    - [Tool Use](ai-engineering/agents/tool-use/README.md) — Planned
+    - [Workflows Versus Agents](ai-engineering/agents/workflows-versus-agents/README.md) — Planned
+  - [Embeddings And Search](ai-engineering/embeddings-and-search/README.md) — Planned
+    - [Embedding Models](ai-engineering/embeddings-and-search/embedding-models/README.md) — Planned
+    - [Keyword And Hybrid Search](ai-engineering/embeddings-and-search/keyword-and-hybrid-search/README.md) — Planned
+    - [Reranking](ai-engineering/embeddings-and-search/reranking/README.md) — Planned
+    - [Semantic Search](ai-engineering/embeddings-and-search/semantic-search/README.md) — Planned
+    - [Similarity And Distance](ai-engineering/embeddings-and-search/similarity-and-distance/README.md) — Planned
+  - [Evaluation](ai-engineering/evaluation/README.md) — Planned
+    - [Evaluation Datasets](ai-engineering/evaluation/evaluation-datasets/README.md) — Planned
+    - [Human Evaluation](ai-engineering/evaluation/human-evaluation/README.md) — Planned
+    - [Model Based Evaluation](ai-engineering/evaluation/model-based-evaluation/README.md) — Planned
+    - [Regression Testing](ai-engineering/evaluation/regression-testing/README.md) — Planned
+    - [Task Metrics](ai-engineering/evaluation/task-metrics/README.md) — Planned
+  - [Llm Fundamentals](ai-engineering/llm-fundamentals/README.md) — Planned
+    - [Inference And Generation](ai-engineering/llm-fundamentals/inference-and-generation/README.md) — Planned
+    - [Model Capabilities And Limitations](ai-engineering/llm-fundamentals/model-capabilities-and-limitations/README.md) — Planned
+    - [Model Selection](ai-engineering/llm-fundamentals/model-selection/README.md) — Planned
+    - [Multimodal Models](ai-engineering/llm-fundamentals/multimodal-models/README.md) — Planned
+    - [Tokens And Context Windows](ai-engineering/llm-fundamentals/tokens-and-context-windows/README.md) — Planned
+  - [Model Adaptation](ai-engineering/model-adaptation/README.md) — Planned
+    - [Dataset Preparation](ai-engineering/model-adaptation/dataset-preparation/README.md) — Planned
+    - [Evaluation](ai-engineering/model-adaptation/evaluation/README.md) — Planned
+    - [Parameter Efficient Fine Tuning](ai-engineering/model-adaptation/parameter-efficient-fine-tuning/README.md) — Planned
+    - [Prompting Versus Fine Tuning](ai-engineering/model-adaptation/prompting-versus-fine-tuning/README.md) — Planned
+    - [Supervised Fine Tuning](ai-engineering/model-adaptation/supervised-fine-tuning/README.md) — Planned
+  - [Prompting And Structured Output](ai-engineering/prompting-and-structured-output/README.md) — Planned
+    - [Examples And Context](ai-engineering/prompting-and-structured-output/examples-and-context/README.md) — Planned
+    - [Instruction Design](ai-engineering/prompting-and-structured-output/instruction-design/README.md) — Planned
+    - [Prompt Templates And Versioning](ai-engineering/prompting-and-structured-output/prompt-templates-and-versioning/README.md) — Planned
+    - [Prompt Testing](ai-engineering/prompting-and-structured-output/prompt-testing/README.md) — Planned
+    - [Structured Output And Validation](ai-engineering/prompting-and-structured-output/structured-output-and-validation/README.md) — Planned
+  - [RAG](ai-engineering/rag/README.md) — Planned
+    - [Architecture And Baselines](ai-engineering/rag/architecture-and-baselines/README.md) — Planned
+    - [Chunking](ai-engineering/rag/chunking/README.md) — Planned
+    - [Citations And Grounding](ai-engineering/rag/citations-and-grounding/README.md) — Planned
+    - [Context Assembly](ai-engineering/rag/context-assembly/README.md) — Planned
+    - [Conversational Rag](ai-engineering/rag/conversational-rag/README.md) — Planned
+    - [Document Loading And Parsing](ai-engineering/rag/document-loading-and-parsing/README.md) — Planned
+    - [Evaluation And Failure Analysis](ai-engineering/rag/evaluation-and-failure-analysis/README.md) — Planned
+    - [Graph Rag](ai-engineering/rag/graph-rag/README.md) — Planned
+    - [Indexing And Refresh](ai-engineering/rag/indexing-and-refresh/README.md) — Planned
+    - [Query Transformation](ai-engineering/rag/query-transformation/README.md) — Planned
+    - [Retrieval Strategies](ai-engineering/rag/retrieval-strategies/README.md) — Planned
+  - [Safety And Guardrails](ai-engineering/safety-and-guardrails/README.md) — Planned
+    - [Adversarial Testing](ai-engineering/safety-and-guardrails/adversarial-testing/README.md) — Planned
+    - [Input And Output Validation](ai-engineering/safety-and-guardrails/input-and-output-validation/README.md) — Planned
+    - [Permissions And Tool Boundaries](ai-engineering/safety-and-guardrails/permissions-and-tool-boundaries/README.md) — Planned
+    - [Privacy And Sensitive Data](ai-engineering/safety-and-guardrails/privacy-and-sensitive-data/README.md) — Planned
+    - [Prompt Injection](ai-engineering/safety-and-guardrails/prompt-injection/README.md) — Planned
+  - [Tools And Mcp](ai-engineering/tools-and-mcp/README.md) — Planned
+    - [Authentication And Permissions](ai-engineering/tools-and-mcp/authentication-and-permissions/README.md) — Planned
+    - [Clients And Servers](ai-engineering/tools-and-mcp/clients-and-servers/README.md) — Planned
+    - [Mcp Fundamentals](ai-engineering/tools-and-mcp/mcp-fundamentals/README.md) — Planned
+    - [Testing And Security](ai-engineering/tools-and-mcp/testing-and-security/README.md) — Planned
+    - [Tool Execution And Errors](ai-engineering/tools-and-mcp/tool-execution-and-errors/README.md) — Planned
+    - [Tool Schemas And Contracts](ai-engineering/tools-and-mcp/tool-schemas-and-contracts/README.md) — Planned
+  - [Vector Databases](ai-engineering/vector-databases/README.md) — Planned
+    - [Chroma](ai-engineering/vector-databases/chroma/README.md) — Planned
+    - [Concepts And Indexing](ai-engineering/vector-databases/concepts-and-indexing/README.md) — Planned
+    - [Faiss](ai-engineering/vector-databases/faiss/README.md) — Planned
+    - [Metadata And Filtering](ai-engineering/vector-databases/metadata-and-filtering/README.md) — Planned
+    - [Pgvector](ai-engineering/vector-databases/pgvector/README.md) — Planned
+    - [Pinecone](ai-engineering/vector-databases/pinecone/README.md) — Planned
+    - [Qdrant](ai-engineering/vector-databases/qdrant/README.md) — Planned
+    - [Selection And Benchmarks](ai-engineering/vector-databases/selection-and-benchmarks/README.md) — Planned
+    - [Weaviate](ai-engineering/vector-databases/weaviate/README.md) — Planned
+- [Collections](collections/README.md) — Partial
+  - [Data Science Cheat Sheets](collections/data-science-cheat-sheets/README.md) — Partial
+  - [Handwritten Notes](collections/handwritten-notes/README.md) — Partial
+- [Coursework](coursework/README.md) — Partial
+  - [Claude Architect Exam Preparation](coursework/claude-architect-exam-preparation/README.md) — Partial
+  - [Ineuron](coursework/ineuron/README.md) — Partial
+    - [Challenges](coursework/ineuron/challenges/README.md) — Partial
+    - [Class Tasks](coursework/ineuron/class-tasks/README.md) — Partial
+    - [Full Stack Data Science](coursework/ineuron/full-stack-data-science/README.md) — Partial
+    - [Git Practice](coursework/ineuron/git-practice/README.md) — Partial
+    - [Placement Preparation](coursework/ineuron/placement-preparation/README.md) — Partial
+    - [Python Basic Assignments](coursework/ineuron/python-basic-assignments/README.md) — Partial
+    - [Python Programming Assignments](coursework/ineuron/python-programming-assignments/README.md) — Partial
+  - [Other Courses](coursework/other-courses/README.md) — Planned
+- [Data Engineering](data-engineering/README.md) — Partial
+  - [Data Modeling](data-engineering/data-modeling/README.md) — Planned
+  - [Data Quality](data-engineering/data-quality/README.md) — Planned
+  - [Datasets](data-engineering/datasets/README.md) — Partial
+    - [Pandas Practice](data-engineering/datasets/pandas-practice/README.md) — Partial
+  - [Ingestion And Pipelines](data-engineering/ingestion-and-pipelines/README.md) — Partial
+    - [Web Scraping](data-engineering/ingestion-and-pipelines/web-scraping/README.md) — Partial
+  - [Orchestration](data-engineering/orchestration/README.md) — Planned
+  - [PySpark](data-engineering/pyspark/README.md) — Partial
+  - [Relational And Nosql Databases](data-engineering/relational-and-nosql-databases/README.md) — Planned
+  - [Storage And File Formats](data-engineering/storage-and-file-formats/README.md) — Planned
+- [Data Science](data-science/README.md) — Partial
+  - [Data Analysis](data-science/data-analysis/README.md) — Partial
+    - [Communicating Insights](data-science/data-analysis/communicating-insights/README.md) — Planned
+    - [Data Cleaning](data-science/data-analysis/data-cleaning/README.md) — Planned
+    - [Exploratory Analysis](data-science/data-analysis/exploratory-analysis/README.md) — Partial
+    - [Numpy](data-science/data-analysis/numpy/README.md) — Planned
+    - [Pandas](data-science/data-analysis/pandas/README.md) — Planned
+    - [Visualization](data-science/data-analysis/visualization/README.md) — Partial
+  - [Deep Learning](data-science/deep-learning/README.md) — Partial
+    - [Activations Losses And Optimizers](data-science/deep-learning/activations-losses-and-optimizers/README.md) — Planned
+    - [Attention And Transformers](data-science/deep-learning/attention-and-transformers/README.md) — Planned
+    - [Convolutional Networks](data-science/deep-learning/convolutional-networks/README.md) — Planned
+    - [Neural Network Fundamentals](data-science/deep-learning/neural-network-fundamentals/README.md) — Planned
+    - [Pytorch](data-science/deep-learning/pytorch/README.md) — Planned
+    - [Recurrent Networks](data-science/deep-learning/recurrent-networks/README.md) — Planned
+    - [Tensorflow And Keras](data-science/deep-learning/tensorflow-and-keras/README.md) — Planned
+    - [Training And Regularization](data-science/deep-learning/training-and-regularization/README.md) — Planned
+    - [Transfer Learning](data-science/deep-learning/transfer-learning/README.md) — Planned
+  - [Experimentation And Causal Inference](data-science/experimentation-and-causal-inference/README.md) — Planned
+    - [Ab Testing](data-science/experimentation-and-causal-inference/ab-testing/README.md) — Planned
+    - [Experiment Analysis](data-science/experimentation-and-causal-inference/experiment-analysis/README.md) — Planned
+    - [Observational Causal Methods](data-science/experimentation-and-causal-inference/observational-causal-methods/README.md) — Planned
+    - [Power And Sample Size](data-science/experimentation-and-causal-inference/power-and-sample-size/README.md) — Planned
+  - [Feature Engineering](data-science/feature-engineering/README.md) — Planned
+    - [Encoding](data-science/feature-engineering/encoding/README.md) — Partial
+    - [Feature Selection](data-science/feature-engineering/feature-selection/README.md) — Planned
+    - [Imbalanced Data](data-science/feature-engineering/imbalanced-data/README.md) — Partial
+    - [Leakage And Validation](data-science/feature-engineering/leakage-and-validation/README.md) — Planned
+    - [Missing Values](data-science/feature-engineering/missing-values/README.md) — Planned
+    - [Outliers](data-science/feature-engineering/outliers/README.md) — Planned
+    - [Scaling And Transformations](data-science/feature-engineering/scaling-and-transformations/README.md) — Planned
+  - [Machine Learning](data-science/machine-learning/README.md) — Partial
+    - [Anomaly Detection](data-science/machine-learning/anomaly-detection/README.md) — Planned
+    - [Bagging And Random Forests](data-science/machine-learning/bagging-and-random-forests/README.md) — Partial
+    - [Baselines And Data Splits](data-science/machine-learning/baselines-and-data-splits/README.md) — Planned
+    - [Boosting](data-science/machine-learning/boosting/README.md) — Partial
+    - [Clustering](data-science/machine-learning/clustering/README.md) — Partial
+    - [Decision Trees](data-science/machine-learning/decision-trees/README.md) — Partial
+    - [Dimensionality Reduction](data-science/machine-learning/dimensionality-reduction/README.md) — Planned
+    - [Evaluation And Calibration](data-science/machine-learning/evaluation-and-calibration/README.md) — Planned
+    - [Explainability](data-science/machine-learning/explainability/README.md) — Planned
+    - [Fundamentals](data-science/machine-learning/fundamentals/README.md) — Partial
+    - [Hyperparameter Tuning](data-science/machine-learning/hyperparameter-tuning/README.md) — Planned
+    - [Linear Regression](data-science/machine-learning/linear-regression/README.md) — Partial
+    - [Logistic Regression](data-science/machine-learning/logistic-regression/README.md) — Partial
+    - [Naive Bayes](data-science/machine-learning/naive-bayes/README.md) — Planned
+    - [Nearest Neighbors](data-science/machine-learning/nearest-neighbors/README.md) — Planned
+    - [Problem Framing](data-science/machine-learning/problem-framing/README.md) — Planned
+    - [Regression Practice](data-science/machine-learning/regression-practice/README.md) — Partial
+    - [Regularization](data-science/machine-learning/regularization/README.md) — Planned
+    - [Support Vector Machines](data-science/machine-learning/support-vector-machines/README.md) — Partial
+  - [NLP](data-science/nlp/README.md) — Partial
+    - [Bag Of Words And Tfidf](data-science/nlp/bag-of-words-and-tfidf/README.md) — Planned
+    - [Bootcamp](data-science/nlp/bootcamp/README.md) — Partial
+    - [Named Entity Recognition](data-science/nlp/named-entity-recognition/README.md) — Planned
+    - [Sentiment Analysis](data-science/nlp/sentiment-analysis/README.md) — Planned
+    - [Summarization](data-science/nlp/summarization/README.md) — Planned
+    - [Text Classification](data-science/nlp/text-classification/README.md) — Planned
+    - [Text Preprocessing](data-science/nlp/text-preprocessing/README.md) — Partial
+    - [Tokenization](data-science/nlp/tokenization/README.md) — Planned
+    - [Topic Modeling](data-science/nlp/topic-modeling/README.md) — Planned
+    - [Word Embeddings](data-science/nlp/word-embeddings/README.md) — Planned
+  - [Time Series](data-science/time-series/README.md) — Partial
+    - [Arima And Sarima](data-science/time-series/arima-and-sarima/README.md) — Planned
+    - [Autocorrelation](data-science/time-series/autocorrelation/README.md) — Planned
+    - [Backtesting And Evaluation](data-science/time-series/backtesting-and-evaluation/README.md) — Planned
+    - [Baseline Forecasts](data-science/time-series/baseline-forecasts/README.md) — Planned
+    - [Case Studies](data-science/time-series/case-studies/README.md) — Partial
+    - [Components And Decomposition](data-science/time-series/components-and-decomposition/README.md) — Planned
+    - [Exponential Smoothing](data-science/time-series/exponential-smoothing/README.md) — Planned
+    - [Hierarchical Forecasting](data-science/time-series/hierarchical-forecasting/README.md) — Planned
+    - [Ml Based Forecasting](data-science/time-series/ml-based-forecasting/README.md) — Planned
+    - [Prophet](data-science/time-series/prophet/README.md) — Planned
+    - [Stationarity](data-science/time-series/stationarity/README.md) — Planned
+- [Domain Knowledge](domain-knowledge/README.md) — Partial
+  - [Customer Analytics](domain-knowledge/customer-analytics/README.md) — Planned
+  - [Demand Planning](domain-knowledge/demand-planning/README.md) — Planned
+  - [Economics](domain-knowledge/economics/README.md) — Partial
+  - [Finance And Credit Risk](domain-knowledge/finance-and-credit-risk/README.md) — Partial
+  - [Pricing And Elasticity](domain-knowledge/pricing-and-elasticity/README.md) — Planned
+- [Foundations](foundations/README.md) — Partial
+  - [Mathematics](foundations/mathematics/README.md) — Planned
+    - [Calculus](foundations/mathematics/calculus/README.md) — Planned
+    - [Information Theory](foundations/mathematics/information-theory/README.md) — Planned
+    - [Linear Algebra](foundations/mathematics/linear-algebra/README.md) — Partial
+    - [Optimization](foundations/mathematics/optimization/README.md) — Planned
+  - [Python](foundations/python/README.md) — Partial
+    - [Async And Concurrency](foundations/python/async-and-concurrency/README.md) — Planned
+    - [Collections](foundations/python/collections/README.md) — Planned
+    - [Comprehensions And Iterators](foundations/python/comprehensions-and-iterators/README.md) — Planned
+    - [Control Flow](foundations/python/control-flow/README.md) — Planned
+    - [Exceptions And Logging](foundations/python/exceptions-and-logging/README.md) — Planned
+    - [Files And Serialization](foundations/python/files-and-serialization/README.md) — Planned
+    - [Functions](foundations/python/functions/README.md) — Planned
+    - [Modules And Environments](foundations/python/modules-and-environments/README.md) — Planned
+    - [Object Oriented Programming](foundations/python/object-oriented-programming/README.md) — Planned
+    - [Syntax And Data Types](foundations/python/syntax-and-data-types/README.md) — Planned
+    - [Testing And Debugging](foundations/python/testing-and-debugging/README.md) — Planned
+    - [Typing And Data Validation](foundations/python/typing-and-data-validation/README.md) — Planned
+  - [SQL](foundations/sql/README.md) — Partial
+    - [Aggregation](foundations/sql/aggregation/README.md) — Planned
+    - [Data Modeling](foundations/sql/data-modeling/README.md) — Planned
+    - [Dates And Strings](foundations/sql/dates-and-strings/README.md) — Planned
+    - [Joins](foundations/sql/joins/README.md) — Planned
+    - [Practice Problems](foundations/sql/practice-problems/README.md) — Planned
+    - [Queries And Filtering](foundations/sql/queries-and-filtering/README.md) — Planned
+    - [Query Performance](foundations/sql/query-performance/README.md) — Planned
+    - [Subqueries And Ctes](foundations/sql/subqueries-and-ctes/README.md) — Planned
+    - [Window Functions](foundations/sql/window-functions/README.md) — Planned
+  - [Statistics And Probability](foundations/statistics-and-probability/README.md) — Partial
+    - [Bayesian Statistics](foundations/statistics-and-probability/bayesian-statistics/README.md) — Planned
+    - [Correlation And Association](foundations/statistics-and-probability/correlation-and-association/README.md) — Partial
+    - [Descriptive Statistics](foundations/statistics-and-probability/descriptive-statistics/README.md) — Planned
+    - [Distributions](foundations/statistics-and-probability/distributions/README.md) — Planned
+    - [Estimation And Confidence Intervals](foundations/statistics-and-probability/estimation-and-confidence-intervals/README.md) — Planned
+    - [Experimental Design](foundations/statistics-and-probability/experimental-design/README.md) — Planned
+    - [Hypothesis Testing](foundations/statistics-and-probability/hypothesis-testing/README.md) — Partial
+    - [Probability](foundations/statistics-and-probability/probability/README.md) — Planned
+    - [Regression Inference](foundations/statistics-and-probability/regression-inference/README.md) — Planned
+    - [Sampling And Central Limit Theorem](foundations/statistics-and-probability/sampling-and-central-limit-theorem/README.md) — Partial
+- [Frameworks And Platforms](frameworks-and-platforms/README.md) — Planned
+  - [LangChain](frameworks-and-platforms/langchain/README.md) — Planned
+    - [Examples](frameworks-and-platforms/langchain/examples/README.md) — Planned
+    - [Getting Started](frameworks-and-platforms/langchain/getting-started/README.md) — Planned
+    - [Models And Prompts](frameworks-and-platforms/langchain/models-and-prompts/README.md) — Planned
+    - [Retrieval](frameworks-and-platforms/langchain/retrieval/README.md) — Planned
+    - [Tools And Agents](frameworks-and-platforms/langchain/tools-and-agents/README.md) — Planned
+  - [LangGraph](frameworks-and-platforms/langgraph/README.md) — Planned
+    - [Conditional Routing](frameworks-and-platforms/langgraph/conditional-routing/README.md) — Planned
+    - [Examples](frameworks-and-platforms/langgraph/examples/README.md) — Planned
+    - [Interrupts And Human Review](frameworks-and-platforms/langgraph/interrupts-and-human-review/README.md) — Planned
+    - [Persistence And Checkpoints](frameworks-and-platforms/langgraph/persistence-and-checkpoints/README.md) — Planned
+    - [State Nodes And Edges](frameworks-and-platforms/langgraph/state-nodes-and-edges/README.md) — Planned
+    - [Subgraphs](frameworks-and-platforms/langgraph/subgraphs/README.md) — Planned
+  - [Other Frameworks](frameworks-and-platforms/other-frameworks/README.md) — Planned
+- [Interview Preparation](interview-preparation/README.md) — Partial
+  - [AI Engineering](interview-preparation/ai-engineering/README.md) — Planned
+  - [Business Case Studies](interview-preparation/business-case-studies/README.md) — Planned
+  - [Machine Learning](interview-preparation/machine-learning/README.md) — Planned
+  - [Mock Interviews](interview-preparation/mock-interviews/README.md) — Planned
+  - [Python](interview-preparation/python/README.md) — Planned
+  - [SQL](interview-preparation/sql/README.md) — Planned
+  - [Statistics](interview-preparation/statistics/README.md) — Planned
+  - [System Design](interview-preparation/system-design/README.md) — Planned
+- [Production Operations](production-operations/README.md) — Planned
+  - [LLMOps](production-operations/llmops/README.md) — Planned
+    - [Deployment And Release](production-operations/llmops/deployment-and-release/README.md) — Planned
+    - [Latency Cost And Caching](production-operations/llmops/latency-cost-and-caching/README.md) — Planned
+    - [Production Evaluation](production-operations/llmops/production-evaluation/README.md) — Planned
+    - [Prompt And Model Versioning](production-operations/llmops/prompt-and-model-versioning/README.md) — Planned
+    - [Tracing And Observability](production-operations/llmops/tracing-and-observability/README.md) — Planned
+  - [MLOps](production-operations/mlops/README.md) — Planned
+    - [Experiment Tracking](production-operations/mlops/experiment-tracking/README.md) — Planned
+    - [Model And Data Versioning](production-operations/mlops/model-and-data-versioning/README.md) — Planned
+    - [Monitoring And Drift](production-operations/mlops/monitoring-and-drift/README.md) — Planned
+    - [Serving](production-operations/mlops/serving/README.md) — Planned
+- [Software Engineering](software-engineering/README.md) — Partial
+  - [Apis And Web Apps](software-engineering/apis-and-web-apps/README.md) — Partial
+    - [Streamlit](software-engineering/apis-and-web-apps/streamlit/README.md) — Partial
+  - [Architecture And Design](software-engineering/architecture-and-design/README.md) — Planned
+  - [Cicd](software-engineering/cicd/README.md) — Planned
+  - [Cloud And Deployment](software-engineering/cloud-and-deployment/README.md) — Partial
+    - [Aws](software-engineering/cloud-and-deployment/aws/README.md) — Partial
+    - [Azure](software-engineering/cloud-and-deployment/azure/README.md) — Partial
+    - [Gcp](software-engineering/cloud-and-deployment/gcp/README.md) — Planned
+    - [Heroku](software-engineering/cloud-and-deployment/heroku/README.md) — Partial
+    - [Other Platforms](software-engineering/cloud-and-deployment/other-platforms/README.md) — Planned
+  - [Docker](software-engineering/docker/README.md) — Partial
+  - [Environments And Dependencies](software-engineering/environments-and-dependencies/README.md) — Planned
+  - [Git And Github](software-engineering/git-and-github/README.md) — Partial
+  - [Spec Driven Development](software-engineering/spec-driven-development/README.md) — Planned
+  - [Testing](software-engineering/testing/README.md) — Planned
+
+
+```
