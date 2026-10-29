@@ -1,4 +1,4 @@
-# Agent Development learning path
+# 07 — Agents, Tools and LangGraph
 
 [All paths](README.md) · [Home](../README.md)
 
@@ -10,3 +10,9 @@ Follow this order flexibly. Coverage describes library content; use the checkbox
 4. [ ] [LangGraph](../frameworks-and-platforms/langgraph/README.md) — **Planned**
 5. [ ] [Evaluation](../ai-engineering/evaluation/README.md) — **Planned**
 6. [ ] [Safety And Guardrails](../ai-engineering/safety-and-guardrails/README.md) — **Planned**
+
+## Your place in the roadmap
+
+[← Stage 06: RAG Development](rag-development.md)
+
+[Stage 08: Data Engineering →](data-engineering.md)

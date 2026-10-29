@@ -1,4 +1,4 @@
-# Rag Development learning path
+# 06 — RAG Development
 
 [All paths](README.md) · [Home](../README.md)
 
@@ -11,3 +11,9 @@ Follow this order flexibly. Coverage describes library content; use the checkbox
 5. [ ] [LangChain](../frameworks-and-platforms/langchain/README.md) — **Planned**
 6. [ ] [Evaluation](../ai-engineering/evaluation/README.md) — **Planned**
 7. [ ] [LLMOps](../production-operations/llmops/README.md) — **Planned**
+
+## Your place in the roadmap
+
+[← Stage 05: AI Engineering Foundations](ai-engineering.md)
+
+[Stage 07: Agents, Tools and LangGraph →](agent-development.md)

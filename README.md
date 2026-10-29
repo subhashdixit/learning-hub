@@ -21,17 +21,22 @@ Initial import: **39 source repositories, 1,037 files**, pinned to source commit
 
 Imported snapshots may include outdated READMEs, generated artifacts, repeated material, and incomplete exercises. They are retained for review and traceability. Small new learning examples should use clean topic folders; substantial applications remain separate.
 
-## Learning paths
+## Learning paths — recommended order
 
-- [Python And Programming](learning-paths/python-and-programming.md)
-- [Data Analysis](learning-paths/data-analysis.md)
-- [Data Science](learning-paths/data-science.md)
-- [AI Engineering](learning-paths/ai-engineering.md)
-- [Rag Development](learning-paths/rag-development.md)
-- [Agent Development](learning-paths/agent-development.md)
-- [Data Engineering](learning-paths/data-engineering.md)
-- [Mlops And Llmops](learning-paths/mlops-and-llmops.md)
-- [Interview Preparation](learning-paths/interview-preparation.md)
+**Start with [01 — Python and Programming](learning-paths/python-and-programming.md).**
+
+1. [Python and Programming](learning-paths/python-and-programming.md)
+2. [Mathematics, Statistics and Probability](learning-paths/mathematics-and-statistics.md)
+3. [SQL and Data Analysis](learning-paths/data-analysis.md)
+4. [Data Science and Machine Learning](learning-paths/data-science.md)
+5. [AI Engineering Foundations](learning-paths/ai-engineering.md)
+6. [RAG Development](learning-paths/rag-development.md)
+7. [Agents, Tools and LangGraph](learning-paths/agent-development.md)
+8. [Data Engineering](learning-paths/data-engineering.md)
+9. [MLOps and LLMOps](learning-paths/mlops-and-llmops.md)
+10. [Interview Preparation](learning-paths/interview-preparation.md)
+
+[Open the complete numbered roadmap](learning-paths/README.md). Data engineering can branch after SQL and data analysis; interview revision can run throughout.
 
 ## Complete topic directory
 

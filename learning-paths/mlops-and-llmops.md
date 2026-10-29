@@ -1,4 +1,4 @@
-# Mlops And Llmops learning path
+# 09 — MLOps and LLMOps
 
 [All paths](README.md) · [Home](../README.md)
 
@@ -10,3 +10,9 @@ Follow this order flexibly. Coverage describes library content; use the checkbox
 4. [ ] [Cloud And Deployment](../software-engineering/cloud-and-deployment/README.md) — **Partial**
 5. [ ] [MLOps](../production-operations/mlops/README.md) — **Planned**
 6. [ ] [LLMOps](../production-operations/llmops/README.md) — **Planned**
+
+## Your place in the roadmap
+
+[← Stage 08: Data Engineering](data-engineering.md)
+
+[Stage 10: Interview Preparation →](interview-preparation.md)

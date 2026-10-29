@@ -1,4 +1,4 @@
-# AI Engineering learning path
+# 05 — AI Engineering Foundations
 
 [All paths](README.md) · [Home](../README.md)
 
@@ -18,3 +18,11 @@ Follow this order flexibly. Coverage describes library content; use the checkbox
 12. [ ] [Evaluation](../ai-engineering/evaluation/README.md) — **Planned**
 13. [ ] [Safety And Guardrails](../ai-engineering/safety-and-guardrails/README.md) — **Planned**
 14. [ ] [LLMOps](../production-operations/llmops/README.md) — **Planned**
+
+## Your place in the roadmap
+
+[← Stage 04: Data Science and Machine Learning](data-science.md)
+
+[Stage 06: RAG Development →](rag-development.md)
+
+If you completed the earlier stages, use repeated foundation topics as revision rather than restarting them.

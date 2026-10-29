@@ -1,4 +1,4 @@
-# Data Science learning path
+# 04 — Data Science and Machine Learning
 
 [All paths](README.md) · [Home](../README.md)
 
@@ -15,3 +15,11 @@ Follow this order flexibly. Coverage describes library content; use the checkbox
 9. [ ] [NLP](../data-science/nlp/README.md) — **Partial**
 10. [ ] [Time Series](../data-science/time-series/README.md) — **Partial**
 11. [ ] [Experimentation And Causal Inference](../data-science/experimentation-and-causal-inference/README.md) — **Planned**
+
+## Your place in the roadmap
+
+[← Stage 03: SQL and Data Analysis](data-analysis.md)
+
+[Stage 05: AI Engineering Foundations →](ai-engineering.md)
+
+If you completed the earlier stages, use repeated foundation topics as revision rather than restarting them.

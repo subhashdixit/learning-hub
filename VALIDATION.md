@@ -5,7 +5,7 @@
 Verified on 2026-10-30:
 
 - 1037 imported files match both the original checkout and the migration manifest by SHA-256 and byte count.
-- 3836 local links in 351 generated Markdown files resolve.
+- 3873 local links in 352 generated Markdown files resolve.
 - All tracked files from the 39 selected source commits are represented in the manifest.
 - No source repositories were modified, archived, or deleted.
 - A credential-pattern scan found matches only inside embedded notebook image data, not executable source; this is a limited scan, not a comprehensive security audit.

@@ -1,4 +1,4 @@
-# Data Engineering learning path
+# 08 — Data Engineering
 
 [All paths](README.md) · [Home](../README.md)
 
@@ -12,3 +12,9 @@ Follow this order flexibly. Coverage describes library content; use the checkbox
 6. [ ] [Ingestion And Pipelines](../data-engineering/ingestion-and-pipelines/README.md) — **Partial**
 7. [ ] [Orchestration](../data-engineering/orchestration/README.md) — **Planned**
 8. [ ] [Data Quality](../data-engineering/data-quality/README.md) — **Planned**
+
+## Your place in the roadmap
+
+[← Stage 07: Agents, Tools and LangGraph](agent-development.md)
+
+[Stage 09: MLOps and LLMOps →](mlops-and-llmops.md)
