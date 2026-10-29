@@ -10,6 +10,10 @@ Read linear algebra and statistics notes, then explore practical notebooks.
 2. [Statistics Practicals](../02-mathematics-and-statistics/02-statistics-practicals/README.md)
 3. [Handwritten Statistics Notes](../02-mathematics-and-statistics/03-handwritten-statistics-notes/README.md)
 
+## Readable linear algebra notes
+
+[Read the typed notes with worked examples and diagrams](../02-mathematics-and-statistics/01-linear-algebra/linear-algebra-notes.md). The original handwritten PDF is also available below.
+
 ## Open the learning material
 
 All links below open files inside this hub.
