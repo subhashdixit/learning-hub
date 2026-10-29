@@ -1,0 +1,46 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash(git commit *)",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '🔍 PRE-HOOK: About to commit! Checking files...'"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Edit(*.py)",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '✅ POST-HOOK: Python file edited - ${filePath}'"
+          }
+        ]
+      },
+      {
+        "matcher": "Write(*.py)",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '✨ POST-HOOK: New Python file created - ${filePath}'"
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '💬 USER-HOOK: You sent a message!'"
+          }
+        ]
+      }
+    ]
+  }
+}
+

@@ -1,0 +1,1774 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CCA Practice Exam - Official Style (80 Questions)</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 4px solid #667eea;
+        }
+
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 32px;
+        }
+
+        .subtitle {
+            color: #7f8c8d;
+            font-size: 16px;
+        }
+
+        .exam-info {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+        }
+
+        .exam-info p {
+            margin: 8px 0;
+        }
+
+        .exam-info strong {
+            color: #fff;
+        }
+
+        .timer {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #ff9800;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 10px;
+            font-size: 20px;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            z-index: 1000;
+        }
+
+        .scenario-section {
+            background: #f0f4ff;
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 10px;
+            border-left: 5px solid #667eea;
+        }
+
+        .scenario-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .scenario-desc {
+            color: #555;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+
+        .question {
+            background: #fafafa;
+            padding: 25px;
+            margin-bottom: 25px;
+            border-radius: 10px;
+            border-left: 5px solid #2196F3;
+            transition: all 0.3s;
+        }
+
+        .question:hover {
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transform: translateY(-2px);
+        }
+
+        .question-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .question-number {
+            font-weight: bold;
+            color: #2196F3;
+            font-size: 15px;
+        }
+
+        .domain-tag {
+            background: #e3f2fd;
+            color: #1976D2;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .question-text {
+            font-size: 16px;
+            font-weight: 500;
+            margin-bottom: 18px;
+            color: #2c3e50;
+            line-height: 1.7;
+        }
+
+        .options {
+            margin-left: 10px;
+        }
+
+        .option {
+            margin: 12px 0;
+            display: flex;
+            align-items: flex-start;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background 0.2s;
+        }
+
+        .option:hover {
+            background: #f0f0f0;
+        }
+
+        .option input[type="radio"] {
+            margin-right: 12px;
+            margin-top: 4px;
+            cursor: pointer;
+            transform: scale(1.3);
+        }
+
+        .option label {
+            cursor: pointer;
+            user-select: none;
+            flex: 1;
+            line-height: 1.6;
+        }
+
+        .explanation {
+            display: none;
+            padding: 18px;
+            margin-top: 15px;
+            border-radius: 8px;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .explanation.show {
+            display: block;
+        }
+
+        .explanation.correct {
+            background: #d4edda;
+            border-left: 5px solid #28a745;
+        }
+
+        .explanation.incorrect {
+            background: #f8d7da;
+            border-left: 5px solid #dc3545;
+        }
+
+        .explanation.neutral {
+            background: #fff3cd;
+            border-left: 5px solid #ffc107;
+        }
+
+        .explanation-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .correct-answer {
+            color: #28a745;
+        }
+
+        .incorrect-answer {
+            color: #dc3545;
+        }
+
+        .buttons {
+            position: sticky;
+            bottom: 0;
+            background: white;
+            padding: 25px 0;
+            margin-top: 40px;
+            border-top: 3px solid #e0e0e0;
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        button {
+            padding: 15px 35px;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            color: white;
+        }
+
+        .reset-btn {
+            background: linear-gradient(135deg, #eb3349 0%, #f45c43 100%);
+            color: white;
+        }
+
+        .show-answers-btn {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+        }
+
+        .results {
+            display: none;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 35px;
+            border-radius: 15px;
+            margin: 30px 0;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .results.show {
+            display: block;
+            animation: slideIn 0.5s ease;
+        }
+
+        .results h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .score {
+            font-size: 56px;
+            font-weight: bold;
+            margin: 25px 0;
+        }
+
+        .percentage {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .pass {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+        }
+
+        .fail {
+            background: linear-gradient(135deg, #eb3349 0%, #f45c43 100%);
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 40px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 20px;
+            overflow: hidden;
+            margin: 25px 0;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #fff, #e0e0e0);
+            transition: width 1.5s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #333;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .domain-breakdown {
+            background: rgba(255,255,255,0.15);
+            padding: 25px;
+            border-radius: 12px;
+            margin-top: 25px;
+            text-align: left;
+        }
+
+        .domain-breakdown h3 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 22px;
+        }
+
+        .domain-score {
+            display: flex;
+            justify-content: space-between;
+            margin: 12px 0;
+            padding: 12px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        @media print {
+            .timer, .buttons { display: none; }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 24px;
+            }
+            .timer {
+                top: 10px;
+                right: 10px;
+                padding: 10px 15px;
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="timer" id="timer">⏱️ 00:00</div>
+
+    <div class="container">
+        <div class="header">
+            <h1>🎓 Claude Certified Architect - Foundations</h1>
+            <p class="subtitle">Official-Style Practice Exam</p>
+        </div>
+
+        <div class="exam-info">
+            <p><strong>📝 Total Questions:</strong> 80 (Based on Official Exam Guide)</p>
+            <p><strong>⏱️ Recommended Time:</strong> 160 minutes (2 min/question)</p>
+            <p><strong>✅ Passing Score:</strong> 720/1000 (≈58/80 questions)</p>
+            <p><strong>📊 Domain Breakdown:</strong></p>
+            <p style="margin-left: 20px;">
+                • Domain 1 (Agentic Architecture): 22 questions (27%)<br>
+                • Domain 2 (Tool Design & MCP): 14 questions (18%)<br>
+                • Domain 3 (Claude Code Config): 16 questions (20%)<br>
+                • Domain 4 (Prompt Engineering): 16 questions (20%)<br>
+                • Domain 5 (Context & Reliability): 12 questions (15%)
+            </p>
+        </div>
+
+        <div class="results" id="results"></div>
+
+        <form id="examForm">
+            <!-- Questions will be inserted here by JavaScript -->
+        </form>
+
+        <div class="buttons">
+            <button type="button" class="submit-btn" onclick="submitExam()">📊 Submit & Grade Exam</button>
+            <button type="button" class="show-answers-btn" onclick="toggleAnswers()">👁️ Show All Answers</button>
+            <button type="button" class="reset-btn" onclick="resetExam()">🔄 Reset Exam</button>
+        </div>
+    </div>
+
+    <script>
+        // Comprehensive exam questions based on official guide
+        const questions = [
+            // SCENARIO 1: Customer Support Resolution Agent (Questions 1-15)
+            {
+                id: 1,
+                scenario: "Customer Support Resolution Agent",
+                scenarioDesc: "Building a customer support agent with tools: get_customer, lookup_order, process_refund, escalate_to_human. Target: 80%+ first-contact resolution.",
+                domain: "Agentic Architecture",
+                question: "Production data shows that in 12% of cases, your agent skips get_customer entirely and calls lookup_order using only the customer's stated name, occasionally leading to misidentified accounts and incorrect refunds. What change would most effectively address this reliability issue?",
+                options: [
+                    "Add a programmatic prerequisite that blocks lookup_order and process_refund calls until get_customer has returned a verified customer ID",
+                    "Enhance the system prompt to state that customer verification via get_customer is mandatory before any order operations",
+                    "Add few-shot examples showing the agent always calling get_customer first, even when customers volunteer order details",
+                    "Implement a routing classifier that analyzes each request and enables only the subset of tools appropriate for that request type"
+                ],
+                correct: 0,
+                explanation: "When a specific tool sequence is required for critical business logic (like verifying customer identity before processing refunds), programmatic enforcement provides deterministic guarantees that prompt-based approaches cannot. Options B and C rely on probabilistic LLM compliance, which is insufficient when errors have financial consequences. Option D addresses tool availability rather than tool ordering."
+            },
+            {
+                id: 2,
+                scenario: "Customer Support Resolution Agent",
+                domain: "Tool Design & MCP",
+                question: "Production logs show the agent frequently calls get_customer when users ask about orders (e.g., 'check my order #12345'), instead of calling lookup_order. Both tools have minimal descriptions ('Retrieves customer information' / 'Retrieves order details') and accept similar identifier formats. What's the most effective first step to improve tool selection reliability?",
+                options: [
+                    "Add few-shot examples to the system prompt demonstrating correct tool selection patterns, with 5-8 examples showing order-related queries routing to lookup_order",
+                    "Expand each tool's description to include input formats it handles, example queries, edge cases, and boundaries explaining when to use it versus similar tools",
+                    "Implement a routing layer that parses user input before each turn and pre-selects the appropriate tool based on detected keywords and identifier patterns",
+                    "Consolidate both tools into a single lookup_entity tool that accepts any identifier and internally determines which backend to query"
+                ],
+                correct: 1,
+                explanation: "Tool descriptions are the primary mechanism LLMs use for tool selection. When descriptions are minimal, models lack the context to differentiate between similar tools. Option B directly addresses this root cause with a low-effort, high-leverage fix. Few-shot examples (A) add token overhead without fixing the underlying issue. A routing layer (C) is over-engineered. Consolidating tools (D) requires more effort than a 'first step' warrants."
+            },
+            {
+                id: 3,
+                scenario: "Customer Support Resolution Agent",
+                domain: "Context & Reliability",
+                question: "Your agent achieves 55% first-contact resolution, well below the 80% target. Logs show it escalates straightforward cases (standard damage replacements with photo evidence) while attempting to autonomously handle complex situations requiring policy exceptions. What's the most effective way to improve escalation calibration?",
+                options: [
+                    "Add explicit escalation criteria to your system prompt with few-shot examples demonstrating when to escalate versus resolve autonomously",
+                    "Have the agent self-report a confidence score (1-10) before each response and automatically route requests to humans when confidence falls below a threshold",
+                    "Deploy a separate classifier model trained on historical tickets to predict which requests need escalation before the main agent begins processing",
+                    "Implement sentiment analysis to detect customer frustration levels and automatically escalate when negative sentiment exceeds a threshold"
+                ],
+                correct: 0,
+                explanation: "Adding explicit escalation criteria with few-shot examples directly addresses the root cause: unclear decision boundaries. This is the proportionate first response. Option B fails because LLM self-reported confidence is poorly calibrated. Option C is over-engineered. Option D solves a different problem—sentiment doesn't correlate with case complexity."
+            },
+            {
+                id: 4,
+                scenario: "Customer Support Resolution Agent",
+                domain: "Agentic Architecture",
+                question: "In your agentic loop implementation, which stop_reason value indicates that the agent wants to call a tool and the loop should continue?",
+                options: [
+                    "end_turn",
+                    "tool_use",
+                    "max_tokens",
+                    "complete"
+                ],
+                correct: 1,
+                explanation: "stop_reason='tool_use' indicates the model wants to call a tool and the loop should continue. stop_reason='end_turn' means the model is done and returning final text. This is fundamental to agentic loop control flow."
+            },
+            {
+                id: 5,
+                scenario: "Customer Support Resolution Agent",
+                domain: "Tool Design & MCP",
+                question: "Your process_refund tool sometimes returns errors like 'Database timeout' (transient), 'Refund amount exceeds order total' (validation), 'Refunds over $500 require manager approval' (business rule). How should these errors be structured for optimal agent handling?",
+                options: [
+                    "Return generic 'Operation failed' for all errors to keep responses simple",
+                    "Return structured metadata including errorCategory (transient/validation/permission), isRetryable boolean, and human-readable descriptions",
+                    "Throw exceptions and let the agent handle them generically",
+                    "Only return errors for transient failures; suppress validation and business errors"
+                ],
+                correct: 1,
+                explanation: "Structured error metadata enables intelligent agent decisions: retry transient errors, explain validation errors to users, escalate business rule violations. Generic errors prevent appropriate recovery. Option D suppresses valuable information."
+            },
+
+            // SCENARIO 2: Code Generation with Claude Code (Questions 6-20)
+            {
+                id: 6,
+                scenario: "Code Generation with Claude Code",
+                scenarioDesc: "Using Claude Code for development acceleration: code generation, refactoring, debugging. Need integration with custom slash commands and CLAUDE.md configurations.",
+                domain: "Claude Code Config",
+                question: "You want to create a custom /review slash command that runs your team's standard code review checklist. This command should be available to every developer when they clone or pull the repository. Where should you create this command file?",
+                options: [
+                    "In the .claude/commands/ directory in the project repository",
+                    "In ~/.claude/commands/ in each developer's home directory",
+                    "In the CLAUDE.md file at the project root",
+                    "In a .claude/config.json file with a commands array"
+                ],
+                correct: 0,
+                explanation: "Project-scoped custom slash commands should be stored in .claude/commands/ within the repository. These are version-controlled and automatically available to all developers. Option B is for personal commands. Option C is for instructions, not commands. Option D doesn't exist."
+            },
+            {
+                id: 7,
+                scenario: "Code Generation with Claude Code",
+                domain: "Claude Code Config",
+                question: "You've been assigned to restructure the team's monolithic application into microservices. This will involve changes across dozens of files and requires decisions about service boundaries and module dependencies. Which approach should you take?",
+                options: [
+                    "Enter plan mode to explore the codebase, understand dependencies, and design an implementation approach before making changes",
+                    "Start with direct execution and make changes incrementally, letting the implementation reveal the natural service boundaries",
+                    "Use direct execution with comprehensive upfront instructions detailing exactly how each service should be structured",
+                    "Begin in direct execution mode and only switch to plan mode if you encounter unexpected complexity during implementation"
+                ],
+                correct: 0,
+                explanation: "Plan mode is designed for complex tasks involving large-scale changes, multiple valid approaches, and architectural decisions. It enables safe exploration and design before committing to changes. The complexity is already stated in the requirements, not something that might emerge later."
+            },
+            {
+                id: 8,
+                scenario: "Code Generation with Claude Code",
+                domain: "Claude Code Config",
+                question: "Your codebase has different conventions: React components use hooks, API handlers use async/await. Test files are spread throughout (Button.test.tsx next to Button.tsx). You want ALL tests to follow same conventions regardless of location. What's the most maintainable approach?",
+                options: [
+                    "Create rule files in .claude/rules/ with YAML frontmatter specifying glob patterns to conditionally apply conventions based on file paths",
+                    "Consolidate all conventions in root CLAUDE.md under headers for each area, relying on Claude to infer which section applies",
+                    "Create skills in .claude/skills/ for each code type that include the relevant conventions",
+                    "Place separate CLAUDE.md file in each subdirectory containing that area's specific conventions"
+                ],
+                correct: 0,
+                explanation: ".claude/rules/ with glob patterns (e.g., **/*.test.tsx) allows conventions to be automatically applied based on file paths regardless of directory location—essential for test files spread throughout. Option D can't handle files spread across directories since CLAUDE.md files are directory-bound."
+            },
+            {
+                id: 9,
+                scenario: "Code Generation with Claude Code",
+                domain: "Claude Code Config",
+                question: "A new team member reports that Claude Code isn't following your team's testing conventions, even though other developers see them applied correctly. You've verified the conventions are documented. What's the most likely cause?",
+                options: [
+                    "The new member is using a different Claude Code version",
+                    "The conventions are in user-level ~/.claude/CLAUDE.md instead of project-level .claude/CLAUDE.md",
+                    "The conventions require manual activation with a slash command",
+                    "Claude Code needs to be restarted to load new configurations"
+                ],
+                correct: 1,
+                explanation: "CLAUDE.md hierarchy issue: user-level (~/.claude/CLAUDE.md) applies only to that user and isn't shared via version control. Project-level (.claude/CLAUDE.md) is version-controlled and applies to all team members. This is a common configuration diagnosis scenario."
+            },
+            {
+                id: 10,
+                scenario: "Code Generation with Claude Code",
+                domain: "Tool Design & MCP",
+                question: "When should you use the Grep tool vs the Glob tool?",
+                options: [
+                    "Grep for finding files by name pattern; Glob for searching file contents",
+                    "Grep for searching file contents; Glob for finding files by name pattern",
+                    "They're interchangeable - use either one",
+                    "Grep for single files; Glob for multiple files"
+                ],
+                correct: 1,
+                explanation: "Grep searches file CONTENTS for patterns (function names, error messages). Glob finds FILES by name patterns (*.py, **/*.test.tsx). This is a fundamental tool selection question."
+            },
+            {
+                id: 11,
+                scenario: "Code Generation with Claude Code",
+                domain: "Claude Code Config",
+                question: "You create a skill that performs verbose codebase analysis. When developers use it, the output pollutes their main conversation context. What frontmatter option isolates this skill's execution?",
+                options: [
+                    "isolated: true",
+                    "context: fork",
+                    "separate: true",
+                    "background: true"
+                ],
+                correct: 1,
+                explanation: "context: fork in skill frontmatter runs the skill in an isolated sub-agent context, preventing output from polluting the main conversation. This is specified in the exam guide."
+            },
+            {
+                id: 12,
+                scenario: "Code Generation with Claude Code",
+                domain: "Tool Design & MCP",
+                question: "When using the Edit tool, what happens if the old_string you provide isn't unique in the file?",
+                options: [
+                    "Edit modifies all occurrences",
+                    "Edit modifies the first occurrence only",
+                    "Edit fails - you need to provide more context to make it unique",
+                    "Edit asks for confirmation"
+                ],
+                correct: 2,
+                explanation: "Edit requires unique text matching. If old_string appears multiple times, Edit will fail. You must provide more surrounding context or use Read + Write as fallback."
+            },
+            {
+                id: 13,
+                scenario: "Code Generation with Claude Code",
+                domain: "Claude Code Config",
+                question: "What's the purpose of the @import syntax in CLAUDE.md files?",
+                options: [
+                    "To import Python modules",
+                    "To reference external files to keep CLAUDE.md modular",
+                    "To import environment variables",
+                    "To include MCP server configurations"
+                ],
+                correct: 1,
+                explanation: "@import allows referencing external files to keep CLAUDE.md modular. Example: importing specific standards files relevant to each package."
+            },
+
+            // SCENARIO 3: Multi-Agent Research System (Questions 14-28)
+            {
+                id: 14,
+                scenario: "Multi-Agent Research System",
+                scenarioDesc: "Building multi-agent research: coordinator delegates to web search, document analysis, synthesis, and report generation subagents.",
+                domain: "Agentic Architecture",
+                question: "After running on 'impact of AI on creative industries,' each subagent completes successfully but the final report covers only visual arts, missing music, writing, and film. The coordinator's logs show it decomposed the topic into: 'AI in digital art creation,' 'AI in graphic design,' and 'AI in photography.' What is the most likely root cause?",
+                options: [
+                    "The synthesis agent lacks instructions for identifying coverage gaps",
+                    "The coordinator agent's task decomposition is too narrow, resulting in subagent assignments that don't cover all relevant domains",
+                    "The web search agent's queries are not comprehensive enough",
+                    "The document analysis agent is filtering out sources related to non-visual creative industries"
+                ],
+                correct: 1,
+                explanation: "The coordinator's logs reveal the root cause directly: it decomposed 'creative industries' into only visual arts subtasks, completely omitting music, writing, and film. The subagents executed their assigned tasks correctly—the problem is what they were assigned."
+            },
+            {
+                id: 15,
+                scenario: "Multi-Agent Research System",
+                domain: "Context & Reliability",
+                question: "The web search subagent times out while researching a complex topic. You need to design how this failure information flows back to the coordinator agent. Which error propagation approach best enables intelligent recovery?",
+                options: [
+                    "Return structured error context including failure type, attempted query, partial results, and potential alternative approaches",
+                    "Implement automatic retry with exponential backoff within the subagent, returning generic 'search unavailable' only after retries exhausted",
+                    "Catch the timeout within the subagent and return an empty result set marked as successful",
+                    "Propagate the timeout exception directly to a top-level handler that terminates the entire research workflow"
+                ],
+                correct: 0,
+                explanation: "Structured error context gives the coordinator information to make intelligent recovery decisions—retry with modified query, try alternative approach, or proceed with partial results. Generic status hides context. Suppressing errors prevents recovery. Terminating unnecessarily when recovery could succeed."
+            },
+            {
+                id: 16,
+                scenario: "Multi-Agent Research System",
+                domain: "Agentic Architecture",
+                question: "The synthesis agent frequently needs to verify specific claims. Currently, when verification is needed, synthesis returns control to coordinator, which invokes web search, then re-invokes synthesis. This adds 2-3 round trips per task (40% latency increase). 85% are simple fact-checks, 15% require deeper investigation. What's the most effective approach?",
+                options: [
+                    "Give the synthesis agent a scoped verify_fact tool for simple lookups, while complex verifications continue delegating through coordinator",
+                    "Have synthesis accumulate all verification needs and return as batch to coordinator at end",
+                    "Give synthesis access to all web search tools so it can handle any verification directly",
+                    "Have web search proactively cache extra context anticipating what synthesis might need"
+                ],
+                correct: 0,
+                explanation: "Least privilege principle: give synthesis only what it needs for 85% common case (simple verification) while preserving coordination for complex cases. Batching creates dependencies. Full web access over-provisions. Speculative caching can't reliably predict needs."
+            },
+            {
+                id: 17,
+                scenario: "Multi-Agent Research System",
+                domain: "Agentic Architecture",
+                question: "What must be included in the coordinator agent's allowedTools configuration for it to spawn subagents?",
+                options: [
+                    "Subagent",
+                    "Task",
+                    "Spawn",
+                    "Delegate"
+                ],
+                correct: 1,
+                explanation: "The Task tool is the mechanism for spawning subagents. The coordinator's allowedTools must include 'Task' to invoke subagents. This is explicitly stated in the exam guide."
+            },
+            {
+                id: 18,
+                scenario: "Multi-Agent Research System",
+                domain: "Agentic Architecture",
+                question: "Do subagents automatically inherit the coordinator's conversation history and context?",
+                options: [
+                    "Yes, they inherit everything automatically",
+                    "No, subagent context must be explicitly provided in the prompt",
+                    "Only if configured with inherit_context: true",
+                    "They inherit tools but not conversation history"
+                ],
+                correct: 1,
+                explanation: "Subagents operate with isolated context—they do NOT inherit the coordinator's conversation history automatically. Context must be explicitly provided in the subagent's prompt. This is a critical concept for multi-agent systems."
+            },
+            {
+                id: 19,
+                scenario: "Multi-Agent Research System",
+                domain: "Agentic Architecture",
+                question: "How do you spawn multiple subagents in parallel to reduce latency?",
+                options: [
+                    "Call Task tool multiple times in separate coordinator responses",
+                    "Use parallel: true parameter in Task tool",
+                    "Emit multiple Task tool calls in a single coordinator response",
+                    "Use batch API for parallel execution"
+                ],
+                correct: 2,
+                explanation: "Spawning parallel subagents: emit multiple Task tool calls in a SINGLE coordinator response. This enables simultaneous execution. Separate turns would be sequential."
+            },
+            {
+                id: 20,
+                scenario: "Multi-Agent Research System",
+                domain: "Context & Reliability",
+                question: "What structured information should subagents include in their outputs to support accurate downstream synthesis with source attribution?",
+                options: [
+                    "Just the findings text",
+                    "Findings with claim-source mappings (source URLs, document names, relevant excerpts, publication dates)",
+                    "Findings with confidence scores",
+                    "Findings with token counts"
+                ],
+                correct: 1,
+                explanation: "Subagents should output structured claim-source mappings including source URLs, document names, excerpts, and publication dates. This preserves provenance through synthesis and enables proper citation."
+            },
+
+            // SCENARIO 4: Developer Productivity (Questions 21-32)
+            {
+                id: 21,
+                scenario: "Developer Productivity with Claude",
+                scenarioDesc: "Building developer productivity tools using Claude Agent SDK. Agent explores codebases, understands legacy systems, generates boilerplate.",
+                domain: "Tool Design & MCP",
+                question: "Your developer productivity agent has access to 18 tools (Read, Write, Edit, Bash, Grep, Glob, plus 12 custom MCP tools). Developers report the agent often selects the wrong tool for simple requests. What's the most likely cause?",
+                options: [
+                    "The custom tool descriptions aren't detailed enough",
+                    "Too many tools (18) degrades tool selection reliability by increasing decision complexity",
+                    "The agent needs more few-shot examples",
+                    "The MCP tools are configured incorrectly"
+                ],
+                correct: 1,
+                explanation: "The exam guide explicitly states: giving an agent access to too many tools (e.g., 18 instead of 4-5) degrades tool selection reliability. The solution is restricting each agent's tool set to only those relevant to its role."
+            },
+            {
+                id: 22,
+                scenario: "Developer Productivity with Claude",
+                domain: "Tool Design & MCP",
+                question: "You have a generic analyze_document tool that's used for both web results and local files, leading to misuse. What's the best refactoring approach?",
+                options: [
+                    "Add more parameters to analyze_document to handle both cases",
+                    "Write a better description for analyze_document",
+                    "Split into purpose-specific tools: extract_web_results and analyze_local_file with specific descriptions",
+                    "Use few-shot examples to demonstrate correct usage"
+                ],
+                correct: 2,
+                explanation: "Split generic tools into purpose-specific tools with defined input/output contracts. This eliminates ambiguity through tool naming and specific descriptions rather than trying to handle everything in one tool."
+            },
+            {
+                id: 23,
+                scenario: "Developer Productivity with Claude",
+                domain: "Tool Design & MCP",
+                question: "Where should you configure an MCP server that all team members should have access to (e.g., company-wide Jira integration)?",
+                options: [
+                    "In ~/.claude.json (user-level)",
+                    "In .mcp.json (project-level)",
+                    "In CLAUDE.md",
+                    "In .claude/skills/"
+                ],
+                correct: 1,
+                explanation: "Project-scoped MCP servers go in .mcp.json for shared team tooling (version-controlled). User-level (~/.claude.json) is for personal/experimental servers."
+            },
+            {
+                id: 24,
+                scenario: "Developer Productivity with Claude",
+                domain: "Tool Design & MCP",
+                question: "Your .mcp.json needs to include a GitHub token for authentication. How should you handle this credential without committing it to version control?",
+                options: [
+                    "Hard-code the token in .mcp.json and add it to .gitignore",
+                    "Use environment variable references: ${env:GITHUB_TOKEN} in .mcp.json, and .mcp.json is version-controlled while tokens stay in .env",
+                    "Store tokens in a separate .secrets file and import it",
+                    "Use a secrets management service API"
+                ],
+                correct: 1,
+                explanation: "Environment variable references (${env:VAR_NAME}) allow .mcp.json to be version-controlled while keeping sensitive values in local .env files. This is the recommended approach for credential management."
+            },
+            {
+                id: 25,
+                scenario: "Developer Productivity with Claude",
+                domain: "Prompt Engineering",
+                question: "Your agent needs to generate API documentation from code. Which prompting technique is most appropriate for ensuring consistent output structure across hundreds of functions?",
+                options: [
+                    "Few-shot prompting with 3-5 examples",
+                    "Chain-of-thought prompting",
+                    "Prefill-based structured output with explicit JSON schema",
+                    "Role prompting (\"You are an expert technical writer\")"
+                ],
+                correct: 2,
+                explanation: "Prefill + explicit schema guarantees consistent structure at scale. Few-shot helps but can't guarantee format. CoT is for reasoning, not structure. Role prompting doesn't enforce format."
+            },
+            {
+                id: 26,
+                scenario: "Developer Productivity with Claude",
+                domain: "Prompt Engineering",
+                question: "Your agent generates TypeScript types from API responses. Currently you're seeing inconsistent field naming (camelCase vs snake_case). What's the most effective prompt optimization?",
+                options: [
+                    "Add explicit output format instructions: \"Generate TypeScript interfaces using camelCase for all field names\"",
+                    "Use more few-shot examples demonstrating camelCase",
+                    "Use chain-of-thought to reason about naming",
+                    "Split into two agents: one for extraction, one for formatting"
+                ],
+                correct: 0,
+                explanation: "Explicit format instructions directly address the issue. This is clearer and more efficient than inferring patterns from examples. No need for multi-agent complexity here."
+            },
+            {
+                id: 27,
+                scenario: "Developer Productivity with Claude",
+                domain: "Context & Reliability",
+                question: "Developers report that when asking about rarely-modified legacy modules, the agent sometimes provides outdated information despite having Read tool access. What's the most likely cause?",
+                options: [
+                    "The Read tool is not working correctly",
+                    "The agent is relying on training data instead of reading current files",
+                    "Legacy modules are in a location the agent can't access",
+                    "The agent's context window is full"
+                ],
+                correct: 1,
+                explanation: "Claude has training data that may include older versions of code. When code hasn't changed recently, the agent might rely on training knowledge instead of using Read. The solution is prompting to always read current files."
+            },
+            {
+                id: 28,
+                scenario: "Developer Productivity with Claude",
+                domain: "Context & Reliability",
+                question: "Your agent needs to explore a 50K line codebase to understand its architecture. What's the most token-efficient approach?",
+                options: [
+                    "Read all files sequentially with Read tool",
+                    "Use Grep to search for key patterns, then Read specific relevant sections",
+                    "Spawn a subagent with the Agent tool (subagent_type=Explore) to isolate exploration from main context",
+                    "Use Glob to list all files then Read each one"
+                ],
+                correct: 2,
+                explanation: "The Agent tool with subagent_type=Explore is designed exactly for this: isolating expensive exploration from main context. The exploration results are summarized back without polluting context with 50K lines."
+            },
+
+            // Additional Domain 1 (Agentic Architecture) Questions
+            {
+                id: 29,
+                scenario: "General Agentic Patterns",
+                scenarioDesc: "",
+                domain: "Agentic Architecture",
+                question: "In a simple agentic loop, what is the correct sequence of operations?",
+                options: [
+                    "Make API call → Check stop_reason → If tool_use: execute tool → Repeat",
+                    "Execute tool → Make API call → Check stop_reason → Repeat",
+                    "Check stop_reason → Make API call → Execute tool → Repeat",
+                    "Make API call → Execute tool → Check stop_reason → Repeat"
+                ],
+                correct: 0,
+                explanation: "Correct agentic loop: (1) Make API call, (2) Check stop_reason, (3) If tool_use: execute tool and append result, (4) Loop back to step 1. This is the fundamental agent loop pattern."
+            },
+            {
+                id: 30,
+                scenario: "General Agentic Patterns",
+                domain: "Agentic Architecture",
+                question: "What is the purpose of exponential backoff in retry logic?",
+                options: [
+                    "To reduce API costs",
+                    "To prevent overwhelming a service with rapid retry attempts",
+                    "To improve response quality",
+                    "To track error patterns"
+                ],
+                correct: 1,
+                explanation: "Exponential backoff prevents overwhelming services during transient failures by increasing wait time between retries (e.g., 1s, 2s, 4s, 8s). This gives services time to recover."
+            },
+            {
+                id: 31,
+                scenario: "General Agentic Patterns",
+                domain: "Agentic Architecture",
+                question: "In hierarchical multi-agent systems, what is the primary role of the coordinator agent?",
+                options: [
+                    "Execute all tool calls directly",
+                    "Decompose tasks and delegate to specialized subagents",
+                    "Monitor system performance",
+                    "Handle all error conditions"
+                ],
+                correct: 1,
+                explanation: "The coordinator's role is task decomposition and delegation. It breaks complex tasks into subtasks and assigns them to specialized subagents, then synthesizes their results."
+            },
+            {
+                id: 32,
+                scenario: "General Agentic Patterns",
+                domain: "Agentic Architecture",
+                question: "What's the key difference between a reflection loop and a simple agentic loop?",
+                options: [
+                    "Reflection loops use multiple models",
+                    "Reflection loops include a self-evaluation step where the agent critiques its own output before finalizing",
+                    "Reflection loops are faster",
+                    "Reflection loops don't use tools"
+                ],
+                correct: 1,
+                explanation: "Reflection loops add a self-evaluation step where the agent reviews and critiques its own work, potentially iterating to improve quality before delivering final output."
+            },
+            {
+                id: 33,
+                scenario: "General Agentic Patterns",
+                domain: "Agentic Architecture",
+                question: "When implementing retry logic for transient API failures, what is the recommended maximum number of retry attempts?",
+                options: [
+                    "Unlimited retries until success",
+                    "1 retry",
+                    "3-5 retries",
+                    "10+ retries"
+                ],
+                correct: 2,
+                explanation: "Best practice is 3-5 retries with exponential backoff. This balances recovery from transient failures with not waiting indefinitely for persistent failures."
+            },
+            {
+                id: 34,
+                scenario: "General Agentic Patterns",
+                domain: "Agentic Architecture",
+                question: "Which error types should trigger automatic retry in an agent loop?",
+                options: [
+                    "All errors should be retried",
+                    "Only transient errors (timeouts, rate limits, 5xx server errors)",
+                    "Only validation errors (4xx client errors)",
+                    "Never retry - always escalate to human"
+                ],
+                correct: 1,
+                explanation: "Only transient errors (network timeouts, rate limits, temporary server issues) should trigger retry. Client errors (validation, permissions) won't succeed on retry."
+            },
+            {
+                id: 35,
+                scenario: "General Agentic Patterns",
+                domain: "Agentic Architecture",
+                question: "What is the purpose of max_iterations in an agentic loop?",
+                options: [
+                    "To optimize performance",
+                    "To prevent infinite loops and control costs",
+                    "To improve accuracy",
+                    "To enable parallel processing"
+                ],
+                correct: 1,
+                explanation: "max_iterations prevents infinite loops (e.g., if the agent gets stuck) and provides cost control by limiting total iterations. This is a critical safety mechanism."
+            },
+            {
+                id: 36,
+                scenario: "General Agentic Patterns",
+                domain: "Agentic Architecture",
+                question: "When should you use prompt-based orchestration vs programmatic orchestration?",
+                options: [
+                    "Always use prompt-based for simplicity",
+                    "Programmatic for critical business logic requiring deterministic guarantees; prompt-based for flexible decision-making",
+                    "Always use programmatic for reliability",
+                    "They're equivalent - choose either"
+                ],
+                correct: 1,
+                explanation: "Programmatic orchestration for critical sequences requiring guarantees (e.g., verify customer before refund). Prompt-based for flexible reasoning and decision-making. Balance determinism with flexibility."
+            },
+            {
+                id: 37,
+                scenario: "General Agentic Patterns",
+                domain: "Agentic Architecture",
+                question: "In multi-agent systems, when should subagents be given direct tool access vs always delegating through the coordinator?",
+                options: [
+                    "Subagents should never have direct tool access",
+                    "Apply least privilege: give subagents only tools essential to their specific role",
+                    "All subagents should have access to all tools",
+                    "Only the coordinator should have tool access"
+                ],
+                correct: 1,
+                explanation: "Least privilege principle: subagents should only have tools essential for their specific role. This reduces complexity, improves reliability, and maintains clear boundaries."
+            },
+            {
+                id: 38,
+                scenario: "General Agentic Patterns",
+                domain: "Agentic Architecture",
+                question: "What information should be included when propagating errors from subagent to coordinator?",
+                options: [
+                    "Just the error message",
+                    "Structured metadata: error type, retryable status, partial results, suggested recovery approaches",
+                    "Stack traces only",
+                    "Generic 'task failed' status"
+                ],
+                correct: 1,
+                explanation: "Structured error context enables intelligent coordinator decisions about recovery. Include error category, whether retryable, any partial results, and potential alternatives."
+            },
+            {
+                id: 39,
+                scenario: "General Agentic Patterns",
+                domain: "Agentic Architecture",
+                question: "When designing a multi-turn conversation agent, how should you handle context accumulation across turns?",
+                options: [
+                    "Include full conversation history in every request",
+                    "Only include the most recent message",
+                    "Use summarization for old turns while keeping recent turns verbatim",
+                    "Clear context after each turn"
+                ],
+                correct: 2,
+                explanation: "Summarize older conversation turns while keeping recent ones verbatim. This balances context preservation with token efficiency as conversations grow long."
+            },
+            {
+                id: 40,
+                scenario: "General Agentic Patterns",
+                domain: "Agentic Architecture",
+                question: "What's the key advantage of using extended thinking in agentic workflows?",
+                options: [
+                    "Faster responses",
+                    "Lower costs",
+                    "Improved reasoning on complex problems by giving the model more 'thinking' time",
+                    "Better tool selection"
+                ],
+                correct: 2,
+                explanation: "Extended thinking allows the model more reasoning time for complex problems, improving accuracy on tasks requiring deep analysis or multi-step reasoning."
+            },
+            {
+                id: 41,
+                scenario: "General Agentic Patterns",
+                domain: "Agentic Architecture",
+                question: "In a production agentic system, when should you log tool calls and responses?",
+                options: [
+                    "Never - it's too expensive",
+                    "Only when errors occur",
+                    "Always log tool calls, inputs, outputs, and timestamps for debugging and auditing",
+                    "Only in development environments"
+                ],
+                correct: 2,
+                explanation: "Always log tool calls in production. This enables debugging, auditing, performance analysis, and understanding agent behavior patterns. The cost is worth the operational visibility."
+            },
+            {
+                id: 42,
+                scenario: "General Agentic Patterns",
+                domain: "Agentic Architecture",
+                question: "What's the recommended approach for handling agent decisions that require human approval?",
+                options: [
+                    "Block execution and wait synchronously for human response",
+                    "Have agent make decision automatically to avoid delays",
+                    "Implement async handoff: agent requests approval, continues other work, resumes when approved",
+                    "Skip these cases entirely"
+                ],
+                correct: 2,
+                explanation: "Async human-in-the-loop: agent requests approval and continues with other independent work rather than blocking. This maintains throughput while ensuring human oversight."
+            },
+
+            // Additional Domain 4 (Prompt Engineering) Questions
+            {
+                id: 43,
+                scenario: "Prompt Engineering Techniques",
+                scenarioDesc: "",
+                domain: "Prompt Engineering",
+                question: "Which prompting technique involves providing the model with example input-output pairs before the actual task?",
+                options: [
+                    "Zero-shot prompting",
+                    "Few-shot prompting",
+                    "Chain-of-thought prompting",
+                    "Role prompting"
+                ],
+                correct: 1,
+                explanation: "Few-shot prompting provides example input-output pairs to demonstrate the desired behavior pattern before the actual task."
+            },
+            {
+                id: 44,
+                scenario: "Prompt Engineering Techniques",
+                domain: "Prompt Engineering",
+                question: "What is the primary benefit of chain-of-thought prompting?",
+                options: [
+                    "Faster responses",
+                    "Lower token costs",
+                    "Improved reasoning on complex problems by showing step-by-step thinking",
+                    "Better formatting"
+                ],
+                correct: 2,
+                explanation: "Chain-of-thought prompting improves reasoning by encouraging the model to show intermediate steps, especially valuable for math, logic, and complex analysis tasks."
+            },
+            {
+                id: 45,
+                scenario: "Prompt Engineering Techniques",
+                domain: "Prompt Engineering",
+                question: "When should you use XML tags in prompts?",
+                options: [
+                    "Never - they're deprecated",
+                    "Only for HTML generation",
+                    "To provide clear structure and boundaries between different sections of input (context, examples, instructions)",
+                    "Only when working with XML data"
+                ],
+                correct: 2,
+                explanation: "XML tags provide clear document structure, especially valuable for complex prompts with multiple sections. Claude is trained to respect XML boundaries. Example: <context>, <examples>, <instructions>."
+            },
+            {
+                id: 46,
+                scenario: "Prompt Engineering Techniques",
+                domain: "Prompt Engineering",
+                question: "What's the purpose of prefill in Claude API?",
+                options: [
+                    "To reduce costs",
+                    "To guide the model's response format by starting the assistant message",
+                    "To provide additional context",
+                    "To enable multi-turn conversations"
+                ],
+                correct: 1,
+                explanation: "Prefill (putting text in the assistant's message) guides response format. Example: prefilling '{' makes Claude start with JSON. This is more reliable than prompt instructions alone."
+            },
+            {
+                id: 47,
+                scenario: "Prompt Engineering Techniques",
+                domain: "Prompt Engineering",
+                question: "Which technique is most effective for ensuring JSON output conforms to a specific schema?",
+                options: [
+                    "Asking nicely in the prompt",
+                    "Few-shot examples",
+                    "Providing explicit JSON schema + prefill with opening brace",
+                    "Post-processing validation"
+                ],
+                correct: 2,
+                explanation: "Explicit schema + prefill (e.g., prefilling '{') provides strongest guarantees. Schema shows structure, prefill forces format. Few-shot helps but doesn't guarantee. Validation is downstream fix, not prevention."
+            },
+            {
+                id: 48,
+                scenario: "Prompt Engineering Techniques",
+                domain: "Prompt Engineering",
+                question: "When optimizing prompts, what should you do if few-shot examples aren't improving performance?",
+                options: [
+                    "Add more examples",
+                    "Review if examples are representative, diverse, and correctly demonstrate the pattern; quality over quantity",
+                    "Switch to zero-shot",
+                    "Use a different model"
+                ],
+                correct: 1,
+                explanation: "If few-shot isn't working, audit example quality: Are they representative? Diverse enough? Correctly demonstrating the pattern? 2-3 good examples beat 10 mediocre ones."
+            },
+            {
+                id: 49,
+                scenario: "Prompt Engineering Techniques",
+                domain: "Prompt Engineering",
+                question: "What's the purpose of role prompting (e.g., 'You are an expert software architect')?",
+                options: [
+                    "To make the model more polite",
+                    "To activate relevant knowledge and set appropriate tone/expertise level",
+                    "To reduce token usage",
+                    "To enable tool use"
+                ],
+                correct: 1,
+                explanation: "Role prompting helps activate relevant knowledge domains and sets appropriate expertise level and tone. It's a lightweight way to frame the model's approach."
+            },
+            {
+                id: 50,
+                scenario: "Prompt Engineering Techniques",
+                domain: "Prompt Engineering",
+                question: "When should you use system prompts vs user prompts in Claude API?",
+                options: [
+                    "They're interchangeable",
+                    "System for persistent instructions/context; User for the specific task/query",
+                    "Always use system prompts",
+                    "System prompts are deprecated"
+                ],
+                correct: 1,
+                explanation: "System prompts for persistent instructions, role, constraints that apply across requests. User prompts for the specific task/query for this turn."
+            },
+            {
+                id: 51,
+                scenario: "Prompt Engineering Techniques",
+                domain: "Prompt Engineering",
+                question: "Which prompt element is most effective for improving factual accuracy on knowledge-intensive tasks?",
+                options: [
+                    "Role prompting",
+                    "Providing relevant retrieved context/documents in the prompt",
+                    "Chain-of-thought",
+                    "Longer prompts"
+                ],
+                correct: 1,
+                explanation: "Retrieval-augmented generation (providing relevant documents in prompt) directly addresses knowledge gaps. Role/CoT/length don't add information not in training data."
+            },
+            {
+                id: 52,
+                scenario: "Prompt Engineering Techniques",
+                domain: "Prompt Engineering",
+                question: "What's a key principle for writing effective tool descriptions?",
+                options: [
+                    "Keep them short - 1 sentence maximum",
+                    "Include what the tool does, when to use it, input formats, and boundaries explaining when NOT to use it",
+                    "Focus only on technical implementation details",
+                    "Make them generic to cover all use cases"
+                ],
+                correct: 1,
+                explanation: "Effective tool descriptions include: what it does, when to use it, input format, examples, and importantly - boundaries/when NOT to use it vs similar tools."
+            },
+            {
+                id: 53,
+                scenario: "Prompt Engineering Techniques",
+                domain: "Prompt Engineering",
+                question: "When designing prompts for code generation, what should you include to ensure code follows project conventions?",
+                options: [
+                    "Just ask for 'good code'",
+                    "Explicit style guidelines, naming conventions, and architectural patterns with examples",
+                    "Only provide the functional requirements",
+                    "Request comments in the code"
+                ],
+                correct: 1,
+                explanation: "Explicit conventions beat implicit expectations. Include style guides, naming conventions, architectural patterns, and examples of preferred patterns."
+            },
+            {
+                id: 54,
+                scenario: "Prompt Engineering Techniques",
+                domain: "Prompt Engineering",
+                question: "What's the purpose of prompt chaining in multi-step tasks?",
+                options: [
+                    "To reduce costs",
+                    "To break complex tasks into focused single-purpose prompts, where each step's output feeds the next",
+                    "To enable parallel processing",
+                    "To improve formatting"
+                ],
+                correct: 1,
+                explanation: "Prompt chaining breaks complex tasks into focused steps: extract → analyze → synthesize. Each prompt is optimized for one task, and outputs chain forward."
+            },
+            {
+                id: 55,
+                scenario: "Prompt Engineering Techniques",
+                domain: "Prompt Engineering",
+                question: "When should you use structured output (JSON/TypeScript) vs natural language output?",
+                options: [
+                    "Always use JSON for reliability",
+                    "JSON when output feeds downstream code/APIs; natural language for human consumption",
+                    "Always use natural language",
+                    "They're equivalent"
+                ],
+                correct: 1,
+                explanation: "Use structured output (JSON) when results feed programmatic systems. Use natural language for human-facing responses. Match output format to consumer needs."
+            },
+            {
+                id: 56,
+                scenario: "Prompt Engineering Techniques",
+                domain: "Prompt Engineering",
+                question: "What's an effective approach for handling ambiguous user queries in agents?",
+                options: [
+                    "Guess what they meant and proceed",
+                    "Always ask clarifying questions before acting",
+                    "Use chain-of-thought to reason about possible interpretations, then ask for clarification if critical assumptions are required",
+                    "Return an error"
+                ],
+                correct: 2,
+                explanation: "CoT to reason about interpretations, then ask for clarification only when critical assumptions are needed. Don't over-clarify obvious cases, but don't guess on critical decisions."
+            },
+            {
+                id: 57,
+                scenario: "Prompt Engineering Techniques",
+                domain: "Prompt Engineering",
+                question: "When optimizing prompts, what's the most reliable way to measure improvement?",
+                options: [
+                    "Subjective assessment",
+                    "Measuring token usage",
+                    "Systematic evaluation on representative test cases with success criteria",
+                    "Counting prompt length"
+                ],
+                correct: 2,
+                explanation: "Systematic evaluation on diverse test cases with clear success criteria is the gold standard. Subjective assessment doesn't scale. Token usage isn't quality. Prompt length is irrelevant."
+            },
+            {
+                id: 58,
+                scenario: "Prompt Engineering Techniques",
+                domain: "Prompt Engineering",
+                question: "What's the purpose of negative examples in few-shot prompting?",
+                options: [
+                    "To confuse the model",
+                    "To explicitly show what NOT to do, especially for common mistakes",
+                    "To increase prompt length",
+                    "To reduce confidence"
+                ],
+                correct: 1,
+                explanation: "Negative examples explicitly show common mistakes to avoid. This is especially valuable when there are tempting-but-wrong approaches you want to prevent."
+            },
+
+            // Additional Domain 5 (Context & Reliability) Questions
+            {
+                id: 59,
+                scenario: "Context Management & Reliability",
+                scenarioDesc: "",
+                domain: "Context & Reliability",
+                question: "What's the default line limit when using the Read tool in Claude Code?",
+                options: [
+                    "500 lines",
+                    "1000 lines",
+                    "2000 lines (~40K tokens)",
+                    "5000 lines"
+                ],
+                correct: 2,
+                explanation: "Read tool defaults to 2000 lines (~40K tokens). For large files, use offset and limit parameters to read specific sections."
+            },
+            {
+                id: 60,
+                scenario: "Context Management & Reliability",
+                domain: "Context & Reliability",
+                question: "What's the most token-efficient Grep output mode when you just need to know which files contain a pattern?",
+                options: [
+                    "content",
+                    "files_with_matches",
+                    "count",
+                    "verbose"
+                ],
+                correct: 1,
+                explanation: "files_with_matches is most efficient - returns only file paths. content mode includes matching lines (expensive). count returns counts per file (moderate)."
+            },
+            {
+                id: 61,
+                scenario: "Context Management & Reliability",
+                domain: "Context & Reliability",
+                question: "You need to find a specific function definition in a 10,000-line file. What's the most efficient approach?",
+                options: [
+                    "Read the entire file",
+                    "Use Grep to find the line number, then Read with offset and limit targeting that section",
+                    "Use Glob to find the file",
+                    "Split the file into smaller files first"
+                ],
+                correct: 1,
+                explanation: "Two-step approach: Grep to locate (cheap), then targeted Read of specific section (efficient). Reading entire file would waste ~200K tokens."
+            },
+            {
+                id: 62,
+                scenario: "Context Management & Reliability",
+                domain: "Context & Reliability",
+                question: "What's the approximate character-to-token ratio for English text?",
+                options: [
+                    "1 char = 1 token",
+                    "~4 characters per token",
+                    "~10 characters per token",
+                    "~2 characters per token"
+                ],
+                correct: 1,
+                explanation: "Rough estimation: ~4 chars/token for English text, ~3.5 chars/token for code. This helps estimate token costs before reading files."
+            },
+            {
+                id: 63,
+                scenario: "Context Management & Reliability",
+                domain: "Context & Reliability",
+                question: "What is prompt caching in Claude API, and when does it help?",
+                options: [
+                    "Storing prompts in a database",
+                    "Claude caches unchanged prompt prefixes between requests, reducing cost for repeated context like large documents",
+                    "Pre-generating responses",
+                    "Compressing prompts"
+                ],
+                correct: 1,
+                explanation: "Prompt caching: Claude caches unchanged prompt prefixes (like large documents) across requests, paying reduced rates for cached portions. Helpful for iterative work on same context."
+            },
+            {
+                id: 64,
+                scenario: "Context Management & Reliability",
+                domain: "Context & Reliability",
+                question: "When should you use the Agent tool with subagent_type=Explore instead of direct Read/Grep?",
+                options: [
+                    "Never - always use Read/Grep directly",
+                    "For broad codebase exploration that might require >3 queries, to isolate context from main conversation",
+                    "For all file operations",
+                    "Only when reading >100 files"
+                ],
+                correct: 1,
+                explanation: "Use Explore agent for broad exploration needing multiple queries. It isolates expensive context from main conversation. Direct tools are better for simple, targeted operations."
+            },
+            {
+                id: 65,
+                scenario: "Context Management & Reliability",
+                domain: "Context & Reliability",
+                question: "What's the recommended model for simple, straightforward tasks with minimal reasoning requirements?",
+                options: [
+                    "Opus 4.6",
+                    "Sonnet 4.6",
+                    "Haiku 4.5",
+                    "Always use the most capable model"
+                ],
+                correct: 2,
+                explanation: "Haiku for simple tasks (<5K tokens, minimal reasoning). Sonnet for moderate complexity. Opus for complex reasoning/high token tasks. Match model capability to task requirements."
+            },
+            {
+                id: 66,
+                scenario: "Context Management & Reliability",
+                domain: "Context & Reliability",
+                question: "What's a key indicator that you should optimize token usage for a task?",
+                options: [
+                    "Any task should be optimized",
+                    "When token costs exceed ~5K tokens and optimization effort is proportionate to savings",
+                    "Only when hitting context limits",
+                    "Never optimize - tokens are cheap"
+                ],
+                correct: 1,
+                explanation: "Optimize when token costs are significant (~5K+) and optimization effort is proportionate. Don't over-optimize small tasks where overhead exceeds benefit."
+            },
+            {
+                id: 67,
+                scenario: "Context Management & Reliability",
+                domain: "Context & Reliability",
+                question: "When using Claude Code memory system, what must you do before using recalled information?",
+                options: [
+                    "Nothing - memory is always current",
+                    "Verify the information is still accurate by reading current files/state, as memories can become stale",
+                    "Delete the memory",
+                    "Update the memory file"
+                ],
+                correct: 1,
+                explanation: "CRITICAL: Always verify memory before using it. Memories can become stale as code changes. If memory says 'function X exists,' grep for it before recommending."
+            },
+
+            // Additional Domain 3 (Claude Code Config) Questions
+            {
+                id: 68,
+                scenario: "Claude Code Configuration",
+                scenarioDesc: "",
+                domain: "Claude Code Config",
+                question: "What file format is used for Claude Code skills?",
+                options: [
+                    "JSON",
+                    "YAML",
+                    "Markdown with YAML frontmatter",
+                    "Plain text"
+                ],
+                correct: 2,
+                explanation: "Skills use Markdown with YAML frontmatter. Frontmatter defines metadata (name, description, model), body contains the prompt/instructions."
+            },
+            {
+                id: 69,
+                scenario: "Claude Code Configuration",
+                domain: "Claude Code Config",
+                question: "Where should personal experimental MCP servers be configured?",
+                options: [
+                    ".mcp.json (project)",
+                    "~/.claude.json (user-level)",
+                    "CLAUDE.md",
+                    ".claude/config.json"
+                ],
+                correct: 1,
+                explanation: "Personal/experimental MCP servers go in ~/.claude.json (user-level). Shared team servers go in .mcp.json (project-level, version-controlled)."
+            },
+            {
+                id: 70,
+                scenario: "Claude Code Configuration",
+                domain: "Claude Code Config",
+                question: "What's the purpose of the UserPromptSubmitHook?",
+                options: [
+                    "To validate user input before processing",
+                    "To run custom logic (like preflight checks or context injection) before each user message is processed",
+                    "To format responses",
+                    "To log conversations"
+                ],
+                correct: 1,
+                explanation: "UserPromptSubmitHook executes before each user message is processed, enabling preflight checks, context injection, or automated actions based on user input."
+            },
+            {
+                id: 71,
+                scenario: "Claude Code Configuration",
+                domain: "Claude Code Config",
+                question: "How do you specify which tools a custom skill can access?",
+                options: [
+                    "In the skill's frontmatter using allowedTools",
+                    "In CLAUDE.md",
+                    "In .mcp.json",
+                    "Skills automatically inherit all tools"
+                ],
+                correct: 0,
+                explanation: "Skill frontmatter includes allowedTools array specifying which tools the skill can use. This enables least-privilege tool access per skill."
+            },
+            {
+                id: 72,
+                scenario: "Claude Code Configuration",
+                domain: "Claude Code Config",
+                question: "What's the hierarchy for CLAUDE.md files when they exist at multiple levels?",
+                options: [
+                    "Only root CLAUDE.md is used",
+                    "Closest to working directory wins",
+                    "All CLAUDE.md files in the path hierarchy are loaded and merged",
+                    "Only user-level ~/.claude/CLAUDE.md is used"
+                ],
+                correct: 2,
+                explanation: "All CLAUDE.md files in the path hierarchy are loaded and merged. This allows general project conventions in root and specific overrides in subdirectories."
+            },
+            {
+                id: 73,
+                scenario: "Claude Code Configuration",
+                domain: "Claude Code Config",
+                question: "When should you enter plan mode vs direct execution mode?",
+                options: [
+                    "Always use plan mode",
+                    "Plan mode for non-trivial tasks with multiple approaches or significant changes; direct execution for simple clear tasks",
+                    "Always use direct execution",
+                    "Plan mode is deprecated"
+                ],
+                correct: 1,
+                explanation: "Plan mode for complex/architectural decisions, multi-file changes, or unclear requirements. Direct execution for simple, well-defined tasks. Get user alignment before major work."
+            },
+            {
+                id: 74,
+                scenario: "Claude Code Configuration",
+                domain: "Claude Code Config",
+                question: "What's the purpose of the .claude/rules/ directory?",
+                options: [
+                    "To store custom tools",
+                    "To define conditional conventions that apply based on file patterns (glob matching)",
+                    "To configure MCP servers",
+                    "To store memory files"
+                ],
+                correct: 1,
+                explanation: ".claude/rules/ contains rule files with glob patterns that conditionally apply conventions based on file paths. Example: test conventions applying to **/*.test.tsx."
+            },
+            {
+                id: 75,
+                scenario: "Claude Code Configuration",
+                domain: "Claude Code Config",
+                question: "How do you spawn multiple subagents in parallel from Claude Code?",
+                options: [
+                    "Use parallel: true parameter",
+                    "Call Agent tool multiple times in a single message",
+                    "Use batch API",
+                    "Call Agent tool sequentially"
+                ],
+                correct: 1,
+                explanation: "Spawn parallel subagents by making multiple Agent tool calls in a SINGLE message. This enables simultaneous execution. Sequential calls would run one after another."
+            },
+            {
+                id: 76,
+                scenario: "Claude Code Configuration",
+                domain: "Claude Code Config",
+                question: "What happens when you use @import in CLAUDE.md?",
+                options: [
+                    "Imports Python modules",
+                    "References external files to include their content, keeping CLAUDE.md modular",
+                    "Imports environment variables",
+                    "Nothing - it's a comment"
+                ],
+                correct: 1,
+                explanation: "@import references external files to include their content in CLAUDE.md. This keeps configuration modular and manageable."
+            },
+            {
+                id: 77,
+                scenario: "Claude Code Configuration",
+                domain: "Claude Code Config",
+                question: "What's the difference between a skill with context: fork vs context: inline?",
+                options: [
+                    "No difference",
+                    "fork runs in isolated subagent (doesn't pollute main context); inline runs in main conversation",
+                    "fork is faster",
+                    "inline can't use tools"
+                ],
+                correct: 1,
+                explanation: "context: fork isolates skill execution in a subagent, preventing context pollution. context: inline (default) runs in main conversation. Use fork for verbose analysis."
+            },
+
+            // Additional Domain 2 (Tool Design & MCP) Questions
+            {
+                id: 78,
+                scenario: "Tool Design & MCP",
+                scenarioDesc: "",
+                domain: "Tool Design & MCP",
+                question: "What's the Model Context Protocol (MCP)?",
+                options: [
+                    "A compression algorithm",
+                    "A standard protocol for connecting AI applications to external data sources and tools",
+                    "A programming language",
+                    "A database system"
+                ],
+                correct: 1,
+                explanation: "MCP is Anthropic's standard protocol for connecting AI applications to external data sources and tools through server implementations."
+            },
+            {
+                id: 79,
+                scenario: "Tool Design & MCP",
+                domain: "Tool Design & MCP",
+                question: "When designing custom tools, what's the principle of least privilege?",
+                options: [
+                    "Tools should have minimal permissions",
+                    "Tools should require authentication",
+                    "Give agents only the tools essential for their specific role, not all available tools",
+                    "Tools should be simple"
+                ],
+                correct: 2,
+                explanation: "Least privilege: agents should only have tools essential for their specific role. This reduces complexity, improves reliability, and maintains security boundaries."
+            },
+            {
+                id: 80,
+                scenario: "Tool Design & MCP",
+                domain: "Tool Design & MCP",
+                question: "What should tool input validation focus on?",
+                options: [
+                    "Rejecting all user input as unsafe",
+                    "Type checking, range validation, format verification, and providing clear error messages for invalid inputs",
+                    "Only checking for empty inputs",
+                    "No validation needed - models always provide valid input"
+                ],
+                correct: 1,
+                explanation: "Comprehensive input validation: check types, ranges, formats. Provide clear error messages describing what's wrong and what's expected. Models can make mistakes or receive invalid user input."
+            }
+        ];
+
+        let timerInterval;
+        let startTime;
+        let showingAnswers = false;
+
+        // Start timer
+        function startTimer() {
+            startTime = Date.now();
+            timerInterval = setInterval(() => {
+                const elapsed = Math.floor((Date.now() - startTime) / 1000);
+                const minutes = Math.floor(elapsed / 60);
+                const seconds = elapsed % 60;
+                document.getElementById('timer').textContent =
+                    `⏱️ ${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+            }, 1000);
+        }
+
+        // Generate questions HTML
+        function generateQuestions() {
+            const form = document.getElementById('examForm');
+            let currentScenario = '';
+            let html = '';
+
+            questions.forEach((q, index) => {
+                // Add scenario section header if new scenario
+                if (q.scenarioDesc && q.scenario !== currentScenario) {
+                    if (currentScenario !== '') html += '</div>'; // Close previous scenario
+                    html += `
+                        <div class="scenario-section">
+                            <div class="scenario-title">${q.scenario}</div>
+                            <div class="scenario-desc">${q.scenarioDesc}</div>
+                        </div>
+                        <div class="scenario-questions">
+                    `;
+                    currentScenario = q.scenario;
+                }
+
+                html += `
+                    <div class="question" id="question-${q.id}">
+                        <div class="question-header">
+                            <span class="question-number">Question ${q.id}</span>
+                            <span class="domain-tag">${q.domain}</span>
+                        </div>
+                        <div class="question-text">${q.question}</div>
+                        <div class="options">
+                            ${q.options.map((opt, i) => `
+                                <div class="option">
+                                    <input type="radio"
+                                           id="q${q.id}-opt${i}"
+                                           name="question${q.id}"
+                                           value="${i}">
+                                    <label for="q${q.id}-opt${i}">${opt}</label>
+                                </div>
+                            `).join('')}
+                        </div>
+                        <div class="explanation" id="explanation-${q.id}"></div>
+                    </div>
+                `;
+            });
+
+            html += '</div>'; // Close last scenario group
+            form.innerHTML = html;
+        }
+
+        // Submit and grade exam
+        function submitExam() {
+            let correct = 0;
+            const domainScores = {};
+
+            questions.forEach(q => {
+                const selected = document.querySelector(`input[name="question${q.id}"]:checked`);
+                const explanationDiv = document.getElementById(`explanation-${q.id}`);
+                const questionDiv = document.getElementById(`question-${q.id}`);
+
+                // Initialize domain score tracking
+                if (!domainScores[q.domain]) {
+                    domainScores[q.domain] = { correct: 0, total: 0 };
+                }
+                domainScores[q.domain].total++;
+
+                if (selected) {
+                    const answer = parseInt(selected.value);
+                    const isCorrect = answer === q.correct;
+
+                    if (isCorrect) {
+                        correct++;
+                        domainScores[q.domain].correct++;
+                        explanationDiv.className = 'explanation show correct';
+                        explanationDiv.innerHTML = `
+                            <div class="explanation-title correct-answer">✓ Correct!</div>
+                            <p>${q.explanation}</p>
+                        `;
+                        questionDiv.style.borderLeft = '5px solid #28a745';
+                    } else {
+                        explanationDiv.className = 'explanation show incorrect';
+                        explanationDiv.innerHTML = `
+                            <div class="explanation-title incorrect-answer">✗ Incorrect</div>
+                            <p><strong>Correct answer:</strong> ${q.options[q.correct]}</p>
+                            <p><strong>Explanation:</strong> ${q.explanation}</p>
+                        `;
+                        questionDiv.style.borderLeft = '5px solid #dc3545';
+                    }
+                } else {
+                    explanationDiv.className = 'explanation show neutral';
+                    explanationDiv.innerHTML = `
+                        <div class="explanation-title">⚠ Not answered</div>
+                        <p><strong>Correct answer:</strong> ${q.options[q.correct]}</p>
+                        <p><strong>Explanation:</strong> ${q.explanation}</p>
+                    `;
+                    questionDiv.style.borderLeft = '5px solid #ffc107';
+                }
+            });
+
+            const percentage = (correct / questions.length * 100).toFixed(1);
+            const score = Math.round(correct / questions.length * 1000);
+            const passed = score >= 720;
+
+            // Generate domain breakdown HTML
+            let domainBreakdownHTML = '<div class="domain-breakdown"><h3>Domain Breakdown</h3>';
+            Object.keys(domainScores).sort().forEach(domain => {
+                const ds = domainScores[domain];
+                const domainPercent = (ds.correct / ds.total * 100).toFixed(1);
+                domainBreakdownHTML += `
+                    <div class="domain-score">
+                        <span>${domain}</span>
+                        <span>${ds.correct}/${ds.total} (${domainPercent}%)</span>
+                    </div>
+                `;
+            });
+            domainBreakdownHTML += '</div>';
+
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.className = `results show ${passed ? 'pass' : 'fail'}`;
+            resultsDiv.innerHTML = `
+                <h2>${passed ? '🎉 Congratulations! You Passed!' : '📚 Keep Studying!'}</h2>
+                <div class="score">${score}/1000</div>
+                <div class="percentage">${correct}/${questions.length} correct (${percentage}%)</div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: ${percentage}%">${percentage}%</div>
+                </div>
+                ${domainBreakdownHTML}
+                <p style="margin-top: 25px; font-size: 18px;">
+                    ${passed
+                        ? 'You\'re ready for the exam! Passing score is 720/1000.'
+                        : 'Passing score is 720/1000 (≈58/80 questions). Review weak areas and try again!'}
+                </p>
+            `;
+
+            resultsDiv.scrollIntoView({ behavior: 'smooth' });
+            showingAnswers = true;
+        }
+
+        // Toggle show/hide all answers
+        function toggleAnswers() {
+            showingAnswers = !showingAnswers;
+            const button = event.target;
+
+            questions.forEach(q => {
+                const explanationDiv = document.getElementById(`explanation-${q.id}`);
+                if (showingAnswers) {
+                    if (!explanationDiv.classList.contains('show')) {
+                        explanationDiv.className = 'explanation show neutral';
+                        explanationDiv.innerHTML = `
+                            <div class="explanation-title">💡 Answer</div>
+                            <p><strong>Correct answer:</strong> ${q.options[q.correct]}</p>
+                            <p><strong>Explanation:</strong> ${q.explanation}</p>
+                        `;
+                    }
+                } else {
+                    if (explanationDiv.classList.contains('neutral')) {
+                        explanationDiv.className = 'explanation';
+                    }
+                }
+            });
+
+            button.textContent = showingAnswers ? '🙈 Hide All Answers' : '👁️ Show All Answers';
+        }
+
+        // Reset exam
+        function resetExam() {
+            if (!confirm('Are you sure you want to reset the exam? All answers will be cleared.')) {
+                return;
+            }
+
+            document.getElementById('examForm').reset();
+            document.getElementById('results').className = 'results';
+            showingAnswers = false;
+
+            questions.forEach(q => {
+                const explanationDiv = document.getElementById(`explanation-${q.id}`);
+                const questionDiv = document.getElementById(`question-${q.id}`);
+                explanationDiv.className = 'explanation';
+                explanationDiv.innerHTML = '';
+                questionDiv.style.borderLeft = '5px solid #2196F3';
+            });
+
+            document.querySelector('.show-answers-btn').textContent = '👁️ Show All Answers';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            // Reset timer
+            clearInterval(timerInterval);
+            startTimer();
+        }
+
+        // Initialize
+        window.onload = () => {
+            generateQuestions();
+            startTimer();
+        };
+    </script>
+</body>
+</html>

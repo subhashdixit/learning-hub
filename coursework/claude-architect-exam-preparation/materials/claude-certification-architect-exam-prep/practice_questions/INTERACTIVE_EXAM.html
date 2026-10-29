@@ -1,0 +1,1297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CCA Practice Exam - Interactive</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #4CAF50;
+        }
+
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .exam-info {
+            background: #e8f5e9;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        .exam-info p {
+            margin: 5px 0;
+        }
+
+        .timer {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #ff9800;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 5px;
+            font-size: 18px;
+            font-weight: bold;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            z-index: 1000;
+        }
+
+        .question {
+            background: #fafafa;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #2196F3;
+        }
+
+        .question-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .question-number {
+            font-weight: bold;
+            color: #2196F3;
+            font-size: 14px;
+        }
+
+        .domain-tag {
+            background: #e3f2fd;
+            color: #1976D2;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .question-text {
+            font-size: 16px;
+            font-weight: 500;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+
+        .options {
+            margin-left: 10px;
+        }
+
+        .option {
+            margin: 10px 0;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .option input[type="radio"] {
+            margin-right: 10px;
+            margin-top: 4px;
+            cursor: pointer;
+            transform: scale(1.3);
+        }
+
+        .option label {
+            cursor: pointer;
+            user-select: none;
+            flex: 1;
+        }
+
+        .explanation {
+            display: none;
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 5px;
+        }
+
+        .explanation.show {
+            display: block;
+        }
+
+        .explanation.correct {
+            background: #d4edda;
+            border-left-color: #28a745;
+        }
+
+        .explanation.incorrect {
+            background: #f8d7da;
+            border-left-color: #dc3545;
+        }
+
+        .explanation-title {
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .correct-answer {
+            color: #28a745;
+            font-weight: bold;
+        }
+
+        .incorrect-answer {
+            color: #dc3545;
+            font-weight: bold;
+        }
+
+        .buttons {
+            position: sticky;
+            bottom: 0;
+            background: white;
+            padding: 20px 0;
+            margin-top: 30px;
+            border-top: 2px solid #e0e0e0;
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        button {
+            padding: 12px 30px;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .submit-btn {
+            background: #4CAF50;
+            color: white;
+        }
+
+        .submit-btn:hover {
+            background: #45a049;
+            transform: translateY(-2px);
+        }
+
+        .reset-btn {
+            background: #f44336;
+            color: white;
+        }
+
+        .reset-btn:hover {
+            background: #da190b;
+        }
+
+        .show-answers-btn {
+            background: #2196F3;
+            color: white;
+        }
+
+        .show-answers-btn:hover {
+            background: #0b7dda;
+        }
+
+        .results {
+            display: none;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .results.show {
+            display: block;
+        }
+
+        .results h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .score {
+            font-size: 48px;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+
+        .percentage {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .pass {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+        }
+
+        .fail {
+            background: linear-gradient(135deg, #eb3349 0%, #f45c43 100%);
+        }
+
+        .domain-breakdown {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        .domain-score {
+            display: flex;
+            justify-content: space-between;
+            margin: 10px 0;
+            padding: 8px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 5px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 30px;
+            background: #e0e0e0;
+            border-radius: 15px;
+            overflow: hidden;
+            margin: 20px 0;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #4CAF50, #8BC34A);
+            transition: width 1s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        @media print {
+            .timer, .buttons { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <div class="timer" id="timer">Time: 00:00</div>
+
+    <div class="container">
+        <div class="header">
+            <h1>🎓 CCA Practice Exam</h1>
+            <p>Memory & Token Optimization Focus</p>
+        </div>
+
+        <div class="exam-info">
+            <p><strong>📝 Total Questions:</strong> 60</p>
+            <p><strong>⏱️ Time Limit:</strong> 120 minutes (2 min/question)</p>
+            <p><strong>✅ Passing Score:</strong> 70% (42/60 correct)</p>
+            <p><strong>📊 Domains:</strong> Architecture (16) | Claude Code (12) | Prompting (12) | Tools/MCP (11) | Memory/Tokens (9)</p>
+        </div>
+
+        <div class="results" id="results"></div>
+
+        <form id="examForm">
+            <!-- Questions will be inserted here by JavaScript -->
+        </form>
+
+        <div class="buttons">
+            <button type="button" class="submit-btn" onclick="submitExam()">📊 Submit & Grade Exam</button>
+            <button type="button" class="show-answers-btn" onclick="toggleAnswers()">👁️ Show All Answers</button>
+            <button type="button" class="reset-btn" onclick="resetExam()">🔄 Reset Exam</button>
+        </div>
+    </div>
+
+    <script>
+        // Exam questions data
+        const questions = [
+            // Domain 5: Memory & Tokens (9 questions)
+            {
+                id: 1,
+                domain: "Memory & Tokens",
+                question: "User says: 'I'm a senior backend engineer with 10 years Python experience.' What type of memory should this be saved as?",
+                options: [
+                    "FEEDBACK memory with Why and How to apply",
+                    "USER memory describing role and expertise",
+                    "PROJECT memory about current work",
+                    "REFERENCE memory for external resources"
+                ],
+                correct: 1,
+                explanation: "This is USER memory - describes who the user is (role, expertise level). No Why/How needed for user memories."
+            },
+            {
+                id: 2,
+                domain: "Memory & Tokens",
+                question: "User says: 'Don't use mocks for database tests - we got burned last quarter.' What type of memory?",
+                options: [
+                    "USER memory",
+                    "FEEDBACK memory with Why and How to apply",
+                    "PROJECT memory",
+                    "This should NOT be saved as memory"
+                ],
+                correct: 1,
+                explanation: "FEEDBACK memory - guidance on what to do/avoid. MUST include **Why:** (past incident) and **How to apply:**"
+            },
+            {
+                id: 3,
+                domain: "Memory & Tokens",
+                question: "What is the default line limit when using the Read tool without specifying a limit parameter?",
+                options: [
+                    "500 lines",
+                    "1000 lines",
+                    "2000 lines",
+                    "No limit - reads entire file"
+                ],
+                correct: 2,
+                explanation: "Read tool defaults to 2000 lines (~40K tokens) if no limit specified. Critical to know for optimization."
+            },
+            {
+                id: 4,
+                domain: "Memory & Tokens",
+                question: "You need to read the LAST 100 lines of a 10,000-line log file. Which Read parameters?",
+                options: [
+                    "Read(file_path='log.txt', limit=100)",
+                    "Read(file_path='log.txt', offset=9900, limit=100)",
+                    "Read(file_path='log.txt', offset=10000, limit=100)",
+                    "Read(file_path='log.txt', offset=-100)"
+                ],
+                correct: 1,
+                explanation: "offset=9900 starts at line 9900, limit=100 reads 100 lines = lines 9900-10000 (the end). offset is 0-indexed."
+            },
+            {
+                id: 5,
+                domain: "Memory & Tokens",
+                question: "Which Grep output_mode is most token-efficient for finding which files contain a pattern?",
+                options: [
+                    "output_mode='content'",
+                    "output_mode='count'",
+                    "output_mode='files_with_matches'",
+                    "All modes use the same tokens"
+                ],
+                correct: 2,
+                explanation: "files_with_matches returns only file paths (~10 tokens/file) vs content (~30 tokens/line). Most efficient."
+            },
+            {
+                id: 6,
+                domain: "Memory & Tokens",
+                question: "User explains: 'The auth.py module uses JWT tokens in the validate() function.' Should this be saved as memory?",
+                options: [
+                    "Yes, as USER memory",
+                    "Yes, as PROJECT memory",
+                    "Yes, as REFERENCE memory",
+                    "No, this is a code pattern - read the file instead"
+                ],
+                correct: 3,
+                explanation: "Code patterns should NOT be saved. They can be derived by reading files. Memory is for cross-session context."
+            },
+            {
+                id: 7,
+                domain: "Memory & Tokens",
+                question: "A memory says 'Use the refresh_token() function in auth.py.' What should you do BEFORE using it?",
+                options: [
+                    "Trust the memory and use it immediately",
+                    "Verify with Grep/Read that the function still exists",
+                    "Ask the user if it's still valid",
+                    "Delete the memory and start fresh"
+                ],
+                correct: 1,
+                explanation: "ALWAYS verify memory before using. Memory can become stale. Trust current state over memory."
+            },
+            {
+                id: 8,
+                domain: "Memory & Tokens",
+                question: "What's the default head_limit for Grep tool?",
+                options: [
+                    "50",
+                    "100",
+                    "250",
+                    "500"
+                ],
+                correct: 2,
+                explanation: "Grep default head_limit is 250. For content mode, this can be 7,500 tokens - always set explicitly."
+            },
+            {
+                id: 9,
+                domain: "Memory & Tokens",
+                question: "When should you use the Agent tool with subagent_type='Explore' instead of direct Grep/Read?",
+                options: [
+                    "For simple, targeted searches (1-2 operations)",
+                    "For reading a single specific file",
+                    "For broad exploration requiring multiple operations",
+                    "Never - always use direct tools"
+                ],
+                correct: 2,
+                explanation: "Agent tool isolates heavy exploration in separate context, returns summary (~500 tokens). Use for broad searches."
+            },
+
+            // Domain 1: Agentic Architecture (16 questions)
+            {
+                id: 10,
+                domain: "Agentic Architecture",
+                question: "What is the primary purpose of a reflection loop in an agent system?",
+                options: [
+                    "To retry failed operations",
+                    "To evaluate and improve agent's own outputs",
+                    "To run multiple agents in parallel",
+                    "To handle user interruptions"
+                ],
+                correct: 1,
+                explanation: "Reflection loops let agents evaluate their outputs and improve them before returning to user."
+            },
+            {
+                id: 11,
+                domain: "Agentic Architecture",
+                question: "In exponential backoff retry logic, what typically happens after each failed attempt?",
+                options: [
+                    "Wait time stays constant",
+                    "Wait time increases exponentially (2x, 4x, 8x...)",
+                    "Wait time decreases",
+                    "Retry immediately without waiting"
+                ],
+                correct: 1,
+                explanation: "Exponential backoff: wait 1s, 2s, 4s, 8s... Prevents overwhelming failing services."
+            },
+            {
+                id: 12,
+                domain: "Agentic Architecture",
+                question: "What is a hierarchical agent pattern?",
+                options: [
+                    "All agents run in parallel at same level",
+                    "Orchestrator agent delegates to specialized sub-agents",
+                    "Single agent handles all tasks sequentially",
+                    "Agents retry failed tasks indefinitely"
+                ],
+                correct: 1,
+                explanation: "Hierarchical: orchestrator coordinates specialized agents. Like manager delegating to team."
+            },
+            {
+                id: 13,
+                domain: "Agentic Architecture",
+                question: "What should an agent do when max_iterations is reached without success?",
+                options: [
+                    "Keep trying indefinitely",
+                    "Return partial results or failure status gracefully",
+                    "Crash with an error",
+                    "Restart from the beginning"
+                ],
+                correct: 1,
+                explanation: "Graceful failure: return what you accomplished + status. Prevents infinite loops."
+            },
+            {
+                id: 14,
+                domain: "Agentic Architecture",
+                question: "Which error type should typically trigger a retry?",
+                options: [
+                    "Invalid API key (authentication error)",
+                    "Network timeout or rate limit",
+                    "Invalid function parameters",
+                    "File not found"
+                ],
+                correct: 1,
+                explanation: "Retry transient failures (network, rate limits). Don't retry permanent failures (bad auth, invalid params)."
+            },
+            {
+                id: 15,
+                domain: "Agentic Architecture",
+                question: "In a tool calling loop, when should you break out of the loop?",
+                options: [
+                    "After exactly 5 iterations",
+                    "When model returns text_content (no more tool calls)",
+                    "After first tool call succeeds",
+                    "Never - always run fixed iterations"
+                ],
+                correct: 1,
+                explanation: "Break when model stops calling tools (returns text_content). Task is complete."
+            },
+            {
+                id: 16,
+                domain: "Agentic Architecture",
+                question: "What is the main benefit of parallel agent execution?",
+                options: [
+                    "Easier to debug",
+                    "Reduced total execution time",
+                    "Uses less memory",
+                    "Simpler code"
+                ],
+                correct: 1,
+                explanation: "Parallel execution: independent tasks run simultaneously, reducing total time."
+            },
+            {
+                id: 17,
+                domain: "Agentic Architecture",
+                question: "What should you include in agent error handling?",
+                options: [
+                    "Only log the error",
+                    "Context about what failed and why",
+                    "Ignore the error",
+                    "Retry indefinitely"
+                ],
+                correct: 1,
+                explanation: "Error context helps debugging: what operation, what input, what error, at what step."
+            },
+            {
+                id: 18,
+                domain: "Agentic Architecture",
+                question: "What is agent state persistence?",
+                options: [
+                    "Agents never save state",
+                    "Saving agent progress for resume after failure",
+                    "Running agents in parallel",
+                    "Agent memory system"
+                ],
+                correct: 1,
+                explanation: "State persistence: save progress so agent can resume if interrupted/fails."
+            },
+            {
+                id: 19,
+                domain: "Agentic Architecture",
+                question: "When is sequential agent execution preferred over parallel?",
+                options: [
+                    "Always use parallel",
+                    "When tasks are independent",
+                    "When later tasks depend on earlier results",
+                    "When tasks are simple"
+                ],
+                correct: 2,
+                explanation: "Sequential: when task B needs output from task A. Must wait for dependencies."
+            },
+            {
+                id: 20,
+                domain: "Agentic Architecture",
+                question: "What is a common cause of infinite loops in agent systems?",
+                options: [
+                    "Too many tools",
+                    "No max_iterations limit or improper break condition",
+                    "Using retries",
+                    "Parallel execution"
+                ],
+                correct: 1,
+                explanation: "Infinite loops: no max_iterations + no break condition = runs forever."
+            },
+            {
+                id: 21,
+                domain: "Agentic Architecture",
+                question: "What is the purpose of a router agent?",
+                options: [
+                    "Execute all tasks",
+                    "Route requests to appropriate specialized agents",
+                    "Store agent state",
+                    "Handle retries"
+                ],
+                correct: 1,
+                explanation: "Router: analyzes request, sends to right specialized agent."
+            },
+            {
+                id: 22,
+                domain: "Agentic Architecture",
+                question: "How should agents handle partial success?",
+                options: [
+                    "Treat as complete failure",
+                    "Return what succeeded + status of what failed",
+                    "Retry everything",
+                    "Ignore the failure"
+                ],
+                correct: 1,
+                explanation: "Partial success: return completed work + clear status of incomplete parts."
+            },
+            {
+                id: 23,
+                domain: "Agentic Architecture",
+                question: "What is idempotency in agent operations?",
+                options: [
+                    "Running faster each time",
+                    "Same operation repeated gives same result (safe to retry)",
+                    "Never repeating operations",
+                    "Random results"
+                ],
+                correct: 1,
+                explanation: "Idempotent: operation can be retried safely without side effects."
+            },
+            {
+                id: 24,
+                domain: "Agentic Architecture",
+                question: "When should you use jitter in retry logic?",
+                options: [
+                    "Never",
+                    "To prevent thundering herd problem (many retries at once)",
+                    "To make retries slower",
+                    "Only for read operations"
+                ],
+                correct: 1,
+                explanation: "Jitter: random variation in retry timing prevents all clients retrying simultaneously."
+            },
+            {
+                id: 25,
+                domain: "Agentic Architecture",
+                question: "What is circuit breaker pattern?",
+                options: [
+                    "Never retry failures",
+                    "Stop trying after consecutive failures to prevent cascade",
+                    "Retry immediately always",
+                    "Parallel execution"
+                ],
+                correct: 1,
+                explanation: "Circuit breaker: if service fails N times, stop trying temporarily. Prevents overwhelming broken service."
+            },
+
+            // Domain 2: Claude Code (12 questions)
+            {
+                id: 26,
+                domain: "Claude Code",
+                question: "Which tool should you use to read a file's contents?",
+                options: [
+                    "Bash with cat",
+                    "Read tool",
+                    "Grep tool",
+                    "Write tool"
+                ],
+                correct: 1,
+                explanation: "Use Read tool for reading files. Bash is for system commands only."
+            },
+            {
+                id: 27,
+                domain: "Claude Code",
+                question: "When should you use Edit tool vs Write tool?",
+                options: [
+                    "Always use Write",
+                    "Edit for modifying existing, Write for new files",
+                    "Always use Edit",
+                    "They're the same"
+                ],
+                correct: 1,
+                explanation: "Edit: modify existing files (just sends diff). Write: create new files."
+            },
+            {
+                id: 28,
+                domain: "Claude Code",
+                question: "What is a Claude Code skill?",
+                options: [
+                    "A built-in command",
+                    "User-defined reusable prompt workflow",
+                    "A debugging tool",
+                    "A type of agent"
+                ],
+                correct: 1,
+                explanation: "Skill: custom prompt workflow user can invoke with /skill-name."
+            },
+            {
+                id: 29,
+                domain: "Claude Code",
+                question: "What is a hook in Claude Code?",
+                options: [
+                    "A CLI command",
+                    "Shell command that runs on specific events",
+                    "A type of memory",
+                    "An agent loop"
+                ],
+                correct: 1,
+                explanation: "Hook: shell command triggered by events (UserPromptSubmit, etc)."
+            },
+            {
+                id: 30,
+                domain: "Claude Code",
+                question: "When should you use Glob tool?",
+                options: [
+                    "To search file contents",
+                    "To find files by name pattern",
+                    "To read files",
+                    "To execute commands"
+                ],
+                correct: 1,
+                explanation: "Glob: find files by pattern (*.py, **/*.ts). Fast pattern matching."
+            },
+            {
+                id: 31,
+                domain: "Claude Code",
+                question: "What does Grep tool do?",
+                options: [
+                    "Creates files",
+                    "Searches file contents for patterns",
+                    "Deletes files",
+                    "Finds files by name"
+                ],
+                correct: 1,
+                explanation: "Grep: search file CONTENTS for regex patterns."
+            },
+            {
+                id: 32,
+                domain: "Claude Code",
+                question: "Which tool for executing shell commands?",
+                options: [
+                    "Read",
+                    "Write",
+                    "Bash",
+                    "Edit"
+                ],
+                correct: 2,
+                explanation: "Bash tool: execute shell commands (git, npm, etc)."
+            },
+            {
+                id: 33,
+                domain: "Claude Code",
+                question: "What is a subagent in Claude Code?",
+                options: [
+                    "A background process",
+                    "Specialized agent spawned by main agent",
+                    "A hook",
+                    "A skill"
+                ],
+                correct: 1,
+                explanation: "Subagent: specialized agent (Explore, Plan, etc) with own tools/context."
+            },
+            {
+                id: 34,
+                domain: "Claude Code",
+                question: "When should you use Agent tool with subagent_type='Explore'?",
+                options: [
+                    "Reading single file",
+                    "Simple grep",
+                    "Broad codebase exploration",
+                    "Writing files"
+                ],
+                correct: 2,
+                explanation: "Explore agent: broad codebase search, multiple operations."
+            },
+            {
+                id: 35,
+                domain: "Claude Code",
+                question: "What's the purpose of Plan mode?",
+                options: [
+                    "Execute code",
+                    "Design implementation approach before coding",
+                    "Debug errors",
+                    "Create backups"
+                ],
+                correct: 1,
+                explanation: "Plan mode: design approach, get user approval before implementing."
+            },
+            {
+                id: 36,
+                domain: "Claude Code",
+                question: "Can Edit tool create new files?",
+                options: [
+                    "Yes, always",
+                    "No, only modifies existing files",
+                    "Only .txt files",
+                    "Only .md files"
+                ],
+                correct: 1,
+                explanation: "Edit: only for existing files. Use Write for new files."
+            },
+            {
+                id: 37,
+                domain: "Claude Code",
+                question: "What happens when you use Grep with no output_mode specified?",
+                options: [
+                    "Returns error",
+                    "Defaults to 'files_with_matches'",
+                    "Defaults to 'content'",
+                    "Returns nothing"
+                ],
+                correct: 1,
+                explanation: "Grep defaults to files_with_matches mode (just file paths)."
+            },
+
+            // Domain 3: Prompting (12 questions)
+            {
+                id: 38,
+                domain: "Prompting",
+                question: "What is chain-of-thought prompting?",
+                options: [
+                    "Multiple prompts in sequence",
+                    "Asking model to show reasoning step-by-step",
+                    "Using multiple tools",
+                    "Parallel execution"
+                ],
+                correct: 1,
+                explanation: "Chain-of-thought: model shows reasoning steps. 'Let's think step by step...'"
+            },
+            {
+                id: 39,
+                domain: "Prompting",
+                question: "What are few-shot examples in prompting?",
+                options: [
+                    "Showing the model example inputs and outputs",
+                    "Using few tokens",
+                    "Short prompts",
+                    "Multiple agents"
+                ],
+                correct: 0,
+                explanation: "Few-shot: provide examples of desired behavior. Model learns pattern."
+            },
+            {
+                id: 40,
+                domain: "Prompting",
+                question: "What is the purpose of XML tags in prompts?",
+                options: [
+                    "Make prompts longer",
+                    "Structure and organize different sections clearly",
+                    "Required for all prompts",
+                    "Only for HTML generation"
+                ],
+                correct: 1,
+                explanation: "XML tags: structure prompts clearly with sections."
+            },
+            {
+                id: 41,
+                domain: "Prompting",
+                question: "What is structured output?",
+                options: [
+                    "Any output",
+                    "Output in specific format like JSON or TypeScript types",
+                    "Long output",
+                    "Multiple responses"
+                ],
+                correct: 1,
+                explanation: "Structured output: request specific format (JSON, TypeScript types)."
+            },
+            {
+                id: 42,
+                domain: "Prompting",
+                question: "What's the benefit of asking for JSON output?",
+                options: [
+                    "Longer responses",
+                    "Easier to parse programmatically",
+                    "More tokens",
+                    "Slower responses"
+                ],
+                correct: 1,
+                explanation: "JSON: structured, easy to parse, type-safe."
+            },
+            {
+                id: 43,
+                domain: "Prompting",
+                question: "What is prompt caching?",
+                options: [
+                    "Saving prompts to disk",
+                    "Reusing unchanged prompt parts across requests",
+                    "Deleting prompts",
+                    "Writing prompts"
+                ],
+                correct: 1,
+                explanation: "Prompt caching: Claude reuses unchanged context. Reduces cost."
+            },
+            {
+                id: 44,
+                domain: "Prompting",
+                question: "What is system prompt vs user prompt?",
+                options: [
+                    "They're the same",
+                    "System sets behavior/role, user is the request",
+                    "Only system is used",
+                    "Only user is used"
+                ],
+                correct: 1,
+                explanation: "System: sets context/role. User: the actual request."
+            },
+            {
+                id: 45,
+                domain: "Prompting",
+                question: "What's prefill in prompting?",
+                options: [
+                    "Extra context",
+                    "Starting Claude's response with specific text",
+                    "Multiple prompts",
+                    "System message"
+                ],
+                correct: 1,
+                explanation: "Prefill: start Claude's response to guide format/tone."
+            },
+            {
+                id: 46,
+                domain: "Prompting",
+                question: "How can you make Claude respond in a specific format?",
+                options: [
+                    "Hope it guesses",
+                    "Show example format or use structured output",
+                    "Use more tokens",
+                    "Multiple prompts"
+                ],
+                correct: 1,
+                explanation: "Format control: show example or use structured output."
+            },
+            {
+                id: 47,
+                domain: "Prompting",
+                question: "What is role prompting?",
+                options: [
+                    "Multiple users",
+                    "Giving Claude a specific role/persona",
+                    "System commands",
+                    "Memory types"
+                ],
+                correct: 1,
+                explanation: "Role prompting: 'You are an expert...' Sets expertise level."
+            },
+            {
+                id: 48,
+                domain: "Prompting",
+                question: "Should prompts be verbose or concise?",
+                options: [
+                    "Always verbose with details",
+                    "Concise but clear with necessary context",
+                    "Single words only",
+                    "Doesn't matter"
+                ],
+                correct: 1,
+                explanation: "Concise + clear: include needed context, skip fluff."
+            },
+            {
+                id: 49,
+                domain: "Prompting",
+                question: "What's the benefit of breaking complex tasks in prompts?",
+                options: [
+                    "Uses more tokens",
+                    "Clearer sub-steps, easier to follow and debug",
+                    "Slower",
+                    "No benefit"
+                ],
+                correct: 1,
+                explanation: "Break complex into steps: clearer execution, easier debugging."
+            },
+
+            // Domain 4: Tools & MCP (11 questions)
+            {
+                id: 50,
+                domain: "Tools & MCP",
+                question: "What should a well-designed tool include?",
+                options: [
+                    "No description",
+                    "Clear description, input schema, and error handling",
+                    "Only input parameters",
+                    "No parameters"
+                ],
+                correct: 1,
+                explanation: "Good tool: description, input_schema, error handling, return format."
+            },
+            {
+                id: 51,
+                domain: "Tools & MCP",
+                question: "What is input validation in tool design?",
+                options: [
+                    "Skipping checks",
+                    "Checking parameters are correct type/format before use",
+                    "Only for strings",
+                    "Optional"
+                ],
+                correct: 1,
+                explanation: "Input validation: check params before execution. Prevents errors."
+            },
+            {
+                id: 52,
+                domain: "Tools & MCP",
+                question: "What does MCP stand for?",
+                options: [
+                    "Model Control Protocol",
+                    "Model Context Protocol",
+                    "Memory Context Protocol",
+                    "Model Code Protocol"
+                ],
+                correct: 1,
+                explanation: "MCP = Model Context Protocol. Standard for connecting AI to data sources."
+            },
+            {
+                id: 53,
+                domain: "Tools & MCP",
+                question: "What is an MCP server?",
+                options: [
+                    "Web server",
+                    "Service that exposes tools/resources via MCP protocol",
+                    "Database",
+                    "Agent"
+                ],
+                correct: 1,
+                explanation: "MCP server: exposes tools/resources to AI via standard protocol."
+            },
+            {
+                id: 54,
+                domain: "Tools & MCP",
+                question: "What should tools return on error?",
+                options: [
+                    "Nothing",
+                    "Clear error message with context",
+                    "Random data",
+                    "Crash"
+                ],
+                correct: 1,
+                explanation: "Error returns: clear message with context."
+            },
+            {
+                id: 55,
+                domain: "Tools & MCP",
+                question: "Should tools have side effects?",
+                options: [
+                    "Always",
+                    "Clearly documented if yes, avoided when possible",
+                    "Never document them",
+                    "Random side effects OK"
+                ],
+                correct: 1,
+                explanation: "Side effects: document clearly. User should know consequences."
+            },
+            {
+                id: 56,
+                domain: "Tools & MCP",
+                question: "What's the benefit of type schemas in tools?",
+                options: [
+                    "Slower execution",
+                    "Validation, better errors, clear expectations",
+                    "More code",
+                    "No benefit"
+                ],
+                correct: 1,
+                explanation: "Type schemas: validation, clear contracts, better errors."
+            },
+            {
+                id: 57,
+                domain: "Tools & MCP",
+                question: "Should tools do one thing or many things?",
+                options: [
+                    "One focused responsibility (single responsibility)",
+                    "Everything in one tool",
+                    "Random mix",
+                    "Doesn't matter"
+                ],
+                correct: 0,
+                explanation: "Single responsibility: one tool, one job. Easier to use."
+            },
+            {
+                id: 58,
+                domain: "Tools & MCP",
+                question: "What is tool discovery?",
+                options: [
+                    "Finding bugs",
+                    "System finding available tools and their capabilities",
+                    "Deleting tools",
+                    "Tool testing"
+                ],
+                correct: 1,
+                explanation: "Tool discovery: system learns what tools exist and their params."
+            },
+            {
+                id: 59,
+                domain: "Tools & MCP",
+                question: "How should tool descriptions be written?",
+                options: [
+                    "Very technical jargon",
+                    "Clear, concise, with example use case",
+                    "One word",
+                    "No description needed"
+                ],
+                correct: 1,
+                explanation: "Tool descriptions: clear purpose, when to use, example."
+            },
+            {
+                id: 60,
+                domain: "Tools & MCP",
+                question: "What is a resource in MCP?",
+                options: [
+                    "Memory",
+                    "Data that can be accessed (files, APIs, databases)",
+                    "CPU usage",
+                    "Token count"
+                ],
+                correct: 1,
+                explanation: "MCP resource: accessible data (files, DB, APIs)."
+            }
+        ];
+
+        let startTime;
+        let timerInterval;
+        let answersVisible = false;
+
+        // Initialize exam
+        function initExam() {
+            const form = document.getElementById('examForm');
+            questions.forEach(q => {
+                const questionDiv = document.createElement('div');
+                questionDiv.className = 'question';
+                questionDiv.innerHTML = `
+                    <div class="question-header">
+                        <span class="question-number">Question ${q.id}/60</span>
+                        <span class="domain-tag">${q.domain}</span>
+                    </div>
+                    <div class="question-text">${q.question}</div>
+                    <div class="options">
+                        ${q.options.map((opt, idx) => `
+                            <div class="option">
+                                <input type="radio" id="q${q.id}_${idx}" name="q${q.id}" value="${idx}">
+                                <label for="q${q.id}_${idx}">${String.fromCharCode(65 + idx)}) ${opt}</label>
+                            </div>
+                        `).join('')}
+                    </div>
+                    <div class="explanation" id="exp${q.id}"></div>
+                `;
+                form.appendChild(questionDiv);
+            });
+
+            startTimer();
+        }
+
+        // Timer
+        function startTimer() {
+            startTime = Date.now();
+            timerInterval = setInterval(() => {
+                const elapsed = Math.floor((Date.now() - startTime) / 1000);
+                const minutes = Math.floor(elapsed / 60);
+                const seconds = elapsed % 60;
+                document.getElementById('timer').textContent =
+                    `Time: ${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+            }, 1000);
+        }
+
+        // Submit exam
+        function submitExam() {
+            clearInterval(timerInterval);
+
+            let score = 0;
+            let answered = 0;
+            const byDomain = {};
+
+            questions.forEach(q => {
+                const selected = document.querySelector(`input[name="q${q.id}"]:checked`);
+                const expDiv = document.getElementById(`exp${q.id}`);
+
+                if (selected) {
+                    answered++;
+                    const selectedIdx = parseInt(selected.value);
+                    const isCorrect = selectedIdx === q.correct;
+
+                    if (isCorrect) {
+                        score++;
+                        expDiv.className = 'explanation show correct';
+                        expDiv.innerHTML = `
+                            <div class="explanation-title correct-answer">✅ Correct!</div>
+                            <div><strong>Answer:</strong> ${String.fromCharCode(65 + q.correct)}) ${q.options[q.correct]}</div>
+                            <div><strong>Explanation:</strong> ${q.explanation}</div>
+                        `;
+                    } else {
+                        expDiv.className = 'explanation show incorrect';
+                        expDiv.innerHTML = `
+                            <div class="explanation-title incorrect-answer">❌ Incorrect</div>
+                            <div><strong>Your answer:</strong> ${String.fromCharCode(65 + selectedIdx)}) ${q.options[selectedIdx]}</div>
+                            <div><strong>Correct answer:</strong> ${String.fromCharCode(65 + q.correct)}) ${q.options[q.correct]}</div>
+                            <div><strong>Explanation:</strong> ${q.explanation}</div>
+                        `;
+                    }
+
+                    // Track by domain
+                    if (!byDomain[q.domain]) {
+                        byDomain[q.domain] = { correct: 0, total: 0 };
+                    }
+                    byDomain[q.domain].total++;
+                    if (isCorrect) byDomain[q.domain].correct++;
+                } else {
+                    if (!byDomain[q.domain]) {
+                        byDomain[q.domain] = { correct: 0, total: 0 };
+                    }
+                    byDomain[q.domain].total++;
+                }
+            });
+
+            const percentage = (score / 60) * 100;
+            const passed = percentage >= 70;
+
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.className = `results show ${passed ? 'pass' : 'fail'}`;
+            resultsDiv.innerHTML = `
+                <h2>${passed ? '🎉 CONGRATULATIONS!' : '📚 KEEP STUDYING'}</h2>
+                <div class="score">${score}/60</div>
+                <div class="percentage">${percentage.toFixed(1)}%</div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: ${percentage}%">${percentage.toFixed(0)}%</div>
+                </div>
+                <div><strong>Status:</strong> ${passed ? 'PASS ✅' : 'FAIL ❌'}</div>
+                <div><strong>Passing Score:</strong> 70% (42/60)</div>
+                <div><strong>Answered:</strong> ${answered}/60 questions</div>
+
+                <div class="domain-breakdown">
+                    <h3>📊 Score by Domain</h3>
+                    ${Object.entries(byDomain).map(([domain, stats]) => {
+                        const domainPct = (stats.correct / stats.total * 100).toFixed(0);
+                        const status = domainPct >= 70 ? '✅' : domainPct >= 60 ? '⚠️' : '❌';
+                        return `
+                            <div class="domain-score">
+                                <span>${status} ${domain}</span>
+                                <span>${stats.correct}/${stats.total} (${domainPct}%)</span>
+                            </div>
+                        `;
+                    }).join('')}
+                </div>
+            `;
+
+            resultsDiv.scrollIntoView({ behavior: 'smooth' });
+            answersVisible = true;
+        }
+
+        // Toggle all answers
+        function toggleAnswers() {
+            answersVisible = !answersVisible;
+            questions.forEach(q => {
+                const expDiv = document.getElementById(`exp${q.id}`);
+                const selected = document.querySelector(`input[name="q${q.id}"]:checked`);
+
+                if (answersVisible) {
+                    if (!selected) {
+                        expDiv.className = 'explanation show';
+                        expDiv.innerHTML = `
+                            <div class="explanation-title">💡 Answer</div>
+                            <div><strong>Correct answer:</strong> ${String.fromCharCode(65 + q.correct)}) ${q.options[q.correct]}</div>
+                            <div><strong>Explanation:</strong> ${q.explanation}</div>
+                        `;
+                    }
+                } else {
+                    if (!selected) {
+                        expDiv.className = 'explanation';
+                        expDiv.innerHTML = '';
+                    }
+                }
+            });
+
+            document.querySelector('.show-answers-btn').textContent =
+                answersVisible ? '🙈 Hide Answers' : '👁️ Show All Answers';
+        }
+
+        // Reset exam
+        function resetExam() {
+            if (confirm('Are you sure you want to reset the exam? This will clear all your answers.')) {
+                document.getElementById('examForm').reset();
+                document.getElementById('results').className = 'results';
+                questions.forEach(q => {
+                    const expDiv = document.getElementById(`exp${q.id}`);
+                    expDiv.className = 'explanation';
+                    expDiv.innerHTML = '';
+                });
+                answersVisible = false;
+                document.querySelector('.show-answers-btn').textContent = '👁️ Show All Answers';
+                clearInterval(timerInterval);
+                startTimer();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+
+        // Initialize on load
+        window.onload = initExam;
+    </script>
+</body>
+</html>

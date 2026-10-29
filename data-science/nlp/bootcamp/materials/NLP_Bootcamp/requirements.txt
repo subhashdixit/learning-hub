@@ -1,0 +1,16 @@
+pandas
+numpy
+flask
+matplotlib
+seaborn
+folium
+scikit-learn
+plotly
+nbformat==4.2.0
+xgboost
+statsmodels
+ipykernel
+nltk
+spacy
+inflect
+tensorflow==2.5.0

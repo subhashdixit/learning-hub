@@ -1,0 +1,11 @@
+pandas
+numpy
+flask
+matplotlib
+seaborn
+folium
+scikit-learn
+plotly
+nbformat==4.2.0
+xgboost
+statsmodels
