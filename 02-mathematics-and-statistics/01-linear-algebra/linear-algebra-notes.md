@@ -2,7 +2,7 @@
 
 Readable notes from my handwritten notebook, in simple language.
 
-[Mathematics and Statistics](../README.md) · [Original handwritten PDF](Linear%20Algebra%20%26%20Matrices.pdf)
+[Mathematics and Statistics](../README.md) · [Original handwritten PDF](archive/Linear%20Algebra%20%26%20Matrices.pdf)
 
 **How to read:** Follow the sections in order. The examples come from the handwritten notes. Short explanations labelled **Extra explanation** are added to make the ideas easier to follow. **Correction** boxes identify mathematical slips in the original; the PDF is unchanged. Page references use the PDF's page order, 1 to 38.
 
@@ -48,6 +48,10 @@ We draw a vector as an arrow. The start is its **tail**, the end is its **head**
 | Unlike vectors | Point in opposite directions; lengths can differ. |
 
 **Clarification:** A zero vector does not have a unique direction. The statement “a vector has magnitude and direction” needs this exception.
+
+### Why vectors matter in data science
+
+A row such as `(age, income, purchases)` is a feature vector for one customer. Each coordinate is one feature. A model receives these coordinates together, rather than treating the customer as one number. Features have different units, so their raw vector length may not be meaningful until we choose suitable scaling.
 
 ## 2. Vector addition and subtraction
 
@@ -171,6 +175,10 @@ $$
 
 Their unit directions from the origin are $(2,7)/\sqrt{53}$ and $(5,3)/\sqrt{34}$. These are different from the direction of the displacement $B-A$.
 
+### Use in data science: distance and scaling
+
+Distance helps us compare samples in clustering and nearest-neighbour methods. A feature measured in thousands can dominate one measured between 0 and 1. Scaling changes that comparison. **Standardizing features** and **normalizing each vector to unit length** are different operations; choose according to the task.
+
 ## 4. Dot product and projection
 
 *Original: pages 6-8; recap on pages 29-30.*
@@ -254,6 +262,10 @@ Page 7 also lists $\vec a=(3,4,7)$, $\vec b=(7,0,3)$, and an angle of $30^\circ$
 
 > **Correction:** The listed components imply $\vec a^T\vec b=42$ and an angle of approximately $50.13^\circ$, not $30^\circ$. For those components, $\|\vec a+\vec b\|=\sqrt{216}=6\sqrt6$. If $30^\circ$ was intended, the vector components need changing.
 
+### Use in data science: weighted scores and similarity
+
+A linear model calculates a score using a dot product: $s=\vec w^T\vec x+b$. Features with larger matching weights contribute more to the score. For nonzero vectors, dividing the dot product by both lengths gives **cosine similarity**: it compares direction rather than overall size, which is useful for text embeddings.
+
 ## 5. Vector norms
 
 *Original: page 8.*
@@ -278,6 +290,10 @@ The notes connect these to controlling overfitting:
 - **Ridge:** uses a squared L2 penalty on model coefficients.
 
 **Extra explanation:** The L2 norm is a square root; the usual ridge penalty is its square. They are closely related but are not the same expression.
+
+### Why the penalty matters
+
+Very large model coefficients can make predictions sensitive to small input changes. Regularization discourages large coefficients. L1 can make some coefficients exactly zero; L2 usually shrinks coefficients without making them exactly zero. The penalty strength balances fitting the training data against keeping coefficients small.
 
 ## 6. Changing coordinates
 
@@ -417,6 +433,10 @@ Page 30 asks us to find a basis from a list of four-component vectors. The readi
 **Handwriting check:** A few digits in this exercise are less clear than in the rest of the document, especially the first entry of $v_3$ and the first entry of $v_7$. Check this table against page 30 before using it as an answer key.
 
 To solve the exercise, place the vectors into matrix columns, find pivot columns by row reduction, and take the corresponding **original** columns as a basis for the column space. Using the readings above, the matrix has rank 4. The handwritten suggestion of rank 2 should not be treated as a general rule: the number of basis vectors equals the actual dimension of the span.
+
+### Use in data science: redundant information
+
+If `distance_metres = 1000 × distance_kilometres`, those two feature columns are dependent: the second does not add a new linear direction. Dependence can make regression coefficients non-unique. A basis keeps enough independent directions to describe the same span. This is linear independence, not statistical independence.
 
 ## 8. Matrices and linear transformations
 
@@ -589,6 +609,10 @@ $$
 
 Remember to **reverse the order** when transposing a product.
 
+### Use in data science: many predictions at once
+
+With samples in the rows of $X$ and feature weights in $\vec w$, $X\vec w$ calculates a score for every sample in one operation. For $X$ of shape $100\times3$ and $\vec w$ of shape $3\times1$, the result is $100\times1$. Checking shapes is a simple way to catch model-code mistakes.
+
 ## 10. Rank, null space and nullity
 
 *Original: pages 19-22.*
@@ -680,6 +704,10 @@ This says $-2\times\text{column 1}+\text{column 2}=0$.
 The intermediate matrix on page 21 with rows $(1,2,3)$, $(2,3,4)$, and $(5,6,7)$ illustrates the same idea: it has the dependence “column 1 - 2 column 2 + column 3 = 0”, rank 2, and nullity 1.
 
 **Extra explanation:** Numerical rank depends on tolerance when columns are nearly dependent. In NumPy, `np.linalg.matrix_rank(A)` estimates rank using singular values.
+
+### What low rank tells us
+
+Low rank means some columns can be reconstructed from others. Near-dependence can also make fitted coefficients unstable: small data changes may cause large coefficient changes. It is a reason to inspect redundant features or consider regularization, not a rule to delete every correlated feature automatically.
 
 ## 11. Solving linear equations
 
@@ -916,6 +944,10 @@ It gives the minimum-norm least-squares solution, including rank-deficient cases
 
 **Extra explanation - practical Python:** Use `np.linalg.solve` for a suitable square system, `np.linalg.lstsq` for least squares, or `np.linalg.pinv` for a pseudoinverse. Explicitly forming $(A^TA)^{-1}$ is useful for understanding the derivation but is usually not the best numerical implementation.
 
+### Connection to linear regression
+
+In regression, $A$ is the design matrix, $\vec x$ contains fitted coefficients, and $\vec b$ contains observed targets. Least squares chooses coefficients that minimize squared prediction errors on the supplied data. A smaller training error does not by itself mean better predictions on new data; evaluate on held-out data too.
+
 ## 13. Projection onto a subspace
 
 *Original: pages 31-32.*
@@ -979,6 +1011,10 @@ The projected vector still has **three coordinates**, but lies in a **two-dimens
 $$
 \hat{\vec x}=V(V^TV)^{-1}V^T\vec x.
 $$
+
+### Why projection is useful
+
+Projection keeps the part of a vector explained by a chosen subspace; the residual is the part left out. In least-squares regression, the fitted target vector is the projection of the observed targets onto the design matrix's column space. In dimensionality reduction, the chosen subspace provides a shorter description of each sample.
 
 ## 14. Lines, planes, hyperplanes and halfspaces
 
@@ -1068,6 +1104,10 @@ So the sign comes from the angle between the normal and the **displacement from 
 The angle between two vectors is conventionally in $[0^\circ,180^\circ]$: acute gives positive cosine, obtuse gives negative cosine. The full-circle diagram on page 35 expresses the same cosine-sign idea using directed angles.
 
 **Clarification:** We may reverse the normal, but must also reverse $b$: $(\vec w,b)$ and $(-\vec w,-b)$ describe the same boundary and swap positive/negative side labels. A normal cannot point in an arbitrary direction; it must remain perpendicular to the boundary.
+
+### Use in data science: decision boundaries
+
+A linear classifier uses the sign of a score such as $\vec w^T\vec x+b$ to separate two sides of a boundary. The weights control its orientation and the intercept shifts it. For example, changing $b$ moves the boundary without changing its normal direction. The score itself is not automatically a probability.
 
 ## 15. Eigenvalues and eigenvectors
 
@@ -1202,6 +1242,10 @@ There is one zero eigenvalue: nullity = 1 and rank = 2. The last two eigenvector
 
 **Extra explanation:** Symmetric matrices matter in data science because covariance matrices are symmetric. Their eigenvectors describe principal directions; this connects to PCA.
 
+### How this connects to PCA
+
+For a covariance matrix, eigenvectors give directions of variation and eigenvalues give the variance along those directions. PCA keeps directions with larger eigenvalues and projects data onto them. This can reduce the number of features while retaining more variation. The highest-variance directions are not necessarily the most useful for predicting a particular target.
+
 ## 16. Quick revision
 
 | Concept | Remember it this way |
@@ -1242,7 +1286,7 @@ There is one zero eigenvalue: nullity = 1 and rank = 2. The last two eigenvector
 
 ## 17. Original-page reading map and corrections
 
-Use this if you want to compare the Markdown with the [original 38-page notebook](Linear%20Algebra%20%26%20Matrices.pdf). Repeated recap material is combined above rather than copied twice.
+Use this if you want to compare the Markdown with the [original 38-page notebook](archive/Linear%20Algebra%20%26%20Matrices.pdf). Repeated recap material is combined above rather than copied twice.
 
 | PDF pages | Where the content appears |
 |---|---|

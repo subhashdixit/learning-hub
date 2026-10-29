@@ -12,7 +12,7 @@ Read linear algebra and statistics notes, then explore practical notebooks.
 
 ## Readable linear algebra notes
 
-[Read the typed notes with worked examples and diagrams](01-linear-algebra/linear-algebra-notes.md). The original handwritten PDF is also available below.
+[Read the typed notes with worked examples and diagrams](01-linear-algebra/linear-algebra-notes.md). The original handwritten PDF is kept in the linear algebra archive and linked below.
 
 ## Open the learning material
 
@@ -20,7 +20,7 @@ All links below open files inside this hub.
 
 | # | Material | Format |
 |---|---|---|
-| 1 | [Linear Algebra & Matrices](01-linear-algebra/Linear%20Algebra%20%26%20Matrices.pdf) | PDF |
+| 1 | [Linear Algebra & Matrices](01-linear-algebra/archive/Linear%20Algebra%20%26%20Matrices.pdf) | PDF |
 | 2 | [Central Limit Theorem](02-statistics-practicals/Central_Limit_Theorem.ipynb) | IPYNB |
 | 3 | [Complete Statistics With Code](02-statistics-practicals/Complete_Statistics_With_Code.pdf) | PDF |
 | 4 | [Correlation](02-statistics-practicals/Correlation.ipynb) | IPYNB |
