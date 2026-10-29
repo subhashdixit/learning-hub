@@ -1,30 +1,5 @@
-# 09 — Git, Docker and Deployment
+# 09 — Git Docker And Deployment
 
-[All learning paths](../README.md)
+[Open the subject: theory, practicals and questions](../09-git-docker-and-deployment/README.md)
 
-Use Git notes, Docker examples, and cloud deployment documents.
-
-## Read in this order
-
-1. [Docker](../09-git-docker-and-deployment/02-docker/README.md)
-2. [Streamlit](../09-git-docker-and-deployment/03-streamlit/README.md)
-3. [Cloud Deployment](../09-git-docker-and-deployment/04-cloud-deployment/README.md)
-
-## Open the learning material
-
-All links below open files inside this hub.
-
-| # | Material | Format |
-|---|---|---|
-| 1 | [app](../09-git-docker-and-deployment/02-docker/Hello_World/app.py) | PY |
-| 2 | [test](../09-git-docker-and-deployment/02-docker/Hello_World/test.py) | PY |
-| 3 | [app](../09-git-docker-and-deployment/03-streamlit/app.py) | PY |
-| 4 | [AWS](../09-git-docker-and-deployment/04-cloud-deployment/AWS.docx) | DOCX |
-| 5 | [Azure](../09-git-docker-and-deployment/04-cloud-deployment/Azure.docx) | DOCX |
-| 6 | [Heroku](../09-git-docker-and-deployment/04-cloud-deployment/Heroku.docx) | DOCX |
-
-## Continue learning
-
-[← 08 — Data Engineering](../08-data-engineering/README.md)
-
-[10 — Economics and Finance →](../10-economics-and-finance/README.md)
+[All learning paths](README.md)

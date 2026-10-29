@@ -21,12 +21,14 @@ Click a subject to see its documents immediately. Every lesson link stays inside
 
 ## How to use this hub
 
-1. Open **01 — Python and Programming**. Read the full notebook or choose a topic such as data types, variables, operators or loops.
-2. Open practice questions and solutions from that same page.
-3. Continue with the next numbered subject when ready.
-4. Use GitHub search to find a term or filename across the library.
+1. Choose a numbered subject and open **Theory**. Read its visual chapters in order.
+2. Open **Practicals** to run the examples and work with the original notebooks, code and datasets.
+3. Open **Questions and Answers**. Try each problem before checking its answer.
+4. Continue to the next subject. Each main subject has the same simple layout.
 
-Data engineering and tools are parallel subjects you can study earlier as needed. Interview revision can accompany any stage.
+The main chapters explain concepts in plain language with diagrams, worked calculations and practical uses. Shared foundations are linked rather than repeated in every subject. Original handwritten PDFs are preserved in each subject's **archive**. The archive is for reference; it is not required to follow the main learning sequence.
+
+Data engineering and development tools can be studied earlier when a project needs them. Use interview preparation alongside any stage.
 
 ## Adding future learning material
 

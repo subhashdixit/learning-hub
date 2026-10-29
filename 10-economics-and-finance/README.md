@@ -1,25 +1,19 @@
-# 10 — Economics and Finance
+# 10 — Economics And Finance
 
-[All learning paths](../README.md)
+[Learning Hub](../README.md)
 
-Read economics notes and the Python finance practical.
+Learn the ideas, try them, then check your understanding.
 
-## Read in this order
-
-1. [Economics](01-economics/README.md)
-2. [Finance With Python](02-finance-with-python/README.md)
-
-## Open the learning material
-
-All links below open files inside this hub.
-
-| # | Material | Format |
+| Order | Open | What to do |
 |---|---|---|
-| 1 | [Unit 1  Basic economics concepts](01-economics/Macroeconomics/Unit%201_%20Basic%20economics%20concepts.pdf) | PDF |
-| 2 | [Mean Reversion Trading Strategy Using Python](02-finance-with-python/Mean_Reversion_Trading_Strategy_Using_Python.ipynb) | IPYNB |
+| 1 | [Theory](01-theory/README.md) | Read the visual chapters in sequence. |
+| 2 | [Practicals](02-practicals/README.md) | Run examples and work with the existing datasets/projects. |
+| 3 | [Questions and answers](03-questions-and-answers/README.md) | Attempt first, then check the explanation or original solution. |
 
-## Continue learning
+## Read the chapters
 
-[← 09 — Git, Docker and Deployment](../09-git-docker-and-deployment/README.md)
+1. [Economics, measurement, returns and backtesting](01-theory/01-economics-and-finance.md)
 
-[11 — Interview Preparation →](../11-interview-preparation/README.md)
+[Original notes and references](archive/README.md)
+
+[← Previous subject](../09-git-docker-and-deployment/README.md) · [Next subject →](../11-interview-preparation/README.md)

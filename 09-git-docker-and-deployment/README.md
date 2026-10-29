@@ -1,30 +1,19 @@
-# 09 — Git, Docker and Deployment
+# 09 — Git Docker And Deployment
 
-[All learning paths](../README.md)
+[Learning Hub](../README.md)
 
-Use Git notes, Docker examples, and cloud deployment documents.
+Learn the ideas, try them, then check your understanding.
 
-## Read in this order
-
-1. [Docker](02-docker/README.md)
-2. [Streamlit](03-streamlit/README.md)
-3. [Cloud Deployment](04-cloud-deployment/README.md)
-
-## Open the learning material
-
-All links below open files inside this hub.
-
-| # | Material | Format |
+| Order | Open | What to do |
 |---|---|---|
-| 1 | [app](02-docker/Hello_World/app.py) | PY |
-| 2 | [test](02-docker/Hello_World/test.py) | PY |
-| 3 | [app](03-streamlit/app.py) | PY |
-| 4 | [AWS](04-cloud-deployment/AWS.docx) | DOCX |
-| 5 | [Azure](04-cloud-deployment/Azure.docx) | DOCX |
-| 6 | [Heroku](04-cloud-deployment/Heroku.docx) | DOCX |
+| 1 | [Theory](01-theory/README.md) | Read the visual chapters in sequence. |
+| 2 | [Practicals](02-practicals/README.md) | Run examples and work with the existing datasets/projects. |
+| 3 | [Questions and answers](03-questions-and-answers/README.md) | Attempt first, then check the explanation or original solution. |
 
-## Continue learning
+## Read the chapters
 
-[← 08 — Data Engineering](../08-data-engineering/README.md)
+1. [Git, Docker, applications and deployment](01-theory/01-deployment.md)
 
-[10 — Economics and Finance →](../10-economics-and-finance/README.md)
+[Original notes and references](archive/README.md)
+
+[← Previous subject](../08-data-engineering/README.md) · [Next subject →](../10-economics-and-finance/README.md)
