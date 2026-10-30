@@ -21,3 +21,14 @@ Historical notebook applications, cloud deployment, Spark sessions, external ser
 - Checked local links across authored hub Markdown, course math/fence syntax, worked arithmetic and every new lab. Original PDFs remain intact in archive. Historical imported notebooks were preserved, not all re-executed.
 
 - Parsed all 335 course math expressions with KaTeX and all 46 Mermaid diagrams with Mermaid; no syntax errors. Checked the PCA chapter through GitHub's Markdown renderer. Inspected a contact sheet of the plotted figures.
+
+
+## Remaining-subject expansion — 2026-10-30
+
+- Added 78 ordered lessons across eleven subjects, approximately 25,000 words, 234 answered lesson questions, 40 executable Python problems and 20 worked SQLite queries. The existing 40-lesson ML course remains unchanged.
+- Added 26 static plots, 89 Mermaid diagrams and 3 animations across those subjects; retained previous detailed visual guides and source materials.
+- All eleven standard-library guided labs, 40 Python solutions, 20 SQLite query cases, 12 inline Python lesson examples and 5 inline SQL examples executed successfully.
+- All 1,036 original imported files matched the migration manifest SHA-256 hashes. Original handwritten PDFs remain in archive. No source repository was deleted.
+- Checked 504 authored Markdown pages for local links with no missing targets. Parsed 97 new/authored-page math expressions with KaTeX and 89 diagrams with Mermaid without syntax errors. Inspected the new figures as a contact sheet and refined the Python object-reference diagram.
+- Historical imported notebooks were retained; this check does not claim to have re-executed every notebook or a full cloud/Spark/LLM deployment. New AI/deployment labs clearly identify their local simulations.
+- Detailed outputs: `.maintenance/expansion-validation.json` and `.maintenance/expansion-render-validation.json`.

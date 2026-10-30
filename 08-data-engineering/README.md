@@ -2,18 +2,20 @@
 
 [Learning Hub](../README.md)
 
-Learn the ideas, try them, then check your understanding.
+**Learn in order:** Sources → Contracts → Ingestion → Storage → Transform → Orchestrate → Observe
 
-| Order | Open | What to do |
-|---|---|---|
-| 1 | [Theory](01-theory/README.md) | Read the visual chapters in sequence. |
-| 2 | [Practicals](02-practicals/README.md) | Run examples and work with the existing datasets/projects. |
-| 3 | [Questions and answers](03-questions-and-answers/README.md) | Attempt first, then check the explanation or original solution. |
+```mermaid
+flowchart LR
+ N0["Read theory"] --> N1["Recalculate examples"] --> N2["Run practicals"] --> N3["Answer questions"] --> N4["Apply to a small case"]
+```
 
-## Read the chapters
+| Section | What to do |
+|---|---|
+| [01 — Theory](01-theory/README.md) | 6 numbered lessons, analogies, diagrams and worked examples; extended guides for more detail |
+| [02 — Practicals](02-practicals/README.md) | New runnable lab plus preserved notebooks, exercises and assignments |
+| [03 — Questions and answers](03-questions-and-answers/README.md) | 18 explained answers in course order |
+| [Archive](archive/README.md) | Original reference documents and handwritten PDFs |
 
-1. [Reliable data pipelines and PySpark](01-theory/01-data-engineering.md)
+Start with the first theory lesson. Predict code output or calculate the result before running/checking it. Keep an error log and revisit the specific concept when an answer is wrong. Examples use simplified or synthetic data unless stated otherwise. Original material is preserved; some historical notebooks may require their own datasets or older dependencies.
 
-[Original notes and references](archive/README.md)
-
-[← Previous subject](../07-ai-engineering-and-development-tools/README.md) · [Next subject →](../09-git-docker-and-deployment/README.md)
+[← Ai Engineering And Development Tools](../07-ai-engineering-and-development-tools/README.md) · [Git Docker And Deployment →](../09-git-docker-and-deployment/README.md)

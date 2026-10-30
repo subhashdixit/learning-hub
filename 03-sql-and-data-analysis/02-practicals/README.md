@@ -9,3 +9,7 @@ Create the four-row orders table from SQL theory and solve the SQL questions. Th
 | [exploratory data analysis](exploratory-data-analysis/README.md) | Collection |
 | [practice datasets](practice-datasets/README.md) | Collection |
 | [sql lessons](sql-lessons/README.md) | Collection |
+
+## New guided practical
+
+[Open the runnable lab, expected results and extension tasks](guided-lab/README.md). It is self-contained and uses local/synthetic data; original notebooks and assignments above remain available.

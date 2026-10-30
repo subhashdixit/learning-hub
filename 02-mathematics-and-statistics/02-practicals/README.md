@@ -7,3 +7,7 @@ Compute a mean, sample variance and confidence interval by hand, then compare wi
 | Material | Format |
 |---|---|
 | [statistics](statistics/README.md) | Collection |
+
+## New guided practical
+
+[Open the runnable lab, expected results and extension tasks](guided-lab/README.md). It is self-contained and uses local/synthetic data; original notebooks and assignments above remain available.

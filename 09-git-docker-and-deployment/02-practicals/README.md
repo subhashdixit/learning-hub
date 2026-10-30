@@ -10,3 +10,7 @@ Inspect the hello-world entry point and Dockerfile, then trace how the Streamlit
 | [docker](docker/README.md) | Collection |
 | [git and github](git-and-github/README.md) | Collection |
 | [streamlit](streamlit/README.md) | Collection |
+
+## New guided practical
+
+[Open the runnable lab, expected results and extension tasks](guided-lab/README.md). It is self-contained and uses local/synthetic data; original notebooks and assignments above remain available.

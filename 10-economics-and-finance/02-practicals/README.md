@@ -8,3 +8,7 @@ Read the economics material, then inspect the mean-reversion notebook. Mark ever
 |---|---|
 | [economics](economics/README.md) | Collection |
 | [finance with python](finance-with-python/README.md) | Collection |
+
+## New guided practical
+
+[Open the runnable lab, expected results and extension tasks](guided-lab/README.md). It is self-contained and uses local/synthetic data; original notebooks and assignments above remain available.

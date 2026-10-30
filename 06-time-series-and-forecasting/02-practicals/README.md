@@ -8,3 +8,7 @@ Open a forecasting notebook, identify frequency and horizon, and compare its res
 |---|---|
 | [concepts and practicals](concepts-and-practicals/README.md) | Collection |
 | [forecasting case studies](forecasting-case-studies/README.md) | Collection |
+
+## New guided practical
+
+[Open the runnable lab, expected results and extension tasks](guided-lab/README.md). It is self-contained and uses local/synthetic data; original notebooks and assignments above remain available.

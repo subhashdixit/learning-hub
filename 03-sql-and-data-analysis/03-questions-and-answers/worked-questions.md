@@ -1,114 +1,278 @@
-# SQL practical questions: basics, windows and business cases
+# SQL and Data Analysis — questions and worked answers
 
-[Subject home](../README.md) · [Theory](../01-theory/README.md)
+[Subject home](../README.md) · [Theory map](../01-theory/README.md) · [Practicals](../02-practicals/README.md)
 
-Use the table creation and four-row dataset in the SQL theory guide. These answers run in SQLite; each has a specific expected result. Solve first, then open the answer.
+Try each answer first, then expand the explanation. Questions follow the lesson order. Programming and SQL practice sets include additional runnable solutions in Practicals.
 
-## Easy 1. What is total revenue?
+- [01 — Tables, grain, keys, types and SELECT](#lesson-01)
+- [02 — Filters, NULL, CASE, strings and dates](#lesson-02)
+- [03 — GROUP BY, HAVING, conditional aggregation and weighted metrics](#lesson-03)
+- [04 — Joins, EXISTS, subqueries, CTEs and set operations](#lesson-04)
+- [05 — Windows, ranking, running totals and session patterns](#lesson-05)
+- [06 — Data modelling, indexes, transactions and query plans](#lesson-06)
+- [07 — EDA, missingness, duplicates and evidence quality](#lesson-07)
+- [08 — Cohorts, funnels, experiments and analytical communication](#lesson-08)
 
-<details><summary>Answer</summary>
+<a id="lesson-01"></a>
 
-```sql
-SELECT SUM(amount) AS revenue FROM orders;
-```
+## 01 — Tables, grain, keys, types and SELECT
 
-Expected: 530.
+[Read the lesson](../01-theory/lesson-01-relational-foundations.md)
+
+### Q001. What is table grain?
+
+<details>
+<summary>Answer</summary>
+
+The real-world unit represented by one row, such as an order or an order line.
+
 </details>
 
-## Easy 2. Which customers ordered more than once?
+### Q002. Why add a tie-breaker to ORDER BY?
 
-<details><summary>Answer</summary>
+<details>
+<summary>Answer</summary>
 
-```sql
-SELECT customer_id, COUNT(*) AS order_count
-FROM orders GROUP BY customer_id HAVING COUNT(*) > 1;
-```
+To make equal-key output order deterministic where the task requires it.
 
-Expected: customer 101, 2 orders.
 </details>
 
-## Medium 3. Return the largest order in each region
+### Q003. Does a foreign key automatically prevent every bad business record?
 
-<details><summary>Answer</summary>
+<details>
+<summary>Answer</summary>
 
-```sql
-WITH ranked AS (
- SELECT *, ROW_NUMBER() OVER (
-  PARTITION BY region ORDER BY amount DESC, order_id
- ) AS rn FROM orders
-)
-SELECT order_id, region, amount FROM ranked WHERE rn = 1 ORDER BY region;
-```
+No. It checks a relationship, not all ranges, timing rules or business meaning.
 
-Expected: East order 2 (200), West order 3 (80). This selects one winner; `DENSE_RANK` on amount alone keeps all ties.
 </details>
 
-## Medium 4. Find each customer's previous order amount
+<a id="lesson-02"></a>
 
-<details><summary>Answer</summary>
+## 02 — Filters, NULL, CASE, strings and dates
 
-```sql
-SELECT order_id, customer_id, amount,
- LAG(amount) OVER (
-  PARTITION BY customer_id ORDER BY order_date, order_id
- ) AS previous_amount
-FROM orders ORDER BY order_id;
-```
+[Read the lesson](../01-theory/lesson-02-filters-and-null.md)
 
-Expected: previous amounts NULL, 100, NULL, NULL. Do not replace the first missing predecessor with a fabricated order.
+### Q004. Why is amount=NULL wrong?
+
+<details>
+<summary>Answer</summary>
+
+Equality with unknown does not establish true; use IS NULL.
+
 </details>
 
-## Business case 5. Calculate East's revenue share
+### Q005. COUNT(*) versus COUNT(amount)?
 
-<details><summary>Answer</summary>
+<details>
+<summary>Answer</summary>
 
-```sql
-SELECT 1.0 * SUM(CASE WHEN region = 'East' THEN amount ELSE 0 END)
-       / NULLIF(SUM(amount), 0) AS east_share
-FROM orders;
-```
+The first counts rows; the second only rows where amount is not NULL.
 
-Expected: 450/530 ≈ 0.849057. The denominator is all qualifying order revenue; change it if the business definition differs.
 </details>
 
-## Business case 6. Calculate monthly revenue growth
+### Q006. Why can NOT IN fail with NULL?
 
-<details><summary>Answer</summary>
+<details>
+<summary>Answer</summary>
 
-```sql
-WITH monthly AS (
- SELECT substr(order_date, 1, 7) AS month, SUM(amount) AS revenue
- FROM orders GROUP BY substr(order_date, 1, 7)
-), compared AS (
- SELECT month, revenue,
- LAG(revenue) OVER (ORDER BY month) AS previous_revenue FROM monthly
-)
-SELECT month, revenue,
- 1.0 * (revenue - previous_revenue) / NULLIF(previous_revenue, 0) AS growth
-FROM compared ORDER BY month;
-```
+The unknown comparison can prevent rows satisfying a simple true anti-match; NOT EXISTS often expresses the intention more safely.
 
-Expected: January 380, growth NULL; February 150, growth about -0.605263. In a real dashboard, compare complete periods and use a calendar to represent absent months. A missing preceding month is not automatically a zero-sales month.
 </details>
 
-## Hard 7. Which rows are above their own regional average?
+<a id="lesson-03"></a>
 
-<details><summary>Answer</summary>
+## 03 — GROUP BY, HAVING, conditional aggregation and weighted metrics
 
-```sql
-WITH scored AS (
- SELECT *, AVG(amount) OVER (PARTITION BY region) AS regional_average
- FROM orders
-)
-SELECT order_id FROM scored WHERE amount > regional_average ORDER BY order_id;
-```
+[Read the lesson](../01-theory/lesson-03-aggregation-and-grain.md)
 
-Expected: order 2 only. East's average is 150; a value equal to it is not above it.
+### Q007. WHERE versus HAVING?
+
+<details>
+<summary>Answer</summary>
+
+WHERE filters input rows; HAVING filters aggregate groups.
+
 </details>
 
-## Hard 8. How would you test a join that doubles revenue?
+### Q008. Why not average subgroup percentages blindly?
 
-<details><summary>Answer</summary>
+<details>
+<summary>Answer</summary>
 
-Check uniqueness on both join keys and counts per order before joining. A one-to-many match can be valid but creates a new grain. Preaggregate each child table to order grain, join, then reconcile the total. `DISTINCT` is not a general repair: it can remove legitimate identical amounts.
+Their denominators can differ; an overall rate usually needs pooled numerators and denominators.
+
+</details>
+
+### Q009. How detect double-counted sums?
+
+<details>
+<summary>Answer</summary>
+
+State grain, inspect key multiplicities before/after joins, and reconcile totals independently.
+
+</details>
+
+<a id="lesson-04"></a>
+
+## 04 — Joins, EXISTS, subqueries, CTEs and set operations
+
+[Read the lesson](../01-theory/lesson-04-joins-and-subqueries.md)
+
+### Q010. Why COUNT(o.id) after a LEFT JOIN?
+
+<details>
+<summary>Answer</summary>
+
+It counts matched non-NULL order keys, not the NULL-extended placeholder row.
+
+</details>
+
+### Q011. When use EXISTS?
+
+<details>
+<summary>Answer</summary>
+
+When the question is whether any related match exists rather than how many matched combinations to return.
+
+</details>
+
+### Q012. Two duplicates on each side of a key: output count?
+
+<details>
+<summary>Answer</summary>
+
+Four matching combinations, unless additional conditions change the relationship.
+
+</details>
+
+<a id="lesson-05"></a>
+
+## 05 — Windows, ranking, running totals and session patterns
+
+[Read the lesson](../01-theory/lesson-05-window-functions.md)
+
+### Q013. Does a window reduce row count?
+
+<details>
+<summary>Answer</summary>
+
+Not by itself. It computes values associated with each retained row.
+
+</details>
+
+### Q014. RANK versus DENSE_RANK?
+
+<details>
+<summary>Answer</summary>
+
+Both give ties equal rank; RANK leaves gaps and DENSE_RANK does not.
+
+</details>
+
+### Q015. Why explicit frames?
+
+<details>
+<summary>Answer</summary>
+
+They make row-based versus peer/time-based accumulation clear and reproducible.
+
+</details>
+
+<a id="lesson-06"></a>
+
+## 06 — Data modelling, indexes, transactions and query plans
+
+[Read the lesson](../01-theory/lesson-06-modeling-performance-transactions.md)
+
+### Q016. Why fact grain before measures?
+
+<details>
+<summary>Answer</summary>
+
+It determines which quantities can be summed and which joins preserve meaning.
+
+</details>
+
+### Q017. Does a CTE guarantee a faster query?
+
+<details>
+<summary>Answer</summary>
+
+No. Execution depends on optimizer and engine semantics; inspect the actual plan and measurements.
+
+</details>
+
+### Q018. What does transaction atomicity mean?
+
+<details>
+<summary>Answer</summary>
+
+The grouped database changes commit together or do not take effect as a committed partial operation.
+
+</details>
+
+<a id="lesson-07"></a>
+
+## 07 — EDA, missingness, duplicates and evidence quality
+
+[Read the lesson](../01-theory/lesson-07-eda-and-data-quality.md)
+
+### Q019. Why define provenance?
+
+<details>
+<summary>Answer</summary>
+
+It clarifies how selection, measurement and processing could bias the available evidence.
+
+</details>
+
+### Q020. Are repeated customer IDs duplicates?
+
+<details>
+<summary>Answer</summary>
+
+Not in an order-grain table; uniqueness must be checked against the correct key.
+
+</details>
+
+### Q021. EDA versus confirmatory analysis?
+
+<details>
+<summary>Answer</summary>
+
+EDA explores patterns and hypotheses; confirmation needs a specified design and valid inferential procedure.
+
+</details>
+
+<a id="lesson-08"></a>
+
+## 08 — Cohorts, funnels, experiments and analytical communication
+
+[Read the lesson](../01-theory/lesson-08-analysis-and-storytelling.md)
+
+### Q022. Why fixed cohort denominators?
+
+<details>
+<summary>Answer</summary>
+
+They preserve the original eligible group and prevent survivor-only retention inflation.
+
+</details>
+
+### Q023. Why distinguish absolute and relative effects?
+
+<details>
+<summary>Answer</summary>
+
+A large relative change can correspond to a small absolute impact, depending on baseline.
+
+</details>
+
+### Q024. What makes an insight actionable?
+
+<details>
+<summary>Answer</summary>
+
+It ties a measured comparison and its uncertainty to a concrete decision or justified next investigation.
+
 </details>

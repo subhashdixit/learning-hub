@@ -9,3 +9,7 @@ Start with the bank-churn neural-network example, then text classification. Trac
 | [neural network practicals](neural-network-practicals/README.md) | Collection |
 | [nlp bootcamp](nlp-bootcamp/README.md) | Collection |
 | [text classification practicals](text-classification-practicals/README.md) | Collection |
+
+## New guided practical
+
+[Open the runnable lab, expected results and extension tasks](guided-lab/README.md). It is self-contained and uses local/synthetic data; original notebooks and assignments above remain available.

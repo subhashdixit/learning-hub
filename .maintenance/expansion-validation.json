@@ -1,0 +1,57 @@
+{
+  "original_files_hash_verified": 1036,
+  "authored_pages_link_checked": 504,
+  "broken_links": [],
+  "new_lesson_words": 25238,
+  "new_inline_python_examples_executed": 12,
+  "new_inline_SQL_examples_executed": 5,
+  "guided_labs_passed": 11,
+  "programming_solutions_passed": 40,
+  "SQL_query_checks_passed": 20,
+  "lab_outputs": [
+    {
+      "subject": "01-python-and-programming",
+      "output": "Category totals in paise: {'food': 1500, 'travel': 800} overall: 2300"
+    },
+    {
+      "subject": "02-mathematics-and-statistics",
+      "output": "Posterior: 0.153846 approximate CI: (48.04, 51.96) chi-square: 4.0\nSimulated mean of sample means: 1.0003"
+    },
+    {
+      "subject": "03-sql-and-data-analysis",
+      "output": "Passed 20 SQL query checks on local SQLite 3.35.5"
+    },
+    {
+      "subject": "05-deep-learning-and-nlp",
+      "output": "Neuron probability: 0.549834 -> 0.604699 convolution: [-1, -1, -1] attention: 5.0"
+    },
+    {
+      "subject": "06-time-series-and-forecasting",
+      "output": "One-step rolling-origin MAE: {'naive': 1.678, 'seasonal': 0.35} smoothed level: 11.0"
+    },
+    {
+      "subject": "07-ai-engineering-and-development-tools",
+      "output": "Eligible retrieved source: new stored records: 1"
+    },
+    {
+      "subject": "08-data-engineering",
+      "output": "Accepted unique: 2 duplicate replays: 1 quarantined: 1 total: 50"
+    },
+    {
+      "subject": "09-git-docker-and-deployment",
+      "output": "Mean latency: 19.5 maximum: 200 valid response: {'estimated_minutes': 20, 'model_version': 'teaching-v1'}"
+    },
+    {
+      "subject": "10-economics-and-finance",
+      "output": "Illustrative NPV: 4.7619 wealth: 99.00000000000001 max observed drawdown: -0.25 real growth: 0.047619"
+    },
+    {
+      "subject": "11-interview-preparation",
+      "output": "Two-sum duplicate case: (0, 1) second distinct: 3"
+    },
+    {
+      "subject": "12-business-analytics-and-coursework",
+      "output": "Total margin: 0.14 unweighted row mean: 0.3 retention: 0.3 start-to-purchase: 0.1"
+    }
+  ]
+}

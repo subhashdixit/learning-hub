@@ -1,0 +1,360 @@
+[
+  {
+    "level": "Easy",
+    "title": "Paid orders",
+    "sql": "SELECT id FROM orders WHERE status='paid' ORDER BY id;",
+    "expected": [
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        4
+      ],
+      [
+        6
+      ]
+    ],
+    "explanation": "Filter rows before aggregation."
+  },
+  {
+    "level": "Easy",
+    "title": "Missing amount",
+    "sql": "SELECT id FROM orders WHERE amount IS NULL;",
+    "expected": [
+      [
+        5
+      ]
+    ],
+    "explanation": "Use IS NULL, not equality."
+  },
+  {
+    "level": "Easy",
+    "title": "Count rows and known amounts",
+    "sql": "SELECT COUNT(*),COUNT(amount) FROM orders;",
+    "expected": [
+      [
+        6,
+        5
+      ]
+    ],
+    "explanation": "Missing and zero are different."
+  },
+  {
+    "level": "Easy",
+    "title": "Paid total",
+    "sql": "SELECT SUM(amount) FROM orders WHERE status='paid';",
+    "expected": [
+      [
+        450
+      ]
+    ],
+    "explanation": "The sum is at order grain."
+  },
+  {
+    "level": "Easy",
+    "title": "Customers with multiple orders",
+    "sql": "SELECT customer_id FROM orders GROUP BY customer_id HAVING COUNT(*)>1 ORDER BY customer_id;",
+    "expected": [
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ]
+    ],
+    "explanation": "HAVING filters groups."
+  },
+  {
+    "level": "Easy",
+    "title": "Amounts above100",
+    "sql": "SELECT id FROM orders WHERE amount>100 ORDER BY id;",
+    "expected": [
+      [
+        4
+      ]
+    ],
+    "explanation": "Strict greater-than excludes equal100."
+  },
+  {
+    "level": "Easy",
+    "title": "Conditional paid totals",
+    "sql": "SELECT customer_id,SUM(CASE WHEN status='paid' THEN amount ELSE 0 END) FROM orders GROUP BY customer_id ORDER BY customer_id;",
+    "expected": [
+      [
+        1,
+        150
+      ],
+      [
+        2,
+        200
+      ],
+      [
+        3,
+        100
+      ]
+    ],
+    "explanation": "The CASE defines eligible contribution."
+  },
+  {
+    "level": "Medium",
+    "title": "Customers without any orders",
+    "sql": "SELECT c.id FROM customers c WHERE NOT EXISTS(SELECT 1 FROM orders o WHERE o.customer_id=c.id) ORDER BY c.id;",
+    "expected": [
+      [
+        4
+      ]
+    ],
+    "explanation": "An anti-match does not require duplicated join rows."
+  },
+  {
+    "level": "Medium",
+    "title": "Retain customers with zero paid orders",
+    "sql": "SELECT c.id,COUNT(o.id) FROM customers c LEFT JOIN orders o ON o.customer_id=c.id AND o.status='paid' GROUP BY c.id ORDER BY c.id;",
+    "expected": [
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        1
+      ],
+      [
+        3,
+        1
+      ],
+      [
+        4,
+        0
+      ]
+    ],
+    "explanation": "The right-side filter belongs in ON to preserve unmatched customers."
+  },
+  {
+    "level": "Medium",
+    "title": "Latest order per customer",
+    "sql": "WITH r AS(SELECT id,customer_id,ROW_NUMBER() OVER(PARTITION BY customer_id ORDER BY day DESC,id DESC) rn FROM orders) SELECT customer_id,id FROM r WHERE rn=1 ORDER BY customer_id;",
+    "expected": [
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        3,
+        6
+      ]
+    ],
+    "explanation": "Timestamp and ID define the winner."
+  },
+  {
+    "level": "Medium",
+    "title": "Second distinct nonmissing amount",
+    "sql": "SELECT DISTINCT amount FROM orders WHERE amount IS NOT NULL ORDER BY amount DESC LIMIT 1 OFFSET 1;",
+    "expected": [
+      [
+        100
+      ]
+    ],
+    "explanation": "DISTINCT makes the rank semantic explicit; absent second values return no row."
+  },
+  {
+    "level": "Medium",
+    "title": "Running paid total",
+    "sql": "SELECT id,SUM(amount) OVER(ORDER BY day,id ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW) FROM orders WHERE status='paid' ORDER BY day,id;",
+    "expected": [
+      [
+        1,
+        100
+      ],
+      [
+        2,
+        150
+      ],
+      [
+        4,
+        350
+      ],
+      [
+        6,
+        450
+      ]
+    ],
+    "explanation": "Explicit frame and unique ordering define accumulation."
+  },
+  {
+    "level": "Medium",
+    "title": "Previous paid amount",
+    "sql": "SELECT id,LAG(amount) OVER(PARTITION BY customer_id ORDER BY day,id) FROM orders WHERE status='paid' ORDER BY customer_id,day,id;",
+    "expected": [
+      [
+        1,
+        null
+      ],
+      [
+        2,
+        100
+      ],
+      [
+        4,
+        null
+      ],
+      [
+        6,
+        null
+      ]
+    ],
+    "explanation": "WHERE limits the window input to paid orders."
+  },
+  {
+    "level": "Medium",
+    "title": "Customer paid-share of total",
+    "sql": "WITH a AS(SELECT customer_id,SUM(amount) total FROM orders WHERE status='paid' GROUP BY customer_id) SELECT customer_id,ROUND(1.0*total/SUM(total) OVER(),4) FROM a ORDER BY customer_id;",
+    "expected": [
+      [
+        1,
+        0.3333
+      ],
+      [
+        2,
+        0.4444
+      ],
+      [
+        3,
+        0.2222
+      ]
+    ],
+    "explanation": "Convert to noninteger arithmetic and state rounding."
+  },
+  {
+    "level": "Medium",
+    "title": "Date totals",
+    "sql": "SELECT day,SUM(amount) FROM orders WHERE status='paid' GROUP BY day ORDER BY day;",
+    "expected": [
+      [
+        "2026-01-01",
+        100
+      ],
+      [
+        "2026-01-02",
+        50
+      ],
+      [
+        "2026-01-03",
+        200
+      ],
+      [
+        "2026-01-04",
+        100
+      ]
+    ],
+    "explanation": "These ISO dates sort lexically here; production date types/dialects need explicit treatment."
+  },
+  {
+    "level": "Hard",
+    "title": "Rank tied amounts",
+    "sql": "SELECT id,RANK() OVER(ORDER BY amount DESC),DENSE_RANK() OVER(ORDER BY amount DESC) FROM orders WHERE amount IS NOT NULL ORDER BY amount DESC,id;",
+    "expected": [
+      [
+        4,
+        1,
+        1
+      ],
+      [
+        1,
+        2,
+        2
+      ],
+      [
+        6,
+        2,
+        2
+      ],
+      [
+        3,
+        4,
+        3
+      ],
+      [
+        2,
+        5,
+        4
+      ]
+    ],
+    "explanation": "RANK leaves a gap after the two100amounts."
+  },
+  {
+    "level": "Hard",
+    "title": "Above customer average",
+    "sql": "SELECT o.id FROM orders o WHERE amount>(SELECT AVG(i.amount) FROM orders i WHERE i.customer_id=o.customer_id) ORDER BY o.id;",
+    "expected": [
+      [
+        1
+      ],
+      [
+        4
+      ]
+    ],
+    "explanation": "AVG ignores missing values; a customer with one known amount has no above-average order."
+  },
+  {
+    "level": "Hard",
+    "title": "Distinct paying customers",
+    "sql": "SELECT COUNT(DISTINCT customer_id) FROM orders WHERE status='paid';",
+    "expected": [
+      [
+        3
+      ]
+    ],
+    "explanation": "Four paid orders do not mean four paying customers."
+  },
+  {
+    "level": "Hard",
+    "title": "Verify missing and zero separately",
+    "sql": "SELECT SUM(CASE WHEN amount IS NULL THEN 1 ELSE 0 END),SUM(CASE WHEN amount=0 THEN 1 ELSE 0 END) FROM orders;",
+    "expected": [
+      [
+        1,
+        0
+      ]
+    ],
+    "explanation": "Unknown amount is not known zero."
+  },
+  {
+    "level": "Hard",
+    "title": "Paid amount with last-order annotation",
+    "sql": "SELECT id,amount,MAX(day) OVER(PARTITION BY customer_id) FROM orders WHERE status='paid' ORDER BY id;",
+    "expected": [
+      [
+        1,
+        100,
+        "2026-01-02"
+      ],
+      [
+        2,
+        50,
+        "2026-01-02"
+      ],
+      [
+        4,
+        200,
+        "2026-01-03"
+      ],
+      [
+        6,
+        100,
+        "2026-01-04"
+      ]
+    ],
+    "explanation": "The date annotation does not imply each row is the latest; use row filtering when that is the question."
+  }
+]

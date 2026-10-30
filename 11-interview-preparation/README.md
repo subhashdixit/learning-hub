@@ -2,18 +2,20 @@
 
 [Learning Hub](../README.md)
 
-Learn the ideas, try them, then check your understanding.
+**Learn in order:** Clarify → Solve small case → Explain → Check → Diagnose → Retry
 
-| Order | Open | What to do |
-|---|---|---|
-| 1 | [Theory](01-theory/README.md) | Read the visual chapters in sequence. |
-| 2 | [Practicals](02-practicals/README.md) | Run examples and work with the existing datasets/projects. |
-| 3 | [Questions and answers](03-questions-and-answers/README.md) | Attempt first, then check the explanation or original solution. |
+```mermaid
+flowchart LR
+ N0["Read theory"] --> N1["Recalculate examples"] --> N2["Run practicals"] --> N3["Answer questions"] --> N4["Apply to a small case"]
+```
 
-## Read the chapters
+| Section | What to do |
+|---|---|
+| [01 — Theory](01-theory/README.md) | 4 numbered lessons, analogies, diagrams and worked examples; extended guides for more detail |
+| [02 — Practicals](02-practicals/README.md) | New runnable lab plus preserved notebooks, exercises and assignments |
+| [03 — Questions and answers](03-questions-and-answers/README.md) | 12 explained answers in course order |
+| [Archive](archive/README.md) | Original reference documents and handwritten PDFs |
 
-1. [A focused revision and problem-solving method](01-theory/01-interview-preparation.md)
+Start with the first theory lesson. Predict code output or calculate the result before running/checking it. Keep an error log and revisit the specific concept when an answer is wrong. Examples use simplified or synthetic data unless stated otherwise. Original material is preserved; some historical notebooks may require their own datasets or older dependencies.
 
-[Original notes and references](archive/README.md)
-
-[← Previous subject](../10-economics-and-finance/README.md) · [Next subject →](../12-business-analytics-and-coursework/README.md)
+[← Economics And Finance](../10-economics-and-finance/README.md) · [Business Analytics And Coursework →](../12-business-analytics-and-coursework/README.md)

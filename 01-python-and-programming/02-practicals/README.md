@@ -10,3 +10,11 @@ Run the ten small Python problems, then use the complete notebook and topic note
 | [complete notebook](complete-notebook/README.md) | Collection |
 | [function and git practice](function-and-git-practice/README.md) | Collection |
 | [topic notebooks](topic-notebooks/README.md) | Collection |
+
+## New guided practical
+
+[Open the runnable lab, expected results and extension tasks](guided-lab/README.md). It is self-contained and uses local/synthetic data; original notebooks and assignments above remain available.
+
+## Programming problem set
+
+[40 solved problems:16 easy,16 medium,8 hard](programming-problems/README.md). Includes data structures, strings, windows, search, graphs, dynamic programming and a streaming median.
