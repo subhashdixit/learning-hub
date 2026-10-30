@@ -2,22 +2,24 @@
 
 [Learning Hub](../README.md)
 
-Learn the ideas, try them, then check your understanding.
+A course from the first modelling decision to reliable real-world use. Begin with supervised versus unsupervised learning, then learn the algorithms with equations, calculations, plots and decision diagrams. The material expands the original notes with additional explanations and corrected worked examples.
 
-| Order | Open | What to do |
-|---|---|---|
-| 1 | [Theory](01-theory/README.md) | Read the visual chapters in sequence. |
-| 2 | [Practicals](02-practicals/README.md) | Run examples and work with the existing datasets/projects. |
-| 3 | [Questions and answers](03-questions-and-answers/README.md) | Attempt first, then check the explanation or original solution. |
+```mermaid
+flowchart LR
+ A[01 Theory:40 ordered lessons] --> B[02 Practicals:run and inspect]
+ B --> C[03 Questions:explain and calculate]
+ C --> D[Apply to a real problem]
+```
 
-## Read the chapters
+| Read in this order | What you will find |
+|---|---|
+| [01 — Theory and full course map](01-theory/README.md) | Foundations; supervised/unsupervised algorithms; advanced settings; uncertainty; explainability; model selection |
+| [02 — Practicals](02-practicals/README.md) | Runnable labs, original notebooks, datasets and course assignments |
+| [03 — Questions and answers](03-questions-and-answers/README.md) |200 answered questions following the same 40 lessons |
+| [Archive — original notes](archive/README.md) | Original handwritten PDFs retained for reference |
 
-1. [Foundations, validation and regression](01-theory/01-ml-foundations-and-regression.md)
-2. [Classification, metrics, KNN and Naive Bayes](01-theory/02-ml-classification.md)
-3. [Support-vector machines and regression](01-theory/03-ml-support-vector-machines.md)
-4. [Trees, random forests and boosting](01-theory/04-ml-trees-and-ensembles.md)
-5. [Clustering and representations](01-theory/05-ml-clustering.md)
+**Start here:** [01 — What machine learning learns](01-theory/01-learning-map.md).
 
-[Original notes and references](archive/README.md)
+The main theory course includes worked classical methods and a clearly marked advanced-family reference. Use its final coverage map to distinguish detailed lessons from specialist surveys. The original PDFs remain intact; you can study the Markdown course without following migration records or leaving this repository.
 
-[← Previous subject](../03-sql-and-data-analysis/README.md) · [Next subject →](../05-deep-learning-and-nlp/README.md)
+[← SQL and Data Analysis](../03-sql-and-data-analysis/README.md) · [Deep Learning →](../05-deep-learning-and-nlp/README.md)
