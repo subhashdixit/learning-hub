@@ -2,6 +2,8 @@
 
 [Learning Hub](../README.md)
 
+**[Start the algorithm story](01-theory/ALGORITHM-STORY.md)** — understand the problem, mechanism, limitation and related alternatives.
+
 A course from the first modelling decision to reliable real-world use. Begin with supervised versus unsupervised learning, then learn the algorithms with equations, calculations, plots and decision diagrams. The material expands the original notes with additional explanations and corrected worked examples.
 
 ```mermaid

@@ -2,6 +2,8 @@
 
 [Subject home](../README.md) · [Practicals](../02-practicals/README.md) · [Questions and answers](../03-questions-and-answers/README.md)
 
+**[Algorithm story and family comparisons](ALGORITHM-STORY.md)** — understand the problem, mechanism, limitation and related alternatives.
+
 Start with 01 and follow the numbered lessons. Each explains the idea in simple language, shows a worked example and identifies common mistakes. Run code examples and reproduce calculations before checking the answers.
 
 **Sequence:** Tensors → Layers → Gradients → Training → Vision → Sequences → Attention → Generative models
@@ -29,3 +31,7 @@ These official texts/documentation support further detail and current API behavi
 - [PyTorch basics](https://docs.pytorch.org/tutorials/beginner/basics/intro.html)
 - [Attention Is All You Need](https://arxiv.org/abs/1706.03762)
 - [Deep Learning book](https://www.deeplearningbook.org/)
+
+## Worked algorithm progression
+
+[Open the 12 worked algorithm chapters](algorithms/README.md). Each covers motivation, working/training, a calculation, trade-offs and validation.

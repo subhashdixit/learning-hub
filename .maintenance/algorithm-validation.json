@@ -1,0 +1,40 @@
+{
+  "original_imports_hash_verified": 1036,
+  "authored_pages_link_checked": 546,
+  "broken_local_links": [],
+  "new_worked_algorithm_chapters": 25,
+  "new_chapter_words": 10580,
+  "subject_story_maps": 12,
+  "new_flowcharts": 37,
+  "new_static_figures": 7,
+  "math_expressions_parsed_in_touched_pages": 59,
+  "diagrams_parsed_in_touched_pages": 50,
+  "fitted_forecast_models_and_baseline": {
+    "seasonal_naive": {
+      "MAE": 1.3313014214528827,
+      "RMSE": 1.6395204467216216
+    },
+    "ARIMA": {
+      "MAE": 1.9211119592104369,
+      "RMSE": 2.215792985143791
+    },
+    "SARIMA": {
+      "MAE": 1.3078031843438889,
+      "RMSE": 1.6228796483588912
+    },
+    "SARIMAX": {
+      "MAE": 0.7137194791439215,
+      "RMSE": 0.9244098984091856
+    },
+    "ETS_Holt_Winters": {
+      "MAE": 0.7103468877242511,
+      "RMSE": 0.8043052250701976
+    },
+    "Prophet": {
+      "MAE": 0.32605341426710804,
+      "RMSE": 0.4483788231680042
+    }
+  },
+  "arithmetic_checks": "passed; see deep-learning practical script",
+  "scope": "No claim to train every surveyed neural/research family; model comparison is one synthetic temporal holdout."
+}

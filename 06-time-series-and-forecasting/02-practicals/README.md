@@ -12,3 +12,7 @@ Open a forecasting notebook, identify frequency and horizon, and compare its res
 ## New guided practical
 
 [Open the runnable lab, expected results and extension tasks](guided-lab/README.md). It is self-contained and uses local/synthetic data; original notebooks and assignments above remain available.
+
+## Algorithm progression practice
+
+[Fit six forecasting baselines/models on one synthetic holdout](model-comparison/README.md).

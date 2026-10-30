@@ -13,3 +13,7 @@ Start with the bank-churn neural-network example, then text classification. Trac
 ## New guided practical
 
 [Open the runnable lab, expected results and extension tasks](guided-lab/README.md). It is self-contained and uses local/synthetic data; original notebooks and assignments above remain available.
+
+## Algorithm progression practice
+
+[Verify the algorithm chapters’ worked calculations](algorithm-checks/README.md).

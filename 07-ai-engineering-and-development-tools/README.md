@@ -2,6 +2,8 @@
 
 [Learning Hub](../README.md)
 
+**[Start the algorithm story](01-theory/ALGORITHM-STORY.md)** — understand the problem, mechanism, limitation and related alternatives.
+
 **Learn in order:** Task → Prompt → Retrieval → Tools → State → Evaluation → Deployment → Spec-driven development
 
 ```mermaid

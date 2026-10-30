@@ -2,6 +2,8 @@
 
 [Subject home](../README.md) · [Practicals](../02-practicals/README.md) · [Questions and answers](../03-questions-and-answers/README.md)
 
+**[Algorithm story and family comparisons](ALGORITHM-STORY.md)** — understand the problem, mechanism, limitation and related alternatives.
+
 Start with 01 and follow the numbered lessons. Each explains the idea in simple language, shows a worked example and identifies common mistakes. Run code examples and reproduce calculations before checking the answers.
 
 **Sequence:** Grain → Query → Filter → Aggregate → Join → Windows → Data model → Analysis

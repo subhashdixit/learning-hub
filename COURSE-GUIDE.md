@@ -10,8 +10,8 @@ Follow Theory → Practicals → Questions. The numbered lessons teach concepts,
 | [02-mathematics-and-statistics](02-mathematics-and-statistics/README.md) | 8 | 24 | [Guided lab](02-mathematics-and-statistics/02-practicals/guided-lab/README.md) |
 | [03-sql-and-data-analysis](03-sql-and-data-analysis/README.md) | 8 | 24 | [Guided lab](03-sql-and-data-analysis/02-practicals/guided-lab/README.md) |
 | [04-machine-learning](04-machine-learning/README.md) |40 |200 | [Ten labs](04-machine-learning/02-practicals/labs/README.md) |
-| [05-deep-learning-and-nlp](05-deep-learning-and-nlp/README.md) | 7 | 21 | [Guided lab](05-deep-learning-and-nlp/02-practicals/guided-lab/README.md) |
-| [06-time-series-and-forecasting](06-time-series-and-forecasting/README.md) | 6 | 18 | [Guided lab](06-time-series-and-forecasting/02-practicals/guided-lab/README.md) |
+| [05-deep-learning-and-nlp](05-deep-learning-and-nlp/README.md) | 19 | 21 | [Guided lab](05-deep-learning-and-nlp/02-practicals/guided-lab/README.md) |
+| [06-time-series-and-forecasting](06-time-series-and-forecasting/README.md) | 19 | 18 | [Guided lab](06-time-series-and-forecasting/02-practicals/guided-lab/README.md) |
 | [07-ai-engineering-and-development-tools](07-ai-engineering-and-development-tools/README.md) | 9 | 27 | [Guided lab](07-ai-engineering-and-development-tools/02-practicals/guided-lab/README.md) |
 | [08-data-engineering](08-data-engineering/README.md) | 6 | 18 | [Guided lab](08-data-engineering/02-practicals/guided-lab/README.md) |
 | [09-git-docker-and-deployment](09-git-docker-and-deployment/README.md) | 6 | 18 | [Guided lab](09-git-docker-and-deployment/02-practicals/guided-lab/README.md) |
@@ -36,3 +36,7 @@ The hub provides a broad learning sequence and runnable foundations across all t
 The new eleven guided labs use Python3.10+ standard library and local/synthetic data. The40 Python solutions and20 SQLite query checks are executable. The earlier Machine Learning labs have their own pinned dependencies. Historical imported notebooks are preserved and may reference older APIs or external datasets; they are not all certified as runnable by these new checks.
 
 All plotting examples identify their synthetic or illustrative assumptions. Original handwritten PDFs remain in each subject's archive. Financial examples teach measurement and arithmetic under simplified assumptions, not investment recommendations.
+
+## Algorithm progression
+
+[All subject stories](ALGORITHMS.md) connect limitations, mechanisms and alternatives. Forecasting has 13 additional worked algorithm chapters; deep learning has 12. These are included in the 143-lesson count above. Survey maps distinguish family-level overviews from worked chapters; they do not claim to enumerate every research variant.

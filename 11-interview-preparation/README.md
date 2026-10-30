@@ -2,6 +2,8 @@
 
 [Learning Hub](../README.md)
 
+**[Start the algorithm story](01-theory/ALGORITHM-STORY.md)** — understand the problem, mechanism, limitation and related alternatives.
+
 **Learn in order:** Clarify → Solve small case → Explain → Check → Diagnose → Retry
 
 ```mermaid

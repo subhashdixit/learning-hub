@@ -32,3 +32,13 @@ Historical notebook applications, cloud deployment, Spark sessions, external ser
 - Checked 504 authored Markdown pages for local links with no missing targets. Parsed 97 new/authored-page math expressions with KaTeX and 89 diagrams with Mermaid without syntax errors. Inspected the new figures as a contact sheet and refined the Python object-reference diagram.
 - Historical imported notebooks were retained; this check does not claim to have re-executed every notebook or a full cloud/Spark/LLM deployment. New AI/deployment labs clearly identify their local simulations.
 - Detailed outputs: `.maintenance/expansion-validation.json` and `.maintenance/expansion-render-validation.json`.
+
+
+## Algorithm progression update — 2026-10-30
+
+- Added 25 worked algorithm chapters (13 forecasting, 12 deep learning), twelve subject progression stories, 37 new flowcharts and 7 static scientific figures. Foundation lessons and imported material were retained.
+- Every worked chapter covers the motivating limitation, mechanism/training, numerical example, trade-offs, related alternatives and validation. Main ML story links its existing worked algorithm lessons; other subject maps distinguish survey families from full worked chapters.
+- Fitted seasonal naive, ARIMA, SARIMA, SARIMAX, Holt–Winters and Prophet on one identical synthetic temporal holdout. The exercise records actual metrics, fixed model settings, package versions and starting-parameter warnings; it does not claim a universal winner or trained implementations for every surveyed neural method.
+- Arithmetic checks passed for the worked forecasting/deep-learning calculations. Parsed 59 math expressions and 50 diagrams in touched pages without errors. These totals include existing diagrams on updated route/index pages; 37 flowcharts are new.
+- Checked 546 authored Markdown pages for local links with no missing targets. All 1,036 imported originals still matched manifest hashes. Inspected all seven new figures and corrected a misleading floating-point axis scale in the seasonal-difference illustration.
+- Detailed results: `.maintenance/algorithm-validation.json`, `.maintenance/algorithm-render-validation.json`, and the forecasting practical’s `model-comparison/example-results.json`.

@@ -2,6 +2,8 @@
 
 [Subject home](../README.md) · [Practicals](../02-practicals/README.md) · [Questions and answers](../03-questions-and-answers/README.md)
 
+**[Algorithm story and family comparisons](ALGORITHM-STORY.md)** — understand the problem, mechanism, limitation and related alternatives.
+
 Start with 01 and follow the numbered lessons. Each explains the idea in simple language, shows a worked example and identifies common mistakes. Run code examples and reproduce calculations before checking the answers.
 
 **Sequence:** Time index → Baselines → Decomposition → Models → Backtests → Intervals → Operations
@@ -25,3 +27,7 @@ These official texts/documentation support further detail and current API behavi
 
 - [Forecasting: Principles and Practice](https://otexts.com/fpp3/)
 - [statsmodels time series](https://www.statsmodels.org/stable/tsa.html)
+
+## Worked algorithm progression
+
+[Open the 13 worked algorithm chapters](algorithms/README.md). Each covers motivation, working/training, a calculation, trade-offs and validation.

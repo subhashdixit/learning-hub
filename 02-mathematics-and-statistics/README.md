@@ -2,6 +2,8 @@
 
 [Learning Hub](../README.md)
 
+**[Start the algorithm story](01-theory/ALGORITHM-STORY.md)** — understand the problem, mechanism, limitation and related alternatives.
+
 **Learn in order:** Algebra → Vectors → Calculus → Probability → Distributions → Estimation → Tests → Experiments
 
 ```mermaid

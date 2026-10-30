@@ -2,6 +2,8 @@
 
 [Subject home](../README.md) · [Practicals](../02-practicals/README.md) · [Question bank](../03-questions-and-answers/worked-questions.md)
 
+**[Algorithm story and family comparisons](ALGORITHM-STORY.md)** — understand the problem, mechanism, limitation and related alternatives.
+
 Start at 01 and follow the numbered chapters. Each lesson explains the idea, objective/training procedure, worked example, suitable data and practical limits. Read the diagrams as part of the explanation, then try the corresponding practical and questions. Formula conventions are stated where they differ across libraries.
 
 ```mermaid

@@ -38,8 +38,10 @@ Existing study notes and answers are preserved; they may contain errors or older
 
 ## Course resources
 
-The hub now includes **118 numbered course lessons**: 78 new lessons across the other eleven subjects alongside the 40-lesson Machine Learning course. Extended visual guides, original notebooks and archived handwritten notes remain available for deeper worked treatments.
+The hub now includes **143 numbered course lessons**: 103 new lessons across the other eleven subjects alongside the 40-lesson Machine Learning course. This includes 25 dedicated forecasting/deep-learning algorithm chapters, plus a problem-driven algorithm story in every subject. Extended visual guides, original notebooks and archived handwritten notes remain available for deeper worked treatments.
 
 - [40 solved Python programming problems](01-python-and-programming/02-practicals/programming-problems/README.md), grouped into easy, medium and hard.
 - [20 solved SQL query problems](03-sql-and-data-analysis/02-practicals/guided-lab/README.md), with a local database fixture and expected rows.
 - [Course coverage and validation](COURSE-GUIDE.md), including the distinction between new executable labs and preserved historical notebooks.
+
+[Explore the algorithm stories across all subjects](ALGORITHMS.md): why methods differ, how they work and which limitations motivate alternatives.
