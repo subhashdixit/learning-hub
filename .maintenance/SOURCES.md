@@ -1,6 +1,6 @@
 # Preserved source snapshots
 
-All original learning files remain in this repository. The CSV manifest records source commits and per-file hashes. Original repositories have not been modified or deleted. No blanket license is applied to imported material. Preserve original authorship and license notices.
+All original learning files remain in this repository. The CSV manifest records source commits and per-file hashes. On 2026-10-30, the user-approved document repositories `Handwritten_Notes`, `Deployment_Notes`, `Economics`, and `Git_Tutorial` were deleted from GitHub after checking their imported file hashes and verifying full-history local backups. The remaining source repositories are retained. The pinned commits below remain the provenance record for all imported material. No blanket license is applied to imported material. Preserve original authorship and license notices.
 
 | Source | Files | Pinned commit |
 |---|---|---|
